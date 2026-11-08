@@ -8,7 +8,7 @@ Atualizado em 08/11/2026. Aprovação visual não significa implementação ou t
 | 02 — Criar sala | Aprovado | Não iniciada | Definir padrão inicial do interruptor e estados complementares |
 | 03 — Entrar em sala | Aprovado | Não iniciada | Detalhar estados sem convites, carregamento e erros |
 | 04 — Player vertical | Aprovado com remoção do botão | Não iniciada | Referência local atualizada; detalhar estado sem mídia e proporções |
-| 05 — Player horizontal | Pendente | Não iniciada | Imersão e painel de chat |
+| 05 — Player horizontal | Aprovado com mensagem sobreposta | Não iniciada | Detalhar painel de chat e ajustes de mensagens |
 | 06 — Configurações | Pendente | Não iniciada | Definir opções |
 | 07 — Todas as salas públicas | Pendente | Não iniciada | Busca, lista e estados vazios |
 | Sistema de amizade — lista e gerenciamento | Pendente | Não iniciado | Definir acesso, identificação e fluxo de amizade |
@@ -52,6 +52,16 @@ Arte criada pela ferramenta integrada de imagens a partir do modelo anterior: en
 Sistema de amizade confirmado pelo usuário e registrado no planejamento. Identificação, adição/remoção, envio e validade dos convites e ponto de acesso à lista ainda precisam ser definidos; não presumir login nem fluxo de amizade.
 
 ## Aprovações e validação
+
+### Player horizontal — proposta em 08/11/2026
+
+**Estado atual: aprovado.** Usuário aprovou a função e o tamanho pequeno da mensagem como padrão e autorizou enviar esta referência ao GitHub. Arquivo copiado sem edição para [Player horizontal aprovado](design/player-horizontal-aprovado.png). Requisito de movimento lento da esquerda para a direita e configurações de posição/tamanho/velocidade registrado em PLANEJAMENTO.md. Tamanho padrão é referência visual, sem inventar valor em sp. Posição/velocidade iniciais e faixas ainda pendentes; topo é exemplo. Prévia estática não é animação implementada ou testada. Os parágrafos abaixo são histórico de elaboração, não o status atual de aprovação.
+
+![Player horizontal aprovado](design/player-horizontal-aprovado.png)
+
+Revisão solicitada: mensagens pequenas passando lentamente da esquerda para a direita sobre o vídeo, com posição (cima/baixo), tamanho e velocidade configuráveis. Nova prévia estática gerada pela ferramenta integrada a partir do horizontal anterior: uma mensagem “Lucas: Que cena linda!” no topo abaixo dos controles, autor lilás e texto branco. Prompt restrito a adicionar uma mensagem discreta, preservando os demais elementos. Inspeção visual: texto presente e legível; imagem representa apenas um instante, não demonstra animação/velocidade. Posição superior é exemplo, não padrão aprovado. Visual ainda aguarda aprovação; sem implementação/teste, publicação no GitHub ou nova arte aprovada. Faixas, padrões e mensagens simultâneas pendentes.
+
+Após envio do vertical aprovado ao GitHub (commit d48b1a9), modelo horizontal gerado com ferramenta integrada e apresentado no chat. Prompt: mesma sala e mídia ilustrativa em paisagem, vídeo imersivo sem barras Android, controles temporários, nome da sala, contador de participantes, botão de chat e três pontos; chat inicialmente fechado. Inspeção visual: composição e controles presentes. Ícone inferior de saída da tela cheia ainda deve ter semântica visual validada no detalhamento. Modelo ainda não aprovado, sem publicação da nova arte, implementação ou teste. Painel de chat aberto, teclado, falta de permissão, reconexão e rotação sem perder estado ainda pendentes.
 
 ### Proposta do player vertical — 08/11/2026
 

@@ -6,16 +6,23 @@ Atualizado em 08/11/2026.
 
 Projeto exclusivamente Android, Kotlin/Compose, Media3 e Supabase; distribuição por APK. Planejamento em PLANEJAMENTO.md. Não há aplicativo, backend ou APK implementado/testado.
 
-Quatro referências visuais aprovadas:
+Cinco referências visuais aprovadas:
 
 - Home: docs/design/home-aprovada.png, original preservada.
 - Criar sala: docs/design/criar-sala-aprovada.png, nome e interruptor Sala pública, sem explicações longas.
 - Entrar em sala: docs/design/entrar-sala-aprovada.png, código no topo e convites de amigos abaixo.
 - Player vertical: docs/design/player-vertical-aprovado.png, vídeo e chat sem barra de atalhos ou botão de adicionar vídeo.
+- Player horizontal: docs/design/player-horizontal-aprovado.png, com mensagem pequena sobre o vídeo; tamanho mostrado aprovado como padrão.
 
 Usuário autorizou explicitamente enviar as duas últimas referências ao GitHub e pediu registrar o sistema de amizade no planejamento. Novas imagens fora dessas referências continuam exigindo autorização. Não tratar design aprovado como implementação/teste.
 
 ## Próxima etapa
+
+**Estado atual:** usuário aprovou o player horizontal com mensagem sobreposta, confirmou o tamanho mostrado como padrão e autorizou enviar ao GitHub. Função consolidada no planejamento: mensagens recebidas passam lentamente da esquerda para a direita e têm ajustes de posição (cima/baixo), tamanho e velocidade nas Configurações. Posição/velocidade iniciais, valores numéricos e tratamento simultâneo pendentes; tamanho é referência visual, ainda sem sp validado. Sem implementação ou teste de animação. Próxima tela principal na ordem: Configurações; painel de chat horizontal aberto e estados complementares também pendentes. Registros abaixo são histórico.
+
+Pedido mais recente: mensagens pequenas sobre o vídeo horizontal movendo lentamente da esquerda para a direita; configurações de cima/baixo, tamanho e velocidade. Requisito registrado no planejamento. Prévia estática apresentada com “Lucas: Que cena linda!” no topo como exemplo; aguardar avaliação visual. Não representa animação testada e não define padrões/faixas. Sem implementação, testes ou envio dessa arte ao GitHub.
+
+Vertical aprovado enviado ao GitHub com documentação no commit d48b1a9. Em seguida, modelo horizontal apresentado no chat: tela imersiva, controles temporários e botão de chat, inicialmente fechado. Aguardar aprovação/comentários; proposta horizontal ainda não aprovada nem enviada ao GitHub. Próximo detalhamento dessa tela: painel de chat aberto e teclado. Sem implementação/testes.
 
 Pedido mais recente: enviar player-vertical-aprovado.png ao GitHub (autorização explícita) e seguir para o modelo horizontal. Layout vertical aprovado, sem botão junto ao chat. Próxima proposta: player horizontal imersivo com chat inicialmente fechado e controles temporários ao toque.
 
@@ -55,4 +62,4 @@ Consultar PLANEJAMENTO.md para pendências técnicas e funcionais completas e DE
 
 ## Como retomar
 
-Ler AGENTS.md, README.md, PLANEJAMENTO.md, DESIGN.md e este arquivo. Consultar as quatro referências aprovadas. Próxima tela: player horizontal. Não redesenhar as referências nem gerar novas imagens sem autorização.
+Ler AGENTS.md, README.md, PLANEJAMENTO.md, DESIGN.md e este arquivo. Consultar as cinco referências aprovadas. Próxima tela principal: Configurações. Não redesenhar as referências nem gerar novas imagens sem autorização.

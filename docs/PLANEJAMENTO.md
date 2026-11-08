@@ -99,12 +99,17 @@ Participantes, permissões individuais, expulsão e transferência de administra
 - Player em tela cheia imersiva; barras de status e navegação ocultas.
 - Controles temporários ao toque.
 - Chat oculto inicialmente; botão abre painel flutuante com mensagens e digitação.
+- Mensagens recebidas também aparecem pequenas sobre o vídeo, percorrendo lentamente da esquerda para a direita. Usuário pediu configurar posição (em cima ou embaixo), tamanho e velocidade. O painel completo de chat continua acessível pelo botão.
+- Tamanho padrão aprovado: o texto pequeno mostrado em docs/design/player-horizontal-aprovado.png. Essa referência visual orienta a implementação; tamanho numérico em sp e adaptação entre telas ainda precisam ser validados no Android.
+- Posição e velocidade iniciais, faixas de ajuste e tratamento de mensagens simultâneas ainda precisam ser definidos; não assumir parâmetros numéricos. Movimento lento foi solicitado, mas não demonstrado pela imagem estática.
 - Fechar chat não interrompe reprodução.
 - Rotação não reinicia vídeo nem perde sincronização.
 
 ### 06 — Configurações
 
 Nome/apelido, avatar, preferências de reprodução, notificações, preferências do chat e informações do aplicativo. Detalhes das opções ainda dependem do design.
+
+Preferências de mensagens sobre o player horizontal confirmadas pelo usuário: posição em cima/embaixo, tamanho do texto e velocidade de passagem da esquerda para a direita. Tamanho pequeno do modelo aprovado como padrão. Design dos controles e faixas de valores pendentes; imagem no topo não define posição inicial.
 
 ### 07 — Todas as salas públicas
 
