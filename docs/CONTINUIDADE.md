@@ -6,17 +6,26 @@ Atualizado em 08/11/2026.
 
 Projeto exclusivamente Android, Kotlin/Compose, Media3 e Supabase; distribuição por APK. Planejamento em PLANEJAMENTO.md. Não há aplicativo, backend ou APK implementado/testado.
 
-Cinco referências visuais aprovadas:
+Seis referências visuais aprovadas:
 
 - Home: docs/design/home-aprovada.png, original preservada.
 - Criar sala: docs/design/criar-sala-aprovada.png, nome e interruptor Sala pública, sem explicações longas.
 - Entrar em sala: docs/design/entrar-sala-aprovada.png, código no topo e convites de amigos abaixo.
 - Player vertical: docs/design/player-vertical-aprovado.png, vídeo e chat sem barra de atalhos ou botão de adicionar vídeo.
 - Player horizontal: docs/design/player-horizontal-aprovado.png, com mensagem pequena sobre o vídeo; tamanho mostrado aprovado como padrão.
+- Configurações: docs/design/configuracoes-aprovada.png, somente os quatro botões pedidos.
 
 Usuário autorizou explicitamente enviar as duas últimas referências ao GitHub e pediu registrar o sistema de amizade no planejamento. Novas imagens fora dessas referências continuam exigindo autorização. Não tratar design aprovado como implementação/teste.
 
 ## Próxima etapa
+
+Estado mais recente: tela 06 aprovada e envio de configuracoes-aprovada.png ao GitHub autorizado. Usuário pediu seguir para tela 07 — Todas as salas públicas. Painéis internos das quatro opções continuam pendentes. Sem implementação ou testes Android. Histórico abaixo não representa o status atual de aprovação.
+
+Último pedido: Configurações deve conter por enquanto só Mudar apelido, Configuração de mensagem, Notificações e Sobre o app, todos como botões que abrem painéis. Reprodução, avatar e demais ajustes de chat adiados. Nova prévia de quatro botões apresentada e planejamento atualizado; aguardar avaliação visual. Sem envio ao GitHub, implementação ou teste nesta etapa.
+
+Revisão atual de Configurações: usuário pediu Mensagens sobre o vídeo como botão de lista que abre painel, igual aos demais, e explicação das opções. Nova prévia apresentada com perfil e cinco botões; sem controles expandidos. Ajustes de posição/tamanho/velocidade ficam no painel aberto por esse botão. Demais categorias ainda precisam de definição interna. Aguardar avaliação da composição; sem publicação, implementação/testes nesta etapa.
+
+Avanço mais recente: modelo da tela 06 — Configurações apresentado a pedido do usuário. Avatar/apelido, posição/tamanho/velocidade das mensagens, prévia e acessos Reprodução/Notificações/Chat/Sobre. Aguardar revisão visual. Nenhuma nova aprovação, publicação de arte, implementação ou teste nesta etapa. Opções internas e parâmetros ainda pendentes. Preferências de mensagens ficam nesta tela conforme confirmação explícita; preservar tamanho padrão aprovado do player horizontal.
 
 **Estado atual:** usuário aprovou o player horizontal com mensagem sobreposta, confirmou o tamanho mostrado como padrão e autorizou enviar ao GitHub. Função consolidada no planejamento: mensagens recebidas passam lentamente da esquerda para a direita e têm ajustes de posição (cima/baixo), tamanho e velocidade nas Configurações. Posição/velocidade iniciais, valores numéricos e tratamento simultâneo pendentes; tamanho é referência visual, ainda sem sp validado. Sem implementação ou teste de animação. Próxima tela principal na ordem: Configurações; painel de chat horizontal aberto e estados complementares também pendentes. Registros abaixo são histórico.
 
@@ -62,4 +71,4 @@ Consultar PLANEJAMENTO.md para pendências técnicas e funcionais completas e DE
 
 ## Como retomar
 
-Ler AGENTS.md, README.md, PLANEJAMENTO.md, DESIGN.md e este arquivo. Consultar as cinco referências aprovadas. Próxima tela principal: Configurações. Não redesenhar as referências nem gerar novas imagens sem autorização.
+Ler AGENTS.md, README.md, PLANEJAMENTO.md, DESIGN.md e este arquivo. Consultar as seis referências aprovadas. Próxima tela principal: Todas as salas públicas. Não redesenhar as referências nem gerar novas imagens sem autorização.

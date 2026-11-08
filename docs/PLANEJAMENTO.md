@@ -107,9 +107,11 @@ Participantes, permissões individuais, expulsão e transferência de administra
 
 ### 06 — Configurações
 
-Nome/apelido, avatar, preferências de reprodução, notificações, preferências do chat e informações do aplicativo. Detalhes das opções ainda dependem do design.
+Escopo atual reduzido por decisão do usuário: somente quatro botões — Mudar apelido, Configuração de mensagem, Notificações e Sobre o app. Cada um abre seu painel. Edição de avatar, preferências de reprodução e demais ajustes de chat ficam para uma etapa futura; não incluir agora.
 
 Preferências de mensagens sobre o player horizontal confirmadas pelo usuário: posição em cima/embaixo, tamanho do texto e velocidade de passagem da esquerda para a direita. Tamanho pequeno do modelo aprovado como padrão. Design dos controles e faixas de valores pendentes; imagem no topo não define posição inicial.
+
+Navegação definida pelo usuário: “Configuração de mensagem” aparece como botão de lista igual aos demais na tela 06; tocar abre painel com posição, tamanho, velocidade e prévia das mensagens sobre o vídeo. Não deixar controles expandidos na tela principal. Detalhes de Notificações e Sobre o app ainda precisam ser definidos; não inventar opções específicas como aprovadas.
 
 ### 07 — Todas as salas públicas
 

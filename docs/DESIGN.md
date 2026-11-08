@@ -9,7 +9,7 @@ Atualizado em 08/11/2026. Aprovação visual não significa implementação ou t
 | 03 — Entrar em sala | Aprovado | Não iniciada | Detalhar estados sem convites, carregamento e erros |
 | 04 — Player vertical | Aprovado com remoção do botão | Não iniciada | Referência local atualizada; detalhar estado sem mídia e proporções |
 | 05 — Player horizontal | Aprovado com mensagem sobreposta | Não iniciada | Detalhar painel de chat e ajustes de mensagens |
-| 06 — Configurações | Pendente | Não iniciada | Definir opções |
+| 06 — Configurações | Aprovado | Não iniciada | Referência em design/configuracoes-aprovada.png; detalhar painéis |
 | 07 — Todas as salas públicas | Pendente | Não iniciada | Busca, lista e estados vazios |
 | Sistema de amizade — lista e gerenciamento | Pendente | Não iniciado | Definir acesso, identificação e fluxo de amizade |
 | Convite de amigos para sala | Pendente | Não iniciado | Definir envio; recebimento já representado em Entrar em sala |
@@ -52,6 +52,16 @@ Arte criada pela ferramenta integrada de imagens a partir do modelo anterior: en
 Sistema de amizade confirmado pelo usuário e registrado no planejamento. Identificação, adição/remoção, envio e validade dos convites e ponto de acesso à lista ainda precisam ser definidos; não presumir login nem fluxo de amizade.
 
 ## Aprovações e validação
+
+### Tela 06 — Configurações: proposta em 08/11/2026
+
+**Estado atual: aprovado.** Usuário autorizou envio ao GitHub e pediu seguir para tela 07. Referência preservada sem edição em [Configurações aprovada](design/configuracoes-aprovada.png): somente quatro botões — Mudar apelido, Configuração de mensagem, Notificações e Sobre o app. Painéis internos ainda pendentes. Não implementada/testada. Histórico abaixo não altera esse status.
+
+Revisão atual: usuário limitou a tela a Mudar apelido, Configuração de mensagem, Notificações e Sobre o app, deixando os demais itens para depois. Nova prévia gerada pela ferramenta integrada com exatamente quatro botões; perfil/avatar inline, Reprodução e Chat removidos. Prompt restrito a essa simplificação mantendo identidade visual. Inspeção visual confirma quatro linhas e ausência dos itens retirados. Escopo registrado no planejamento; composição revisada ainda aguarda aprovação visual, sem publicação, implementação ou teste. Histórico abaixo está substituído por essa decisão.
+
+Última revisão solicitada: transformar Mensagens sobre o vídeo em botão igual aos demais, abrindo painel ao tocar. Nova imagem gerada a partir da prévia anterior, removendo bloco expandido e mantendo perfil e cinco linhas: Mensagens sobre o vídeo, Reprodução, Notificações, Chat e Sobre o aplicativo. Prompt limitado a essa reorganização; inspeção visual confirma botão e remoção dos controles expandidos. Comportamento solicitado registrado no planejamento; composição completa ainda aguarda aprovação. Nenhuma publicação, implementação ou teste. Reprodução/Notificações/Chat continuam categorias sem conteúdo interno definido; explicação deve distingui-las de funcionalidades aprovadas.
+
+Usuário confirmou que os ajustes das mensagens ficam na tela 06 e pediu seu modelo. Prévia gerada pela ferramenta integrada e apresentada no chat: avatar/apelido; grupo “Mensagens sobre o vídeo” com posição cima/baixo, controle de tamanho, controle de velocidade e exemplo; acessos Reprodução, Notificações, Chat e Sobre o aplicativo. Prompt usou Criar sala como referência visual, pediu interface concisa, sem login ou opções internas inventadas. Valores “Em cima” e “Lenta” são exemplos; tamanho Padrão remete à referência aprovada do horizontal, sem definir número. A prévia ampliada de texto nas configurações é ilustrativa e não substitui a referência de tamanho no player. Inspeção visual: controles/textos presentes e sem cortes aparentes. Proposta ainda não aprovada nem enviada ao GitHub; sem implementação/teste. Detalhes das seções internas, salvamento das preferências, faixas de ajuste, teclado e responsividade permanecem pendentes.
 
 ### Player horizontal — proposta em 08/11/2026
 
