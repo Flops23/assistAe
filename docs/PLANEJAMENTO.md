@@ -52,8 +52,8 @@ Design de referência aprovado, em docs/design/home-aprovada.png. Fundo preto e 
 ### 02 — Criar sala
 
 - Nome da sala.
-- Pública ou privada.
-- Permissões de reprodução.
+- Interruptor “Sala pública”: ligado = pública, desligado = privada; padrão inicial pendente.
+- Design simplificado aprovado: nome, interruptor e botão, sem bloco explicativo de permissões. Regras de controle permanecem abaixo.
 - Botão Criar sala leva imediatamente ao player como administrador.
 - Por padrão, somente o administrador controla. Ele pode autorizar pessoas específicas.
 - Como não há seleção de mídia nesta tela, detalhar no design o estado do player ainda sem vídeo, sem criar uma sala de espera.
@@ -64,6 +64,7 @@ Design de referência aprovado, em docs/design/home-aprovada.png. Fundo preto e 
 - Mensagens para código inválido e sala inexistente.
 - Código válido leva diretamente ao player.
 - Convites por código com copiar e compartilhar; links diretos de convite não fazem parte da decisão inicial.
+- Acréscimo decidido pelo usuário: convites internos enviados pela lista de amigos aparecem abaixo da entrada por código. Identificação dos amigos, adição/remoção, envio e validade dos convites ainda precisam ser definidos. Não pressupor login ou mudança da identidade de convidado sem discutir.
 
 ### 04 — Sala vertical
 
@@ -93,6 +94,16 @@ Nome/apelido, avatar, preferências de reprodução, notificações, preferênci
 - Entrar diretamente pelo card.
 - Sem tags, agendamentos ou horários de início.
 - Mesma ordenação da Home. Salas privadas não aparecem.
+
+## Sistema de amizade e convites internos
+
+Funcionalidade confirmada pelo usuário em 08/11/2026, incluída no projeto além dos convites por código:
+
+- Lista de amigos e possibilidade de convidar amigos para salas pelo sistema.
+- Convites recebidos exibidos abaixo da entrada por código em Entrar em sala; esse modelo visual foi aprovado.
+- Design da lista/gerenciamento de amigos e do envio de convites ainda pendente, incluindo onde acessá-los.
+- Ainda definir identificação dos amigos, adição/remoção, eventual solicitação/aceite de amizade, entrega e validade dos convites e tratamento de sala encerrada/lotada.
+- A decisão não estabelece login, recuperação de conta ou mudança da identidade persistida de convidado; essas questões precisam ser conciliadas antes da implementação.
 
 ## Painéis dentro da sala
 
