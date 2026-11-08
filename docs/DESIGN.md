@@ -10,7 +10,7 @@ Atualizado em 08/11/2026. Aprovação visual não significa implementação ou t
 | 04 — Player vertical | Aprovado com remoção do botão | Não iniciada | Referência local atualizada; detalhar estado sem mídia e proporções |
 | 05 — Player horizontal | Aprovado com mensagem sobreposta | Não iniciada | Detalhar painel de chat e ajustes de mensagens |
 | 06 — Configurações | Aprovado | Não iniciada | Referência em design/configuracoes-aprovada.png; detalhar painéis |
-| 07 — Todas as salas públicas | Pendente | Não iniciada | Busca, lista e estados vazios |
+| 07 — Todas as salas públicas | Aprovado | Não iniciada | Escolher imagem padrão e detalhar estados |
 | Sistema de amizade — lista e gerenciamento | Pendente | Não iniciado | Definir acesso, identificação e fluxo de amizade |
 | Convite de amigos para sala | Pendente | Não iniciado | Definir envio; recebimento já representado em Entrar em sala |
 | Painel Adicionar vídeo | Pendente | Não iniciado | Dentro de Fila: URL, validação e ações |
@@ -52,6 +52,14 @@ Arte criada pela ferramenta integrada de imagens a partir do modelo anterior: en
 Sistema de amizade confirmado pelo usuário e registrado no planejamento. Identificação, adição/remoção, envio e validade dos convites e ponto de acesso à lista ainda precisam ser definidos; não presumir login nem fluxo de amizade.
 
 ## Aprovações e validação
+
+### Tela 07 — Todas as salas públicas: proposta em 08/11/2026
+
+**Estado atual: aprovado.** Usuário disse “gostei pode mandar pro git”, autorizando envio da referência. Arquivo preservado sem edição em [Salas públicas aprovada](design/salas-publicas-aprovada.png). Aprovação da composição não seleciona uma imagem padrão definitiva: os marcadores de miniatura são provisórios. Salas/contagens são exemplos. Sem implementação ou teste. Registro abaixo é histórico da proposta.
+
+![Salas públicas aprovada](design/salas-publicas-aprovada.png)
+
+Configurações enviada ao GitHub no commit bc47423. A pedido do usuário, modelo da tela 07 gerado pela ferramenta integrada e apresentado no chat. Referências de estilo: Home e Configurações aprovadas. Prompt: título Salas públicas, busca por nome, lista de cards contendo só miniatura/nome/quantidade, sem play ou botão Entrar, ordenados por participantes. Cinco salas e contagens são exemplos ilustrativos (não dados reais). Mesma miniatura neutra provisória em todos os cards; não é aprovação da imagem padrão definitiva, ainda pendente. Inspeção visual: busca, cinco cards e contagens abaixo do limite presentes. Prévia aguarda aprovação, sem envio dessa imagem ao GitHub, implementação ou testes. Ainda faltam estados sem salas, sem resultados, carregando, falha e validação com teclado/Android.
 
 ### Tela 06 — Configurações: proposta em 08/11/2026
 

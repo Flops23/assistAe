@@ -6,7 +6,7 @@ Atualizado em 08/11/2026.
 
 Projeto exclusivamente Android, Kotlin/Compose, Media3 e Supabase; distribuição por APK. Planejamento em PLANEJAMENTO.md. Não há aplicativo, backend ou APK implementado/testado.
 
-Seis referências visuais aprovadas:
+Sete referências visuais aprovadas:
 
 - Home: docs/design/home-aprovada.png, original preservada.
 - Criar sala: docs/design/criar-sala-aprovada.png, nome e interruptor Sala pública, sem explicações longas.
@@ -14,10 +14,15 @@ Seis referências visuais aprovadas:
 - Player vertical: docs/design/player-vertical-aprovado.png, vídeo e chat sem barra de atalhos ou botão de adicionar vídeo.
 - Player horizontal: docs/design/player-horizontal-aprovado.png, com mensagem pequena sobre o vídeo; tamanho mostrado aprovado como padrão.
 - Configurações: docs/design/configuracoes-aprovada.png, somente os quatro botões pedidos.
+- Salas públicas: docs/design/salas-publicas-aprovada.png, busca e cards; miniaturas provisórias.
 
 Usuário autorizou explicitamente enviar as duas últimas referências ao GitHub e pediu registrar o sistema de amizade no planejamento. Novas imagens fora dessas referências continuam exigindo autorização. Não tratar design aprovado como implementação/teste.
 
 ## Próxima etapa
+
+Estado mais recente: usuário aprovou a tela 07 (“gostei pode mandar pro git”) e autorizou envio de salas-publicas-aprovada.png. Telas principais 01 a 07 aprovadas visualmente, sem implementação/testes. Próxima etapa prevista: painéis da sala, começando por Fila e Adicionar vídeo (acesso pelos três pontos). Também pendem participantes, convite, chat horizontal aberto, painéis das configurações, amizade e estados complementares. Miniatura padrão definitiva ainda não selecionada; aprovação do layout não transforma o marcador provisório em arte definitiva. Registros abaixo são histórico.
+
+Atualização: Configurações aprovada enviada ao GitHub (bc47423). Modelo da tela 07 — Todas as salas públicas apresentado no chat, ainda não aprovado: busca, cinco cards de exemplo com miniatura neutra repetida, nome e quantidade. Card inteiro dá entrada direta. Imagem padrão definitiva ainda não escolhida/aprovada; placeholders são provisórios. Aguardar avaliação; sem publicação da arte da tela 07, implementação ou teste. Estados vazio/erro/carregamento e painéis continuam pendentes.
 
 Estado mais recente: tela 06 aprovada e envio de configuracoes-aprovada.png ao GitHub autorizado. Usuário pediu seguir para tela 07 — Todas as salas públicas. Painéis internos das quatro opções continuam pendentes. Sem implementação ou testes Android. Histórico abaixo não representa o status atual de aprovação.
 
@@ -71,4 +76,4 @@ Consultar PLANEJAMENTO.md para pendências técnicas e funcionais completas e DE
 
 ## Como retomar
 
-Ler AGENTS.md, README.md, PLANEJAMENTO.md, DESIGN.md e este arquivo. Consultar as seis referências aprovadas. Próxima tela principal: Todas as salas públicas. Não redesenhar as referências nem gerar novas imagens sem autorização.
+Ler AGENTS.md, README.md, PLANEJAMENTO.md, DESIGN.md e este arquivo. Consultar as sete referências aprovadas. Próxima etapa prevista: painéis Fila/Adicionar vídeo. Não redesenhar as referências nem gerar novas imagens sem autorização.
