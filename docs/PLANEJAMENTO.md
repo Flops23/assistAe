@@ -74,6 +74,25 @@ Design de referência aprovado, em docs/design/home-aprovada.png. Fundo preto e 
 - Controles ao tocar no player.
 - Play/pause, avançar/retroceder e troca de mídia conforme permissões.
 - Adicionar URL, abrir fila, chat, participantes, compartilhar convite e controles administrativos.
+- Navegação confirmada pelo usuário: participantes pelo contador no cabeçalho, sem botão Pessoas duplicado; Fila e Compartilhar no menu de três pontos. Adicionar vídeo fica dentro de Fila, sem botão separado junto ao chat.
+
+#### Menu de três pontos da sala
+
+Itens com localização confirmada pelo usuário:
+
+| Item | O que abre e permite fazer |
+|---|---|
+| Fila | Ver os vídeos da sala. Dentro do painel, “Adicionar vídeo” abre o campo de URL e a validação da fonte; usuário autorizado escolhe “Reproduzir agora” ou “Adicionar à fila”. Reorganizar e remover itens também dependem de permissão. |
+| Compartilhar | Abrir as opções de convite: copiar/compartilhar o código da sala e convidar pela lista de amigos. O detalhamento visual do envio interno ainda está pendente. |
+
+Não haverá item “Adicionar vídeo” separado nesse menu nem botão dessa ação no chat. O acesso será três pontos → Fila → Adicionar vídeo. Reproduzir agora altera a mídia compartilhada, enquanto adicionar à fila mantém a mídia atual; ambas as ações exigem autorização. O destino da mídia anterior ao reproduzir outra imediatamente ainda precisa ser definido.
+
+Opções administrativas/de saída já previstas funcionalmente, com posição neste menu ainda como proposta para revisão:
+
+- “Sair da sala”: segue as regras de saída e sucessão do administrador.
+- “Encerrar sala”: somente administrador, com confirmação, encerra para todos.
+
+Participantes, permissões individuais, expulsão e transferência de administração ficam no painel aberto pelo contador superior; não duplicar um botão Pessoas no menu ou no chat. A localização final das opções administrativas acima não deve ser tratada como aprovação visual do menu completo.
 
 ### 05 — Sala horizontal
 
@@ -107,8 +126,8 @@ Funcionalidade confirmada pelo usuário em 08/11/2026, incluída no projeto alé
 
 ## Painéis dentro da sala
 
-- Adicionar vídeo: URL, identificação da fonte, validação, reproduzir ou adicionar à fila.
-- Fila: vídeos adicionados, reorganização e remoção conforme permissões.
+- Adicionar vídeo: acessado dentro de Fila; URL, identificação da fonte, validação, Reproduzir agora ou Adicionar à fila conforme permissões.
+- Fila: acessada pelos três pontos; vídeos adicionados, acesso a Adicionar vídeo, reorganização e remoção conforme permissões.
 - Participantes: conectados, administrador, convite e gerenciamento de permissões.
 - Chat horizontal: mensagens e campo de digitação sobre o vídeo.
 - Somente administrador e participantes autorizados adicionam vídeos à fila. Troca de mídia e reorganização também respeitam permissões.

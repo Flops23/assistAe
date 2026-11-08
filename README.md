@@ -2,7 +2,7 @@
 
 Aplicativo nativo Android para assistir a vídeos com amigos em salas públicas ou privadas, com player sincronizado e chat.
 
-**Estado em 08/11/2026:** Home, Criar sala e Entrar em sala com design aprovado. Sistema de amizade e convites internos confirmado no planejamento. Ainda não há aplicativo implementado nem APK validado.
+**Estado em 08/11/2026:** Home, Criar sala, Entrar em sala e player vertical com design aprovado. Sistema de amizade e convites internos confirmado no planejamento. Ainda não há aplicativo implementado nem APK validado.
 
 ## Comece aqui
 
@@ -21,7 +21,8 @@ A imagem original foi fornecida pelo usuário e seu envio foi autorizado. É uma
 
 - [Criar sala](docs/design/criar-sala-aprovada.png): nome e interruptor de sala pública/privada.
 - [Entrar em sala](docs/design/entrar-sala-aprovada.png): código e convites de amigos.
+- [Player vertical](docs/design/player-vertical-aprovado.png): vídeo com chat; participantes pelo contador e Fila/Compartilhar nos três pontos.
 
 As duas referências foram aprovadas e seu envio ao GitHub foi autorizado pelo usuário.
 
-**Próxima etapa:** design do player vertical com chat, mantendo a identidade aprovada. Sistema de amizade ainda precisa do design de gerenciamento e envio de convites. Não gerar novas imagens sem autorização explícita.
+**Próxima etapa:** design do player horizontal, mantendo a identidade aprovada. Sistema de amizade ainda precisa do design de gerenciamento e envio de convites. Não gerar novas imagens sem autorização explícita.

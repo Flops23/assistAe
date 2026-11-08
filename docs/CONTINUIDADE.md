@@ -6,15 +6,26 @@ Atualizado em 08/11/2026.
 
 Projeto exclusivamente Android, Kotlin/Compose, Media3 e Supabase; distribuição por APK. Planejamento em PLANEJAMENTO.md. Não há aplicativo, backend ou APK implementado/testado.
 
-Três referências visuais aprovadas:
+Quatro referências visuais aprovadas:
 
 - Home: docs/design/home-aprovada.png, original preservada.
 - Criar sala: docs/design/criar-sala-aprovada.png, nome e interruptor Sala pública, sem explicações longas.
 - Entrar em sala: docs/design/entrar-sala-aprovada.png, código no topo e convites de amigos abaixo.
+- Player vertical: docs/design/player-vertical-aprovado.png, vídeo e chat sem barra de atalhos ou botão de adicionar vídeo.
 
 Usuário autorizou explicitamente enviar as duas últimas referências ao GitHub e pediu registrar o sistema de amizade no planejamento. Novas imagens fora dessas referências continuam exigindo autorização. Não tratar design aprovado como implementação/teste.
 
 ## Próxima etapa
+
+Pedido mais recente: enviar player-vertical-aprovado.png ao GitHub (autorização explícita) e seguir para o modelo horizontal. Layout vertical aprovado, sem botão junto ao chat. Próxima proposta: player horizontal imersivo com chat inicialmente fechado e controles temporários ao toque.
+
+Estado atual: usuário confirmou que o player vertical já estava aprovado e pediu só remover o botão junto a Chat. Edição executada e referência local salva em docs/design/player-vertical-aprovado.png, sem publicação no GitHub. Layout aprovado com essa remoção, sem implementação/testes. Adicionar vídeo continua dentro de Fila nos três pontos; participantes pelo contador. Próxima tela principal na ordem: player horizontal, além dos estados pendentes do vertical. Os registros abaixo são histórico.
+
+Decisão atual confirmada: remover Adicionar vídeo do chat; acesso por três pontos → Fila → Adicionar vídeo, com URL e escolha Reproduzir agora/Adicionar à fila conforme permissão. Participantes pelo contador superior. Planejamento agora explica Fila e Compartilhar nos três pontos; Sair/Encerrar nesse menu são localização proposta, ainda não aprovada. Última imagem do player ficou desatualizada por conter botão Adicionar vídeo ao lado de Chat; atualizar em próxima revisão visual autorizada. Nenhuma imagem, implementação/teste ou envio ao GitHub nesta etapa. Os parágrafos anteriores de proposta abaixo são histórico.
+
+Última revisão do player: contador superior abre participantes; Fila/Compartilhar vão nos três pontos, conforme pedido do usuário. Nova prévia remove barra de atalhos e propõe botão compacto “Adicionar vídeo” junto ao título Chat (adição por URL). Aguardar avaliação dessa revisão; não considerar aprovada. Sem nova publicação, implementação ou testes. Estado sem mídia e demais variantes continuam pendentes.
+
+Modelo do player vertical com chat solicitado e apresentado como proposta no chat. Mostra administrador com vídeo pausado, barra Vídeo/Fila/Pessoas/Convidar e chat com campo inferior. Aguardar avaliação do usuário; ainda não aprovado. Sem envio dessa imagem ao GitHub. Restam estado sem mídia e demais estados, proporção exata da mídia e validação Android; ver DESIGN.md. Nenhum código/teste realizado.
 
 Design do player vertical com chat, incluindo sala ainda sem mídia, mantendo identidade preta/roxa aprovada. Perguntar em caso de dúvida em vez de inventar decisões. Sem sala de espera ou agendamento.
 
@@ -44,4 +55,4 @@ Consultar PLANEJAMENTO.md para pendências técnicas e funcionais completas e DE
 
 ## Como retomar
 
-Ler AGENTS.md, README.md, PLANEJAMENTO.md, DESIGN.md e este arquivo. Consultar as três referências aprovadas. Próxima tela: player vertical com chat. Não redesenhar as referências nem gerar novas imagens sem autorização.
+Ler AGENTS.md, README.md, PLANEJAMENTO.md, DESIGN.md e este arquivo. Consultar as quatro referências aprovadas. Próxima tela: player horizontal. Não redesenhar as referências nem gerar novas imagens sem autorização.
