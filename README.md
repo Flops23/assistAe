@@ -32,4 +32,6 @@ As referências foram aprovadas e seu envio ao GitHub foi autorizado pelo usuár
 
 **Painéis aprovados:** [Fila](docs/design/propostas/fila-proposta-v1.png), [Adicionar vídeo](docs/design/propostas/adicionar-video-proposta-v1.png) e [Participantes](docs/design/propostas/participantes-proposta-v1.png), com envio das três referências ao GitHub autorizado. Sem implementação/testes.
 
-**Próxima etapa:** propostas de Compartilhar/Convidar, Chat horizontal aberto e Amigos, cuja geração foi solicitada pelo usuário. Restam painéis das configurações e estados complementares. Novas imagens exigem autorização específica de envio ao GitHub.
+**Também aprovados:** [Compartilhar/Convidar](docs/design/propostas/compartilhar-proposta-v1.png), [Chat horizontal aberto](docs/design/propostas/chat-horizontal-proposta-v1.png) e [Amigos](docs/design/propostas/amigos-proposta-v1.png), com envio dessas três referências ao GitHub autorizado. Sem implementação/testes.
+
+**Próxima etapa:** propostas de Mudar apelido, Configuração de mensagem, Notificações e Sobre o app, solicitadas pelo usuário. Restam também estados complementares. Novas imagens exigem autorização específica de envio ao GitHub.

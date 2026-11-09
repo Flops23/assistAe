@@ -2,6 +2,18 @@
 
 Atualizado em 08/11/2026. Aprovação visual não significa implementação ou teste Android.
 
+## Novas propostas — Compartilhar, Chat horizontal e Amigos
+
+**Estado atual: Compartilhar, Chat horizontal aberto e Amigos aprovados pelo usuário, com envio dessas três imagens ao GitHub autorizado (“pode mandar pro git essas que vc fez”).** Referências v1 preservadas sem edição; detalhes de estados complementares continuam pendentes. Sem implementação/testes. Histórico da elaboração abaixo.
+
+Fila, Adicionar vídeo e Participantes aprovados e enviados ao GitHub com documentação no commit `9fa1e45`. Usuário solicitou mais três telas; adotada a sequência da lista apresentada: Compartilhar/Convidar, Chat horizontal aberto e Amigos. Geradas com imagegen integrada, sem editar referências aprovadas. Arquivos locais abaixo são propostas para análise, sem aprovação, implementação ou testes, e sem autorização de envio ao GitHub.
+
+- [Compartilhar — proposta v1](design/propostas/compartilhar-proposta-v1.png): painel na sala com código ilustrativo, copiar/compartilhar código e lista para convidar amigos. Explicita validade do convite até uso ou encerramento. Composição e ações de envio aguardam avaliação; feedback de envio/erro, busca e lista vazia pendentes.
+- [Chat horizontal — proposta v1](design/propostas/chat-horizontal-proposta-v1.png): painel flutuante à direita com mensagens e campo de digitação; sem foco/teclado. Mensagem pequena na parte inferior do vídeo representa um instante da passagem. Não demonstra animação/velocidade nem valida proporção do vídeo em execução. Posição/largura do painel propostas; teclado, responsividade e interação com controles pendentes.
+- [Amigos — proposta v1](design/propostas/amigos-proposta-v1.png): acesso por Configurações; código pessoal com cópia, adicionar por código, abas de solicitações recebidas/enviadas, aceitar/recusar e lista com remoção. Sem login/recuperação. Aba recebidas visível; conteúdo de enviadas, confirmação de remoção, erros e vazios pendentes. Organização e ações ainda propostas; formato dos códigos não definido por estes exemplos.
+
+Inspeção visual: textos e ações presentes e legíveis sem cortes aparentes. Referências: Fila aprovada para Compartilhar; player horizontal aprovado para chat; Configurações aprovada para Amigos. Estilo preto/roxo preservado. Prompts completos em [registro da geração](design/propostas/prompts-compartilhar-chat-amigos-v1.md). Nenhum comportamento Android ou backend foi testado.
+
 ## Propostas de painéis — Fila, Adicionar vídeo e Participantes
 
 **Estado atual: três painéis aprovados visualmente pelo usuário (“ok pode por no git”), com envio dessas três referências ao GitHub autorizado.** Arquivos v1 preservados sem edição nos caminhos abaixo; nomes com “proposta” indicam a origem, não pendência de aprovação. Sem implementação ou testes Android. Registros de elaboração abaixo são históricos.
@@ -42,12 +54,12 @@ Esta revisão prevalece sobre pendências e propostas dos registros históricos 
 | 05 — Player horizontal | Aprovado com mensagem sobreposta | Não iniciada | Detalhar painel de chat e ajustes de mensagens |
 | 06 — Configurações | Referência de quatro botões aprovada; acréscimo de Amigos aprovado funcionalmente | Não iniciada | Detalhar composição com quinto botão e painéis |
 | 07 — Todas as salas públicas | Aprovado | Não iniciada | Escolher imagem padrão e detalhar estados |
-| Sistema de amizade — lista e gerenciamento | Pendente | Não iniciado | Acesso por Configurações, código único e aceite definidos; desenhar fluxo |
-| Convite de amigos para sala | Pendente | Não iniciado | Definir envio; recebimento já representado em Entrar em sala |
+| Sistema de amizade — lista e gerenciamento | Aprovado (v1) | Não iniciado | Detalhar enviadas/remoção/estados |
+| Convite de amigos para sala | Compartilhar aprovado (v1) | Não iniciado | Detalhar feedback e estados complementares |
 | Painel Adicionar vídeo | Aprovado (v1) | Não iniciado | Estados complementares pendentes |
 | Painel Fila | Aprovado (v1) | Não iniciado | Estados complementares pendentes |
 | Painel Participantes | Aprovado (v1) | Não iniciado | Confirmações e demais estados pendentes |
-| Painel Chat horizontal | Pendente | Não iniciado | Sobreposição e teclado |
+| Painel Chat horizontal | Aprovado (v1) | Não iniciado | Teclado e estados pendentes |
 
 ## Home aprovada
 

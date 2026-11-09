@@ -2,6 +2,16 @@
 
 Atualizado em 08/11/2026.
 
+## Último avanço — aprovação de três painéis e novas propostas
+
+**Atualização posterior:** usuário aprovou Compartilhar, Chat horizontal aberto e Amigos e autorizou seu envio ao GitHub. Solicitou as quatro últimas prévias: Mudar apelido, Configuração de mensagem, Notificações e Sobre o app. A geração destas quatro está autorizada; não há autorização de envio destas novas quatro imagens. Histórico abaixo não altera a aprovação das três anteriores.
+
+Usuário aprovou Fila, Adicionar vídeo e Participantes e autorizou envio ao GitHub. Enviados sem edição com documentação no commit `9fa1e45` (main). Nenhuma implementação/teste Android.
+
+A pedido de “gere mais 3 telas”, foram criadas com imagegen as propostas de Compartilhar/Convidar, Chat horizontal aberto e Amigos (próximos itens da lista apresentada). Arquivos em `docs/design/propostas/`: `compartilhar-proposta-v1.png`, `chat-horizontal-proposta-v1.png`, `amigos-proposta-v1.png`. Prompts completos em `prompts-compartilhar-chat-amigos-v1.md`. Propostas locais aguardando análise; não enviadas ao GitHub e sem autorização para esse envio. Referências aprovadas preservadas.
+
+Compartilhar: código ilustrativo e convites da lista. Chat: painel à direita, sem teclado, mensagem sobreposta embaixo. Amigos: código pessoal, adicionar, solicitações e remoção. Inspecionados visualmente, sem testes funcionais. Ver DESIGN.md para limitações: aba enviadas, teclado, confirmações e estados complementares ainda pendentes. Próximo passo é avaliação dessas três propostas. Painéis Mudar apelido, Configuração de mensagem, Notificações e Sobre o app continuam pendentes.
+
 ## Avanço atual — três painéis propostos para análise
 
 **Atualização mais recente:** usuário aprovou Fila, Adicionar vídeo e Participantes e autorizou enviar as três imagens v1 ao GitHub. Permanecem sem implementação/testes. Pediu gerar mais três telas; sequência adotada conforme lista apresentada: Compartilhar/Convidar, Chat horizontal aberto e Amigos. A geração dessas três está autorizada; seu envio ao GitHub depende de nova autorização. Histórico de elaboração abaixo.

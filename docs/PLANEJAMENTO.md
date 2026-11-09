@@ -136,6 +136,8 @@ Funcionalidade confirmada pelo usuário em 08/11/2026, incluída no projeto alé
 
 ## Painéis dentro da sala
 
+Atualização: Compartilhar/Convidar, Chat horizontal aberto e Amigos também tiveram os modelos v1 aprovados, com envio ao GitHub autorizado. Teclado, feedbacks, confirmações e estados complementares seguem pendentes; sem implementação/teste. Solicitados os quatro painéis restantes das configurações para análise: Mudar apelido, Configuração de mensagem, Notificações e Sobre o app.
+
 Designs de Fila, Adicionar vídeo e Participantes aprovados pelo usuário após análise das prévias v1; envio dessas três referências ao GitHub autorizado. Sem implementação ou testes. Próximas propostas solicitadas: Compartilhar/Convidar, Chat horizontal aberto e Amigos. Ajustes simples de botões nas telas aprovadas permitidos conforme necessidade, preservando conceito/identidade.
 
 - Adicionar vídeo: acessado dentro de Fila; URL, identificação da fonte, validação, Reproduzir agora ou Adicionar à fila conforme permissões.
