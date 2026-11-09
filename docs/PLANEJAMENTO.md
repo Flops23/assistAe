@@ -87,14 +87,14 @@ Itens com localização confirmada pelo usuário:
 
 Não haverá item “Adicionar vídeo” separado nesse menu nem botão dessa ação no chat. O acesso será três pontos → Fila → Adicionar vídeo. Reproduzir agora altera a mídia compartilhada, enquanto adicionar à fila mantém a mídia atual; ambas as ações exigem autorização. Ao reproduzir outra imediatamente, o vídeo interrompido sai da reprodução sem ser adicionado automaticamente à fila.
 
-Estados sem mídia/fila: antes do primeiro vídeo, mostrar área sem vídeo com “Adicione um vídeo”. Ao acabar o último vídeo, manter o último quadro com “Fila vazia” e oferecer adicionar outro vídeo. Esta combinação registra a resposta “ambos” do usuário aos dois estados propostos; composição visual ainda pendente. Chat continua disponível em ambos.
+Estados sem mídia/fila: antes do primeiro vídeo, mostrar área sem vídeo com “Adicione um vídeo” e orientação para abrir Fila no menu. Ao acabar o último vídeo, manter o último quadro com “Fila vazia” e oferecer Abrir fila para adicionar outro vídeo dentro dela. Esta combinação registra a resposta “ambos” do usuário; composições visuais v1 aprovadas, com envio ao GitHub autorizado. Chat continua disponível em ambos. Sem implementação/teste.
 
 Opções administrativas/de saída com localização aprovada no menu de três pontos:
 
 - “Sair da sala”: segue as regras de saída e sucessão do administrador.
 - “Encerrar sala”: somente administrador, com confirmação, encerra para todos.
 
-Participantes, permissões individuais, expulsão e transferência de administração ficam no painel aberto pelo contador superior; não duplicar um botão Pessoas no menu ou no chat. A localização de Sair/Encerrar está aprovada funcionalmente; o design do menu completo ainda está pendente.
+Participantes, permissões individuais, expulsão e transferência de administração ficam no painel aberto pelo contador superior; não duplicar um botão Pessoas no menu ou no chat. Menu completo aprovado visualmente com Fila, Compartilhar, Sair da sala e Encerrar sala (só administrador). Confirmações de encerramento, expulsão e transferência manual também aprovadas, com Cancelar e ação explícita. Na transferência manual, quem transfere permanece na sala como participante. Fluxo de saída com escolha de sucessor ainda precisa de design. Sem implementação/teste.
 
 ### 05 — Sala horizontal
 

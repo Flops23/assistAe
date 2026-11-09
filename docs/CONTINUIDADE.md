@@ -2,6 +2,20 @@
 
 Atualizado em 08/11/2026.
 
+## Aprovação mais recente — estados da sala, menu e confirmações
+
+Usuário aprovou o design e autorizou enviar ao GitHub as seis referências atuais: sala sem vídeo, fim da fila, menu de três pontos, confirmar encerramento, confirmar expulsão e confirmar transferência. Caminhos listados na seção abaixo e em DESIGN.md. A transferência foi mostrada duas vezes durante a geração por correção do fundo; somente o resultado final corrigido será publicado. Seis arquivos finais distintos conferidos. Sem nova arte, implementação ou testes nesta etapa.
+
+Próximas pendências de design: teclado do chat horizontal, erros/carregamento/reconexão, listas vazias, solicitações enviadas, estados sem permissão, saída do administrador com escolha de sucessor e composição de Configurações com Amigos. Miniatura definitiva segue adiada. As referências aprovadas não demonstram aplicativo funcionando. Registros abaixo são históricos e não anulam esta aprovação.
+
+## Ponto atual — estados da sala, menu e confirmações em análise
+
+Após envio dos quatro painéis de Configurações ao GitHub no commit `4a4ccf1`, usuário pediu criar os estados sugeridos. Seis propostas locais em `docs/design/propostas/`: `sala-sem-video-proposta-v1.png`, `fim-fila-proposta-v1.png`, `menu-sala-proposta-v1.png`, `confirmar-encerrar-proposta-v1.png`, `confirmar-expulsar-proposta-v1.png`, `confirmar-transferir-proposta-v1.png`. Ferramenta imagegen integrada, referência player vertical aprovado, preservado sem edição. Prompts no mesmo diretório em `prompts-estados-sala-v1.md`.
+
+Propostas aguardam avaliação; não há aprovação ou autorização de envio dessas seis novas imagens ao GitHub, implementação ou teste Android. Sala sem vídeo orienta abrir Fila pelo menu; fim mantém último quadro e permite Abrir fila. Menu de administrador com Fila/Compartilhar/Sair/Encerrar. Três confirmações separadas, sem execução de ações reais. Transferência é manual, permanecendo na sala; não cobre saída com sucessor ou queda do administrador. Ver DESIGN.md para inventário e limitações.
+
+Próximo passo: receber avaliação das seis. Ainda faltam teclado horizontal, erros/carregamento/reconexão, listas vazias, solicitações enviadas, estados sem permissão, saída com sucessor e composição de Configurações com Amigos. Miniatura e parâmetros técnicos continuam pendentes. Registros abaixo são históricos.
+
 ## Aprovação atual — quatro painéis de Configurações
 
 Usuário aprovou e autorizou enviar ao GitHub as quatro referências atuais: Mudar apelido v1, Configuração de mensagem v1, Notificações v2 e Sobre o app v1, em `docs/design/propostas/`. Notificações salva automaticamente ao alterar cada interruptor; sua v1 com Salvar preferências foi substituída e fica somente local, fora do envio. Prompts e documentação acompanham as quatro imagens aprovadas. Não houve geração ou edição de imagem nesta etapa, implementação ou testes Android.

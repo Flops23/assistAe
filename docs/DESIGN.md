@@ -2,6 +2,25 @@
 
 Atualizado em 08/11/2026. Aprovação visual não significa implementação ou teste Android.
 
+## Estados da sala, menu e confirmações — propostas para análise
+
+**Estado atual: seis referências aprovadas visualmente pelo usuário (“gostei do desing pode por la”), com envio ao GitHub autorizado.** Sala sem vídeo, fim da fila, menu, confirmar encerramento, confirmar expulsão e confirmar transferência. Somente a versão final corrigida da transferência integra o envio; a primeira tentativa exibida no chat foi substituída. Seis arquivos distintos conferidos, sem novas alterações de imagem nesta etapa. Sem implementação ou testes Android. Registros de elaboração abaixo são históricos.
+
+Usuário pediu as telas da próxima etapa apresentada. Geradas seis prévias com imagegen integrada, usando o player vertical aprovado como referência de estilo/contexto, sem editar a referência aprovada. Propostas locais aguardando avaliação; sem autorização de envio destas novas imagens ao GitHub, implementação ou testes Android.
+
+| Proposta | Conteúdo e limites |
+|---|---|
+| [Sala sem vídeo v1](design/propostas/sala-sem-video-proposta-v1.png) | Área sem mídia, “Adicione um vídeo” e orientação para abrir Fila no menu; chat ativo. Sem sala de espera nem botão separado de Adicionar vídeo. |
+| [Fim da fila v1](design/propostas/fim-fila-proposta-v1.png) | Último quadro com “Fila vazia”, acesso Abrir fila e chat disponível. Estado proposto para participante autorizado; variantes de permissão ainda pendentes. |
+| [Menu da sala v1](design/propostas/menu-sala-proposta-v1.png) | Menu ancorado nos três pontos: Fila, Compartilhar, Sair da sala e Encerrar sala. Visão administrativa; Encerrar fica oculto para os demais na implementação futura. |
+| [Confirmar encerramento v1](design/propostas/confirmar-encerrar-proposta-v1.png) | Aviso de encerramento para todos e invalidação do código; Cancelar/Encerrar sala. |
+| [Confirmar expulsão v1](design/propostas/confirmar-expulsar-proposta-v1.png) | Participante Lucas como exemplo, Cancelar/Expulsar. Regra existente de bloqueio da mesma identidade permanece; a prévia não garante bloqueio de pessoa após troca de identidade. |
+| [Confirmar transferência v1](design/propostas/confirmar-transferir-proposta-v1.png) | Lucas selecionado como novo administrador; atual administrador permanece na sala como participante. Cancelar/Transferir. Não representa fluxo de saída com sucessor ou transferência automática por queda. |
+
+Composição e textos novos são propostas, não aprovações funcionais adicionais. Confirmações de expulsão/transferência apresentadas a pedido do usuário como detalhamento de interação. Ações administrativas continuam no painel de participantes; somente Encerrar fica no menu. Nenhuma ação foi executada em uma sala real. Validação com teclado, acessibilidade, dispositivos, variações de permissão e erros continua pendente. [Prompts completos](design/propostas/prompts-estados-sala-v1.md).
+
+Inspeção visual: seis títulos/estados e ações principais presentes e legíveis, sem cortes aparentes nos elementos principais. Na confirmação de transferência, revisão pontual corrigiu uma mensagem duplicada e o avatar incorreto no chat de fundo; modal preservado. Posicionamento do chat atrás do modal é ilustrativo, sem substituir o layout-base aprovado. Nenhuma inspeção de imagem equivale a teste de interação.
+
 ## Quatro painéis de Configurações — propostas v1 para análise
 
 **Estado atual: Mudar apelido v1, Configuração de mensagem v1, Notificações v2 (sem botão Salvar preferências) e Sobre o app v1 aprovados, com envio dessas quatro referências ao GitHub autorizado pelo usuário (“selve elas no github”).** Nomes dos arquivos preservam a origem das prévias. Notificações v1 foi substituída pela v2 e permanece somente local, fora deste envio. Sem implementação ou testes Android. Os registros de elaboração abaixo são históricos; parâmetros e estados complementares continuam pendentes.
