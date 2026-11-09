@@ -1,6 +1,77 @@
 # Controle de design
 
+## Revisão de consistência técnica — 09/11/2026
+
+Banco, contratos e estados revisados em [CONSISTENCIA.md](CONSISTENCIA.md). Distinguir fim de fila (ended com mídia para replay) de sala encerrada (closed sem referência de mídia); status mínimo/reconexão não liberam chat ou controles. Validação assíncrona usa carregamentos/feedbacks existentes; nenhum fluxo visual novo aprovado. P01–P15 preservados, sem imagem gerada/alterada, implementação ou teste funcional. B00 permanece aberto.
+
+## Navegação das referências por bloco — 09/11/2026
+
+Os guias de [B01](BLOCOS.md#b01), [B03](BLOCOS.md#b03), [B04](BLOCOS.md#b04), [B05](BLOCOS.md#b05), [B06](BLOCOS.md#b06), [B07](BLOCOS.md#b07), [B08](BLOCOS.md#b08) e [B09](BLOCOS.md#b09) agora apontam às seções visuais e funcionais pertinentes. Âncoras estáveis adicionadas às referências existentes, sem alterar imagens ou regras. Apenas organização documental; nenhuma aprovação visual adicional, implementação ou teste funcional. Aprovações e pendências descritas nas seções originais permanecem válidas.
+
+## P13–P15 confirmados — 09/11/2026
+
+Voltar fecha teclado/painel, horizontal retorna ao vertical e vertical confirma saída, reutilizando modelos de confirmação. Parar externo só local; saltos de 10 s por autorizado. Adicionar vídeo aceita HTTP e HTTPS diretos, sem indicar HTTP como inválido por protocolo. Limites iniciais: apelido 2–24 caracteres, sala 2–60, mensagem até 500, fila até 50 próximos e animações pendentes até 5/espera maior que 20 s. Preservar texto do chat e animação corrente repetida na rotação; feedbacks usam componentes existentes. P01–P15 confirmados. Sem imagem ou aprovação visual adicional, implementação ou teste; revisão técnica ainda aberta. Esta seção prevalece sobre pendências históricas desses temas.
+
+## P10–P12 confirmados — 09/11/2026
+
+Notificações: ambos os avisos ligados inicialmente; texto discreto sem nomes na tela bloqueada; permissão Android distinta de preferência. Chat: cache só em memória, preservado na queda/rotação do mesmo processo e perdido ao morrer processo. Horizontal: reticências apenas na animação, texto completo no chat; repetir do início a animação interrompida ao girar, antes das próximas em ordem, sem repetir concluídas ou reenviar mensagem. Reutilizar referências/componentes existentes; sem imagem nova, aprovação visual adicional, implementação ou teste. P01–P12 não devem ser reapresentados; esta seção substitui pendências históricas desses comportamentos.
+
+## Alinhamento funcional P07–P09 — 09/11/2026
+
+Confirmados aceite explícito nas solicitações cruzadas, cancelamento pelo remetente enquanto pendente e remoção bilateral por qualquer envolvido com confirmação; preservar convites emitidos até uso/encerramento. Reutilizar cards/confirmadores existentes para esses fluxos. Chat preserva apelido usado no envio; URL repetida é permitida em itens independentes da fila. Sem nova aprovação visual ou imagem; nenhuma implementação/teste. P01–P09 confirmados; escolhas restantes em DECISOES.md. Conciliação documental em B00.1 avançou; tipos/estados/segurança ainda precisam revisão técnica.
+
+## Revisão do repositório e divisão em blocos — 09/11/2026
+
+Proposto [BLOCOS.md](BLOCOS.md), com B00–B09, dependências e critérios de aceite. Referências aprovadas preservadas; ajustes de Configurações com Amigos, solicitações enviadas, sucessor, permissões e feedbacks reutilizam componentes existentes nos respectivos blocos. Nenhuma imagem criada/editada, aprovação visual nova, implementação ou teste funcional. B00 permanece planejamento; confirmações P01–P06 prevalecem sobre registros históricos abaixo.
+
+P04–P06 confirmados em 09/11/2026: suspensão pelo Android quando pausado/sem vídeo segue reconexão normal, com reserva de 60 s após detecção; número visível nos cards e sala conta somente conectados, mas reservas válidas ainda ocupam o limite de 10; ex-administrador preserva apenas sua permissão individual anterior, sem ganhar controle automaticamente ao transferir. Áudio durante reprodução em segundo plano permanece requisito. Esta atualização substitui pendências históricas desses comportamentos. Nenhuma imagem, implementação, publicação ou teste.
+
+Lote P04–P06 em análise (09/11/2026): comportamento em background pausado, contagem visual dos reconectando e controles após transferência. Perguntas apresentadas; nenhuma decisão presumida. Preservar cards/referências. Sem imagens, implementação ou teste.
+
+Confirmado em 09/11/2026 (P01–P03 de DECISOES.md): reserva de 60 segundos contada após detectar a queda; Play com sala ainda sem mídia inicia o primeiro item da fila, mas adicionar sozinho não inicia; fonte reproduzível com duração inconclusiva é permitida, com avanço manual por administrador/participante autorizado ao terminar. Essa última regra é exceção explícita ao avanço automático, não permissão a usuário comum. Detecção/limites técnicos e apresentação da ação manual ainda precisam de especificação. Substitui pendências históricas desses três pontos abaixo. Somente planejamento, sem implementação/testes.
+
+## Fechamento do planejamento — registro único (09/11/2026)
+
+Criado [DECISOES.md](DECISOES.md), separando decisões confirmadas, escolhas abertas de produto, trabalho técnico e informações operacionais. Não reabrir decisões já confirmadas por causa de pendências históricas abaixo. Perguntas atuais P01–P03: origem dos 60 segundos, primeiro Play com fila e fonte com duração inconclusiva; respostas ainda pendentes nesta atualização. Design preservado. Nenhuma imagem, código, infraestrutura, publicação ou teste funcional. Próximo passo: incorporar respostas e fechar contratos afetados, permanecendo no planejamento.
+
+## Avanço — segurança e testes planejados (09/11/2026)
+
+Criado [SEGURANCA-TESTES.md](SEGURANCA-TESTES.md): fronteiras de confiança, matriz por tabela, RLS/grants/funções, revogação Realtime, credenciais, riscos do validador e casos de segurança, concorrência, Android, notificações e operação. Critérios de aceite documentados; todos os testes não executados. Parâmetros e decisões pendentes continuam explícitos, sem aprovação integral. Design preservado, sem imagens ou código. Nenhuma infraestrutura, publicação ou teste funcional. Próximo planejamento: consolidar decisões abertas e fechar bloqueadores em pequenos lotes; não iniciar implementação.
+
+## Avanço — arquitetura Android e infraestrutura (09/11/2026)
+
+Criado [ANDROID-INFRA.md](ANDROID-INFRA.md): camadas/pacotes, coordenador único de sala, MediaSessionService/player, foco de áudio, controles externos, cache, API Supabase, push, validador, ambientes e APK. Proposta técnica baseada em documentação oficial; nenhum projeto/serviço criado. Restrições a fechar: presença em background quando pausado/sem mídia, aparelhos-alvo, fornecedor de push, executor de metadados e fonte inconclusiva. Design preservado, sem nova arte ou aprovação visual. Nenhuma implementação, publicação ou teste funcional. Próximo planejamento: segurança/RLS e matriz de testes/aceite, além dessas decisões operacionais.
+
+Atualização de 09/11/2026: usuário confirmou manter as mensagens já vistas antes da queda, sem recuperar o intervalo desconectado; notificações de convites/solicitações também com app fechado; uso inicial em teste fechado com amigos. Cache persistente após morte do processo e fornecedor de push não foram definidos. P15 confirmou limites de uso em [PARAMETROS.md](PARAMETROS.md); demais parâmetros de engenharia, retenção e capacidade de infraestrutura continuam propostos e não testados. Nenhuma implementação, infraestrutura, imagem ou publicação.
+
+Decisões confirmadas pelo usuário em 08/11/2026: (1) se o administrador sair e os demais estiverem reconectando, preservar reservas e manter sala temporariamente sem administrador, atribuindo o papel quando alguém retornar; (2) Play após terminar o último vídeo recomeça esse vídeo; (3) pular animações antigas excedentes, mantendo mensagens no chat autorizado. P15 confirmou depois até 5 animações pendentes e pular espera maior que 20 s, sem apagar chat/descartar corrente repetida por rotação. Isso não permite recuperar mensagens do intervalo desconectado nem aprova integralmente os mecanismos técnicos. Nenhuma imagem, implementação, publicação ou teste. Esta atualização substitui pendências históricas desses três comportamentos abaixo.
+
+## Avanço — estados e algoritmos (08/11/2026)
+
+Planejamento de estados e algoritmos em [ALGORITMOS.md](ALGORITMOS.md). Nenhuma referência alterada ou imagem criada. Estado interno awaiting_successor proposto não é sala de espera nem tela nova; avisos usam componentes existentes. Play em ended e excesso de animações aguardam decisão. Sem aprovação visual nova, implementação ou teste.
+
+## Avanço técnico — contratos (08/11/2026)
+
+Contratos propostos em [CONTRATOS.md](CONTRATOS.md). Validação, conflitos, permissão e falhas devem usar campos/cards/avisos aprovados; autosave continua restrito a notificações. Sem imagem nova, alteração de referência, aprovação visual adicional, implementação ou teste Android.
+
+## Avanço de planejamento — banco v1 (08/11/2026)
+
+Criado [BANCO.md](BANCO.md), proposta técnica sem mudanças de imagem. Usuário confirmou vaga reservada por 60 segundos, uma sala por pessoa e somente mensagens novas após reconexão. Cards e estados existentes serão reutilizados; contagem visual de reconectando e manutenção do chat já visto ainda precisam de regra. Nenhuma nova referência visual aprovada, implementação ou teste Android.
+
+**Correção de escopo — 08/11/2026:** usuário pediu planejar integralmente banco, métodos, algoritmos, segurança, contratos, operação e testes antes do desenvolvimento. Não iniciar código, projeto Android, migrações executáveis ou provisionamento por consequência deste planejamento. O design existente continua como base e ajustes reutilizam os mesmos cards. A proposta técnica inicial está em [ARQUITETURA.md](ARQUITETURA.md). Ainda há decisões abertas; não declarar planejamento concluído ou aprovado. Implementação somente após solicitação posterior do usuário. Esta correção prevalece sobre referências anteriores a construir a base/navegação como próximo passo. Nesta revisão: somente documentação, sem imagens, publicação, implementação ou testes funcionais.
+
+## Etapa atual — planejamento do desenvolvimento (08/11/2026)
+
+O usuário considera o design pronto para avançar e determinou reutilizar os mesmos modelos de cards em ajustes necessários. Esta orientação substitui a exigência de novas prévias antes do desenvolvimento e a sequência antiga Fila → Adicionar vídeo → Participantes. Preservar Home, referências e regras aprovadas; nenhuma imagem gerada ou editada nesta revisão.
+
+Configurações com Amigos, solicitações enviadas, saída com sucessor, permissões e carregamentos/feedbacks serão detalhados com os componentes existentes. Não são variantes já implementadas ou testadas. Miniatura definitiva continua adiada; teclado será validado no Android, sem nova prévia.
+
+Próxima etapa: [Plano de desenvolvimento](DESENVOLVIMENTO.md). A sequência técnica é proposta; parâmetros abertos não se tornam decisões aprovadas. Nenhum app/backend/APK implementado ou testado. Registros anteriores abaixo são históricos quando conflitarem com esta orientação.
+
+
 Atualizado em 08/11/2026. Aprovação visual não significa implementação ou teste Android.
+
+<a id="design-erros-vazios"></a>
 
 ## Erros/reconexão e estados vazios — nove propostas em análise
 
@@ -26,6 +97,8 @@ Inspeção visual: títulos/ações principais legíveis e presentes, sem cortes
 
 Não gerar a prévia com teclado nesta etapa. A dispensa do desenho não comprova suporte a teclado nem dispensa validação do aplicativo. Ainda restam demais estados técnicos, solicitações enviadas com itens, saída com sucessor, estados de permissão e composição de Configurações com Amigos.
 
+<a id="design-estados-sala"></a>
+
 ## Estados da sala, menu e confirmações — propostas para análise
 
 **Estado atual: seis referências aprovadas visualmente pelo usuário (“gostei do desing pode por la”), com envio ao GitHub autorizado.** Sala sem vídeo, fim da fila, menu, confirmar encerramento, confirmar expulsão e confirmar transferência. Somente a versão final corrigida da transferência integra o envio; a primeira tentativa exibida no chat foi substituída. Seis arquivos distintos conferidos, sem novas alterações de imagem nesta etapa. Sem implementação ou testes Android. Registros de elaboração abaixo são históricos.
@@ -45,6 +118,8 @@ Composição e textos novos são propostas, não aprovações funcionais adicion
 
 Inspeção visual: seis títulos/estados e ações principais presentes e legíveis, sem cortes aparentes nos elementos principais. Na confirmação de transferência, revisão pontual corrigiu uma mensagem duplicada e o avatar incorreto no chat de fundo; modal preservado. Posicionamento do chat atrás do modal é ilustrativo, sem substituir o layout-base aprovado. Nenhuma inspeção de imagem equivale a teste de interação.
 
+<a id="design-configuracoes"></a>
+
 ## Quatro painéis de Configurações — propostas v1 para análise
 
 **Estado atual: Mudar apelido v1, Configuração de mensagem v1, Notificações v2 (sem botão Salvar preferências) e Sobre o app v1 aprovados, com envio dessas quatro referências ao GitHub autorizado pelo usuário (“selve elas no github”).** Nomes dos arquivos preservam a origem das prévias. Notificações v1 foi substituída pela v2 e permanece somente local, fora deste envio. Sem implementação ou testes Android. Os registros de elaboração abaixo são históricos; parâmetros e estados complementares continuam pendentes.
@@ -62,6 +137,8 @@ Compartilhar, Chat horizontal aberto e Amigos aprovados e enviados sem edição 
 
 Inspeção visual das quatro: títulos, campos e ações legíveis, sem cortes aparentes; identidade preta/roxa mantida. São propostas de painéis internos apresentados como subpáginas com voltar; forma final de abertura ainda pode ser revisada pelo usuário. Nenhuma nova funcionalidade foi implementada ou testada. [Prompts completos](design/propostas/prompts-configuracoes-v1.md). Após análise destas quatro, ainda faltam estados complementares, teclado, confirmações, atualização da composição principal com Amigos e miniatura definitiva adiada.
 
+<a id="design-social-chat"></a>
+
 ## Novas propostas — Compartilhar, Chat horizontal e Amigos
 
 **Estado atual: Compartilhar, Chat horizontal aberto e Amigos aprovados pelo usuário, com envio dessas três imagens ao GitHub autorizado (“pode mandar pro git essas que vc fez”).** Referências v1 preservadas sem edição; detalhes de estados complementares continuam pendentes. Sem implementação/testes. Histórico da elaboração abaixo.
@@ -73,6 +150,8 @@ Fila, Adicionar vídeo e Participantes aprovados e enviados ao GitHub com docume
 - [Amigos — proposta v1](design/propostas/amigos-proposta-v1.png): acesso por Configurações; código pessoal com cópia, adicionar por código, abas de solicitações recebidas/enviadas, aceitar/recusar e lista com remoção. Sem login/recuperação. Aba recebidas visível; conteúdo de enviadas, confirmação de remoção, erros e vazios pendentes. Organização e ações ainda propostas; formato dos códigos não definido por estes exemplos.
 
 Inspeção visual: textos e ações presentes e legíveis sem cortes aparentes. Referências: Fila aprovada para Compartilhar; player horizontal aprovado para chat; Configurações aprovada para Amigos. Estilo preto/roxo preservado. Prompts completos em [registro da geração](design/propostas/prompts-compartilhar-chat-amigos-v1.md). Nenhum comportamento Android ou backend foi testado.
+
+<a id="design-paineis-sala"></a>
 
 ## Propostas de painéis — Fila, Adicionar vídeo e Participantes
 
@@ -125,6 +204,8 @@ Esta revisão prevalece sobre pendências e propostas dos registros históricos 
 | Painel Notificações | Aprovado (v2, salvamento automático) | Não iniciado | Definir padrões/permissão/entrega e estados |
 | Painel Sobre o app | Aprovado (v1) | Não iniciado | Implementação futura; sem versão ou contatos definidos |
 
+<a id="design-home"></a>
+
 ## Home aprovada
 
 ![Home](design/home-aprovada.png)
@@ -138,6 +219,8 @@ Divergências entre imagem e regras aprovadas:
 3. Cards devem conter somente imagem, nome e quantidade, com entrada pelo card. Símbolos de play da referência não indicam estado de reprodução; não alterar silenciosamente a arte.
 4. A primeira versão usará uma imagem padrão para todos os cards; arquivo ainda não selecionado/aprovado. Não extrair ou criar miniaturas sem autorização.
 
+<a id="design-criar"></a>
+
 ## Criar sala aprovada
 
 ![Criar sala](design/criar-sala-aprovada.png)
@@ -147,6 +230,8 @@ Usuário aprovou a revisão simplificada em 08/11/2026: nome, interruptor “Sal
 Administrador controla por padrão e pode autorizar participantes dentro da sala. Criar leva diretamente ao player sem mídia e com chat; sem espera ou agendamento.
 
 Arte criada pela ferramenta integrada de imagens, revisando a proposta anterior para remover subtítulo, explicações e cards Pública/Privada, mantendo a identidade preta/roxa. Referência aprovada copiada sem edição para o projeto.
+
+<a id="design-entrar"></a>
 
 ## Entrar em sala aprovada
 
@@ -178,6 +263,8 @@ Revisão atual: usuário limitou a tela a Mudar apelido, Configuração de mensa
 
 Usuário confirmou que os ajustes das mensagens ficam na tela 06 e pediu seu modelo. Prévia gerada pela ferramenta integrada e apresentada no chat: avatar/apelido; grupo “Mensagens sobre o vídeo” com posição cima/baixo, controle de tamanho, controle de velocidade e exemplo; acessos Reprodução, Notificações, Chat e Sobre o aplicativo. Prompt usou Criar sala como referência visual, pediu interface concisa, sem login ou opções internas inventadas. Valores “Em cima” e “Lenta” são exemplos; tamanho Padrão remete à referência aprovada do horizontal, sem definir número. A prévia ampliada de texto nas configurações é ilustrativa e não substitui a referência de tamanho no player. Inspeção visual: controles/textos presentes e sem cortes aparentes. Proposta ainda não aprovada nem enviada ao GitHub; sem implementação/teste. Detalhes das seções internas, salvamento das preferências, faixas de ajuste, teclado e responsividade permanecem pendentes.
 
+<a id="design-player-horizontal"></a>
+
 ### Player horizontal — proposta em 08/11/2026
 
 **Estado atual: aprovado.** Usuário aprovou a função e o tamanho pequeno da mensagem como padrão e autorizou enviar esta referência ao GitHub. Arquivo copiado sem edição para [Player horizontal aprovado](design/player-horizontal-aprovado.png). Requisito de movimento lento da esquerda para a direita e configurações de posição/tamanho/velocidade registrado em PLANEJAMENTO.md. Tamanho padrão é referência visual, sem inventar valor em sp. Posição/velocidade iniciais e faixas ainda pendentes; topo é exemplo. Prévia estática não é animação implementada ou testada. Os parágrafos abaixo são histórico de elaboração, não o status atual de aprovação.
@@ -187,6 +274,8 @@ Usuário confirmou que os ajustes das mensagens ficam na tela 06 e pediu seu mod
 Revisão solicitada: mensagens pequenas passando lentamente da esquerda para a direita sobre o vídeo, com posição (cima/baixo), tamanho e velocidade configuráveis. Nova prévia estática gerada pela ferramenta integrada a partir do horizontal anterior: uma mensagem “Lucas: Que cena linda!” no topo abaixo dos controles, autor lilás e texto branco. Prompt restrito a adicionar uma mensagem discreta, preservando os demais elementos. Inspeção visual: texto presente e legível; imagem representa apenas um instante, não demonstra animação/velocidade. Posição superior é exemplo, não padrão aprovado. Visual ainda aguarda aprovação; sem implementação/teste, publicação no GitHub ou nova arte aprovada. Faixas, padrões e mensagens simultâneas pendentes.
 
 Após envio do vertical aprovado ao GitHub (commit d48b1a9), modelo horizontal gerado com ferramenta integrada e apresentado no chat. Prompt: mesma sala e mídia ilustrativa em paisagem, vídeo imersivo sem barras Android, controles temporários, nome da sala, contador de participantes, botão de chat e três pontos; chat inicialmente fechado. Inspeção visual: composição e controles presentes. Ícone inferior de saída da tela cheia ainda deve ter semântica visual validada no detalhamento. Modelo ainda não aprovado, sem publicação da nova arte, implementação ou teste. Painel de chat aberto, teclado, falta de permissão, reconexão e rotação sem perder estado ainda pendentes.
+
+<a id="design-player-vertical"></a>
 
 ### Proposta do player vertical — 08/11/2026
 
@@ -205,6 +294,8 @@ Inspeção visual: ações e chat presentes, vídeo até as bordas. Arte ilustra
 Usuário autorizou explicitamente enviar as duas telas novas ao GitHub em 08/11/2026. A autorização é específica para essas referências; novas imagens continuam exigindo autorização. Home preservada.
 
 As composições geradas foram inspecionadas visualmente. Nenhum código Android, backend ou APK implementado ou testado. Ainda não validados teclado, tamanhos de celular, acessibilidade ou estados complementares.
+
+<a id="design-checklist"></a>
 
 ## Checklist para próximos designs
 

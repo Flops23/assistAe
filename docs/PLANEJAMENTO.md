@@ -1,5 +1,71 @@
 # Planejamento consolidado — assistAe
 
+## P13–P15 confirmados — 09/11/2026
+
+P13: Voltar fecha primeiro teclado/painel; horizontal retorna ao vertical; vertical confirma saída. Parar externo interrompe só o aparelho, sem pausar demais/encerrar sala ou saída voluntária automática, com possível reconexão. Avançar/retroceder usa saltos de 10 s por autorizado. P14: aceitar HTTP e HTTPS para fontes diretas MP4/HLS gravadas, inclusive URLs assinadas; sem login/cookies de terceiros. Usuário escolheu ambos, diferente da recomendação de somente HTTPS. P15: apelido 2–24 caracteres, sala 2–60, mensagem até 500, fila até 50 próximos e até 5 animações pendentes, pulando espera maior que 20 s. Não apagar chat nem descartar a animação corrente repetida na rotação. Contagem Unicode e demais limites técnicos ainda a especificar.
+
+P01–P15 confirmados, sem reapresentar. Fechado o conjunto catalogado de escolhas de comportamento; T01–T11, operação e revisão técnica continuam abertos. Planejamento completo não declarado concluído/aprovado. Somente documentação; sem imagem, código, infraestrutura, publicação ou teste funcional. Esta seção prevalece sobre pendências históricas abaixo.
+
+## P10–P12 confirmados — 09/11/2026
+
+Avisos de convites/solicitações inicialmente ligados; tela bloqueada mostra só “Você recebeu um convite” ou “Nova solicitação de amizade”, sem nomes. Permissão Android continua necessária. Chat somente em memória nesta versão: queda/rotação no mesmo processo preserva já vistas; morte do processo perde cache, sem recuperação de janelas antigas ou intervalo desconectado. Na sobreposição horizontal, reticências só na animação, texto inteiro no chat; repetir do início a animação interrompida ao girar, mantendo próximas em ordem e uma por vez. Usuário escolheu repetir, diferente da recomendação inicial. P01–P12 confirmados; restam P13–P15 e fechamento técnico. Esta seção prevalece sobre pendências históricas abaixo. Somente documentação, sem imagem, implementação, publicação ou teste funcional.
+
+## Alinhamento de decisões P07–P09 — 09/11/2026
+
+Usuário confirmou: solicitações cruzadas exigem aceite explícito; remetente pode cancelar enquanto pendente; qualquer envolvido remove amizade bilateral com confirmação. Convites já emitidos continuam válidos até uso/encerramento. Mensagens antigas mantêm apelido usado no envio, mesmo após alteração de perfil; novas capturam o nome vigente no envio. A mesma URL pode ser adicionada à fila em itens independentes; retry da mesma intenção não duplica item. Confirmados registrados em DECISOES.md; P01–P09 não devem ser reapresentados. P10–P15 e fechamento técnico continuam abertos. Somente documentação, sem imagem, código, publicação ou teste funcional.
+
+## Organização do trabalho em blocos — 09/11/2026
+
+Revisão do repositório resultou em [BLOCOS.md](BLOCOS.md), proposta de sequência B00–B09 com dependências, entregas e aceite. Etapa atual B00: conciliar documentos e fechar decisões/engenharia antes de implementar. Substitui a sequência anterior de execução de DESENVOLVIMENTO.md, sem mudar regras aprovadas ou encerrar o planejamento. DECISOES.md permanece o registro único de escolhas abertas; P01–P06 confirmados não serão reapresentados. Nenhuma implementação, imagem, publicação ou teste funcional.
+
+P04–P06 confirmados em 09/11/2026: suspensão pelo Android quando pausado/sem vídeo segue reconexão normal, com reserva de 60 s após detecção; número visível nos cards e sala conta somente conectados, mas reservas válidas ainda ocupam o limite de 10; ex-administrador preserva apenas sua permissão individual anterior, sem ganhar controle automaticamente ao transferir. Áudio durante reprodução em segundo plano permanece requisito. Esta atualização substitui pendências históricas desses comportamentos. Nenhuma imagem, implementação, publicação ou teste.
+
+Confirmado em 09/11/2026 (P01–P03 de DECISOES.md): reserva de 60 segundos contada após detectar a queda; Play com sala ainda sem mídia inicia o primeiro item da fila, mas adicionar sozinho não inicia; fonte reproduzível com duração inconclusiva é permitida, com avanço manual por administrador/participante autorizado ao terminar. Essa última regra é exceção explícita ao avanço automático, não permissão a usuário comum. Detecção/limites técnicos e apresentação da ação manual ainda precisam de especificação. Substitui pendências históricas desses três pontos abaixo. Somente planejamento, sem implementação/testes.
+
+## Fechamento do planejamento — registro único (09/11/2026)
+
+Criado [DECISOES.md](DECISOES.md), separando decisões confirmadas, escolhas abertas de produto, trabalho técnico e informações operacionais. Não reabrir decisões já confirmadas por causa de pendências históricas abaixo. Perguntas atuais P01–P03: origem dos 60 segundos, primeiro Play com fila e fonte com duração inconclusiva; respostas ainda pendentes nesta atualização. Design preservado. Nenhuma imagem, código, infraestrutura, publicação ou teste funcional. Próximo passo: incorporar respostas e fechar contratos afetados, permanecendo no planejamento.
+
+## Avanço — segurança e testes planejados (09/11/2026)
+
+Criado [SEGURANCA-TESTES.md](SEGURANCA-TESTES.md): fronteiras de confiança, matriz por tabela, RLS/grants/funções, revogação Realtime, credenciais, riscos do validador e casos de segurança, concorrência, Android, notificações e operação. Critérios de aceite documentados; todos os testes não executados. Parâmetros e decisões pendentes continuam explícitos, sem aprovação integral. Design preservado, sem imagens ou código. Nenhuma infraestrutura, publicação ou teste funcional. Próximo planejamento: consolidar decisões abertas e fechar bloqueadores em pequenos lotes; não iniciar implementação.
+
+## Avanço — arquitetura Android e infraestrutura (09/11/2026)
+
+Criado [ANDROID-INFRA.md](ANDROID-INFRA.md): camadas/pacotes, coordenador único de sala, MediaSessionService/player, foco de áudio, controles externos, cache, API Supabase, push, validador, ambientes e APK. Proposta técnica baseada em documentação oficial; nenhum projeto/serviço criado. Restrições a fechar: presença em background quando pausado/sem mídia, aparelhos-alvo, fornecedor de push, executor de metadados e fonte inconclusiva. Design preservado, sem nova arte ou aprovação visual. Nenhuma implementação, publicação ou teste funcional. Próximo planejamento: segurança/RLS e matriz de testes/aceite, além dessas decisões operacionais.
+
+Atualização de 09/11/2026: usuário confirmou manter as mensagens já vistas antes da queda, sem recuperar o intervalo desconectado; notificações de convites/solicitações também com app fechado; uso inicial em teste fechado com amigos. Cache persistente após morte do processo e fornecedor de push não foram definidos. P15 confirmou limites de uso em [PARAMETROS.md](PARAMETROS.md); demais parâmetros de engenharia, retenção e capacidade de infraestrutura continuam propostos e não testados. Nenhuma implementação, infraestrutura, imagem ou publicação.
+
+Decisões confirmadas pelo usuário em 08/11/2026: (1) se o administrador sair e os demais estiverem reconectando, preservar reservas e manter sala temporariamente sem administrador, atribuindo o papel quando alguém retornar; (2) Play após terminar o último vídeo recomeça esse vídeo; (3) pular animações antigas excedentes, mantendo mensagens no chat autorizado. P15 confirmou depois até 5 animações pendentes e pular espera maior que 20 s, sem apagar chat/descartar corrente repetida por rotação. Isso não permite recuperar mensagens do intervalo desconectado nem aprova integralmente os mecanismos técnicos. Nenhuma imagem, implementação, publicação ou teste. Esta atualização substitui pendências históricas desses três comportamentos abaixo.
+
+## Avanço — estados e algoritmos (08/11/2026)
+
+Criado [ALGORITMOS.md](ALGORITMOS.md), proposta v1 com estados de participação/administração/player, reconexão, relógio, término, fila, chat, retry, antispam e outbox. Regras existentes preservadas. Permanecem pendentes confirmação de administração temporariamente ausente, Play após fim da fila, excesso de animações, origem da contagem dos 60 segundos e estratégia de validação de mídia. Nenhuma implementação ou teste.
+
+## Avanço técnico — contratos propostos (08/11/2026)
+
+Usuário solicitou detalhar os métodos. Criado [CONTRATOS.md](CONTRATOS.md), com entradas, autorização, transações, respostas, erros, retries e eventos de cada grupo de operação. Nenhuma regra nova de produto aprovada nesta etapa; propostas/pendências estão identificadas. BANCO.md recebeu campos documentais de versão de perfil e sequência de heartbeat. Próximo trabalho: planejamento dos estados e algoritmos, sem implementação.
+
+## Decisões de banco confirmadas — 08/11/2026
+
+- Queda de conexão reserva a vaga por 60 segundos.
+- Uma pessoa participa de somente uma sala por vez, incluindo a vaga reservada na reconexão.
+- Ao reconectar, mostrar somente mensagens novas; não recuperar mensagens recebidas no intervalo desconectado. Saída voluntária e nova entrada também não permitem histórico anterior.
+- Detalhamento técnico proposto em [BANCO.md](BANCO.md). Manter/limpar mensagens já visíveis antes da queda, contagem visual de reconectando e demais parâmetros continuam abertos. Não confundir as três respostas confirmadas com aprovação integral da arquitetura.
+
+Etapa atual: planejamento do banco e contratos, sem código, infraestrutura ou testes funcionais.
+
+**Correção de escopo — 08/11/2026:** usuário pediu planejar integralmente banco, métodos, algoritmos, segurança, contratos, operação e testes antes do desenvolvimento. Não iniciar código, projeto Android, migrações executáveis ou provisionamento por consequência deste planejamento. O design existente continua como base e ajustes reutilizam os mesmos cards. A proposta técnica inicial está em [ARQUITETURA.md](ARQUITETURA.md). Ainda há decisões abertas; não declarar planejamento concluído ou aprovado. Implementação somente após solicitação posterior do usuário. Esta correção prevalece sobre referências anteriores a construir a base/navegação como próximo passo. Nesta revisão: somente documentação, sem imagens, publicação, implementação ou testes funcionais.
+
+## Etapa atual — planejamento do desenvolvimento (08/11/2026)
+
+O usuário considera o design pronto para avançar e determinou reutilizar os mesmos modelos de cards em ajustes necessários. Esta orientação substitui a exigência de novas prévias antes do desenvolvimento e a sequência antiga Fila → Adicionar vídeo → Participantes. Preservar Home, referências e regras aprovadas; nenhuma imagem gerada ou editada nesta revisão.
+
+Configurações com Amigos, solicitações enviadas, saída com sucessor, permissões e carregamentos/feedbacks serão detalhados com os componentes existentes. Não são variantes já implementadas ou testadas. Miniatura definitiva continua adiada; teclado será validado no Android, sem nova prévia.
+
+Próxima etapa: [Plano de desenvolvimento](DESENVOLVIMENTO.md). A sequência técnica é proposta; parâmetros abertos não se tornam decisões aprovadas. Nenhum app/backend/APK implementado ou testado. Registros anteriores abaixo são históricos quando conflitarem com esta orientação.
+
+
 Atualizado em 08/11/2026. Consolida a especificação original e as respostas explícitas do usuário. Valores técnicos ainda não escolhidos são identificados como pendências, não decisões aprovadas.
 
 ## Objetivo e tecnologia
@@ -12,6 +78,8 @@ Aplicativo nativo exclusivamente Android, inspirado na experiência de assistir 
 - YouTube por IFrame Player API em etapa posterior.
 - Cada dispositivo acessa a mídia diretamente na fonte original; o servidor mantém o estado compartilhado.
 - Não contornar DRM, restrições de plataformas ou proteção de conteúdo.
+
+<a id="produto-escopo"></a>
 
 ## Escopo da primeira versão
 
@@ -31,6 +99,8 @@ Aplicativo nativo exclusivamente Android, inspirado na experiência de assistir 
 - Entrar em uma sala em reprodução inicia localmente na posição atual. Entrar em sala pausada mantém a pausa.
 - Ao terminar um vídeo, o próximo item da fila começa automaticamente.
 - Convidados sem autorização não controlam a reprodução compartilhada.
+
+<a id="produto-telas"></a>
 
 ## Telas
 
@@ -107,6 +177,8 @@ Participantes, permissões individuais, expulsão e transferência de administra
 - Fechar chat não interrompe reprodução.
 - Rotação não reinicia vídeo nem perde sincronização.
 
+<a id="tela-06"></a>
+
 ### 06 — Configurações
 
 Referências internas aprovadas e envio ao GitHub autorizado: Mudar apelido v1, Configuração de mensagem v1, Notificações v2 e Sobre o app v1. A aprovação cobre composição e conteúdo apresentados, sem definir faixas numéricas de tamanho/velocidade, padrões dos interruptores, versão ou contatos do app. Sem implementação ou testes.
@@ -126,6 +198,8 @@ Navegação definida pelo usuário: “Configuração de mensagem” aparece com
 - Entrar diretamente pelo card.
 - Sem tags, agendamentos ou horários de início.
 - Mesma ordenação da Home. Salas privadas não aparecem.
+
+<a id="produto-amigos"></a>
 
 ## Sistema de amizade e convites internos
 
@@ -150,6 +224,8 @@ Designs de Fila, Adicionar vídeo e Participantes aprovados pelo usuário após 
 - Chat horizontal: mensagens e campo de digitação sobre o vídeo.
 - Somente administrador e participantes autorizados adicionam vídeos à fila. Troca de mídia e reorganização também respeitam permissões.
 
+<a id="produto-administracao"></a>
+
 ## Administração e ciclo de vida
 
 - Transferência manual de administração disponível.
@@ -160,6 +236,8 @@ Designs de Fila, Adicionar vídeo e Participantes aprovados pelo usuário após 
 - Administrador pode encerrar a sala para todos, com confirmação.
 - Sala encerrada não aceita mais entrada pelo código.
 
+<a id="produto-chat"></a>
+
 ## Chat e moderação
 
 - Cada participante vê somente mensagens enviadas após sua entrada.
@@ -168,6 +246,8 @@ Designs de Fila, Adicionar vídeo e Participantes aprovados pelo usuário após 
 - Limitar envio de mensagens para combater spam; limite numérico ainda não definido.
 - Na sobreposição horizontal, apresentar uma mensagem por vez na ordem de chegada ao servidor; estratégia técnica de ordenação e limite da sequência de mensagens pendentes.
 - Bloqueio por identidade de convidado não deve ser apresentado como garantia de bloquear a pessoa após reinstalação ou troca de identidade.
+
+<a id="produto-sincronizacao"></a>
 
 ## Sincronização e Android
 
@@ -200,7 +280,7 @@ Antes de declarar entrega funcional, testar permissões, limite de participantes
 - Projeto Supabase, orçamento e configuração operacional.
 - Formato, validade durante a sala e renovação dos códigos; limitação de tentativas.
 - Valores dos limites de mensagens, URLs, nomes e fila.
-- Semântica de mensagens após reconexão versus saída e nova entrada.
+- Persistência das mensagens já vistas após morte do processo (P11); reconexão sem recuperar intervalo e nova entrada sem histórico já confirmadas.
 - Tratamento de sala lotada, mídia inválida/expirada e falha individual; design dos estados sem vídeo/fila vazia conforme regras acima.
 - Efeitos de chamadas, perda de áudio, botão Voltar e teclado no modo horizontal.
 - Legendas, faixas de áudio e opções específicas de qualidade, caso necessárias.
