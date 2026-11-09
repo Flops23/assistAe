@@ -2,6 +2,27 @@
 
 Atualizado em 08/11/2026.
 
+## Última decisão — respostas à revisão de pendências
+
+Usuário confirmou as decisões abaixo e autorizou registrá-las no planejamento e enviar ao GitHub. Esta seção e PLANEJAMENTO.md prevalecem sobre pendências antigas nos registros históricos.
+
+1. Sala pública ligada por padrão ao criar.
+2. Amigos identificados/adicionados por código único de usuário, mantendo entrada sem login.
+3. Amizade exige solicitação e aceite.
+4. Lista de amigos por novo botão Amigos em Configurações. São agora cinco opções funcionais; referência de quatro botões preservada e ajuste visual pendente.
+5. Sem recuperação de identidade e amizades após reinstalar/trocar de aparelho na primeira versão.
+6. Convites de sala válidos até serem usados ou a sala encerrar.
+7. Reproduzir agora retira o vídeo interrompido da reprodução sem adicioná-lo automaticamente à fila.
+8. Usuário respondeu “ambos” aos estados sem vídeo/fila vazia: combinação registrada como área sem vídeo com “Adicione um vídeo” antes da primeira mídia; último quadro com “Fila vazia” e acesso a adicionar vídeo ao terminar a fila. Chat continua disponível; composição pendente.
+9. Sair e Encerrar nos três pontos; Encerrar somente para administrador, com confirmação.
+10. Mensagens sobre o vídeo horizontal começam embaixo.
+11. Exibir uma mensagem por vez, em ordem de chegada ao servidor; implementação técnica da ordenação pendente.
+12. Notificações inicialmente para convites de sala e solicitações de amizade.
+13. Imagem padrão das salas adiada; manter marcador provisório.
+14. Continuar designs: Fila → Adicionar vídeo → Participantes.
+
+Aprovado funcionalmente, sem novas imagens, implementação ou testes. Detalhes ainda abertos: remoção/gerenciamento de amizades, entrega dos convites, faixas de tamanho/velocidade, painéis e estados complementares e pendências técnicas restantes em PLANEJAMENTO.md. Não gerar imagens sem autorização específica.
+
 ## Estado atual
 
 Projeto exclusivamente Android, Kotlin/Compose, Media3 e Supabase; distribuição por APK. Planejamento em PLANEJAMENTO.md. Não há aplicativo, backend ou APK implementado/testado.
@@ -52,7 +73,7 @@ Design do player vertical com chat, incluindo sala ainda sem mídia, mantendo id
 
 ## Sistema de amizade
 
-Confirmado pelo usuário: haverá lista de amigos e convites internos de amigos para salas, exibidos em Entrar em sala, além da entrada por código. Lista/gerenciamento e envio de convites ainda aguardam design. Identificação, adição/remoção de amigos, entrega/validade de convites e acesso à lista não foram definidos. Não assumir contas, busca por apelido ou substituir identidade de convidado sem discutir.
+Confirmado pelo usuário: lista de amigos pelo novo botão Amigos em Configurações, identificação por código único de usuário, solicitação e aceite, mantendo convidado sem login. Sem recuperação após reinstalar ou trocar de aparelho na primeira versão. Convites internos exibidos em Entrar em sala, válidos até uso ou encerramento da sala. Lista/gerenciamento, remoção e envio/entrega de convites ainda precisam de detalhamento e design.
 
 ## Decisões consolidadas
 
@@ -68,7 +89,7 @@ Confirmado pelo usuário: haverá lista de amigos e convites internos de amigos 
 - Até três salas reais na Home, ordenadas por participantes e depois recência.
 - Imagem padrão dos cards ainda sem arquivo aprovado.
 - Player vertical limitado à metade da área útil para vídeo vertical, preservando proporção.
-- Sala pública: ligado=pública, desligado=privada; padrão inicial pendente.
+- Sala pública: ligado=pública, desligado=privada; padrão inicial ligado.
 
 ## Pendências
 

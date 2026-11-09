@@ -2,16 +2,31 @@
 
 Atualizado em 08/11/2026. Aprovação visual não significa implementação ou teste Android.
 
+## Decisões funcionais confirmadas em 08/11/2026 — revisão de pendências
+
+Esta revisão prevalece sobre pendências e propostas dos registros históricos abaixo. Não houve geração/alteração de imagens, implementação ou testes nesta etapa.
+
+- Criar sala: interruptor Sala pública ligado inicialmente.
+- Configurações: acrescentar botão Amigos, abrindo lista/gerenciamento. A referência aprovada de quatro botões permanece preservada; a quinta opção tem aprovação funcional, com composição visual ainda pendente.
+- Amizade: código único de usuário, sem login, com solicitação e aceite. Sem recuperação de identidade/amizades após reinstalar ou trocar de aparelho na primeira versão. Lista, remoção, solicitações e envio de convites ainda precisam de design.
+- Convites internos válidos até serem usados ou a sala encerrar. Notificações contempla convites de sala e solicitações de amizade; painel ainda sem design.
+- Reproduzir agora: vídeo interrompido sai da reprodução e não entra automaticamente na fila.
+- Resposta “ambos” para fila vazia combinada em dois estados: antes do primeiro vídeo, área sem vídeo com “Adicione um vídeo”; ao terminar a fila, último quadro com “Fila vazia” e acesso para adicionar outro vídeo. Chat disponível nos dois estados. Composição ainda pendente.
+- Sair da sala e Encerrar sala ficam nos três pontos; Encerrar é exclusivo do administrador e exige confirmação. Menu completo ainda sem design.
+- Mensagens horizontais: posição inicial embaixo, uma por vez, na ordem de chegada ao servidor. Tamanho pequeno aprovado preservado; velocidade numérica e faixas ainda pendentes. O exemplo no topo da referência não define o padrão funcional.
+- Imagem padrão das salas adiada; manter marcador provisório, sem nova arte aprovada.
+- Próximos designs confirmados: Fila → Adicionar vídeo → Participantes.
+
 | Item | Design | Implementação | Próxima ação |
 |---|---|---|---|
 | 01 — Home | Aprovado | Não iniciada | Preservar referência e seguir regras funcionais |
-| 02 — Criar sala | Aprovado | Não iniciada | Definir padrão inicial do interruptor e estados complementares |
+| 02 — Criar sala | Aprovado | Não iniciada | Interruptor inicia ligado; detalhar estados complementares |
 | 03 — Entrar em sala | Aprovado | Não iniciada | Detalhar estados sem convites, carregamento e erros |
 | 04 — Player vertical | Aprovado com remoção do botão | Não iniciada | Referência local atualizada; detalhar estado sem mídia e proporções |
 | 05 — Player horizontal | Aprovado com mensagem sobreposta | Não iniciada | Detalhar painel de chat e ajustes de mensagens |
-| 06 — Configurações | Aprovado | Não iniciada | Referência em design/configuracoes-aprovada.png; detalhar painéis |
+| 06 — Configurações | Referência de quatro botões aprovada; acréscimo de Amigos aprovado funcionalmente | Não iniciada | Detalhar composição com quinto botão e painéis |
 | 07 — Todas as salas públicas | Aprovado | Não iniciada | Escolher imagem padrão e detalhar estados |
-| Sistema de amizade — lista e gerenciamento | Pendente | Não iniciado | Definir acesso, identificação e fluxo de amizade |
+| Sistema de amizade — lista e gerenciamento | Pendente | Não iniciado | Acesso por Configurações, código único e aceite definidos; desenhar fluxo |
 | Convite de amigos para sala | Pendente | Não iniciado | Definir envio; recebimento já representado em Entrar em sala |
 | Painel Adicionar vídeo | Pendente | Não iniciado | Dentro de Fila: URL, validação e ações |
 | Painel Fila | Pendente | Não iniciado | Pelos três pontos; adicionar, organizar e remover |
@@ -35,7 +50,7 @@ Divergências entre imagem e regras aprovadas:
 
 ![Criar sala](design/criar-sala-aprovada.png)
 
-Usuário aprovou a revisão simplificada em 08/11/2026: nome, interruptor “Sala pública” e botão “Criar sala”. Ligado = pública; desligado = privada. A imagem exemplifica ligado, mas o padrão inicial ainda não foi definido. Espaço para futuras opções, sem inventá-las. Sem textos explicativos longos nem cards separados de visibilidade.
+Usuário aprovou a revisão simplificada em 08/11/2026: nome, interruptor “Sala pública” e botão “Criar sala”. Ligado = pública; desligado = privada. Na revisão de pendências, confirmou padrão inicial ligado. Espaço para futuras opções, sem inventá-las. Sem textos explicativos longos nem cards separados de visibilidade.
 
 Administrador controla por padrão e pode autorizar participantes dentro da sala. Criar leva diretamente ao player sem mídia e com chat; sem espera ou agendamento.
 
@@ -49,7 +64,7 @@ Usuário aprovou em 08/11/2026: campo “Código da sala” e botão “Entrar�
 
 Arte criada pela ferramenta integrada de imagens a partir do modelo anterior: entrada por código agrupada no topo e dois exemplos compactos de convites abaixo, sem ações adicionais. Referência aprovada copiada sem edição para o projeto. Entrada leva diretamente ao player com chat.
 
-Sistema de amizade confirmado pelo usuário e registrado no planejamento. Identificação, adição/remoção, envio e validade dos convites e ponto de acesso à lista ainda precisam ser definidos; não presumir login nem fluxo de amizade.
+Sistema de amizade confirmado: código único de usuário, solicitação e aceite, sem login; acesso por novo botão Amigos em Configurações. Convites válidos até uso ou encerramento da sala. Remoção, envio e composição dos painéis ainda precisam de design; ver planejamento atualizado.
 
 ## Aprovações e validação
 

@@ -4,6 +4,8 @@ Aplicativo nativo Android para assistir a vídeos com amigos em salas públicas 
 
 **Estado em 08/11/2026:** telas principais 01 a 07 com design aprovado. Sistema de amizade e convites internos confirmado no planejamento. Painéis e estados complementares ainda pendentes. Ainda não há aplicativo implementado nem APK validado.
 
+**Revisão de decisões em 08/11/2026:** sala pública por padrão; amizade por código único com solicitação/aceite e sem login ou recuperação; novo botão Amigos em Configurações, com ajuste visual pendente. Convites válidos até uso ou encerramento da sala. Mensagens horizontais começam embaixo e passam uma por vez, por ordem de chegada ao servidor. Demais decisões registradas no planejamento; nenhuma nova imagem ou implementação nesta revisão.
+
 ## Comece aqui
 
 - [Planejamento completo](docs/PLANEJAMENTO.md)

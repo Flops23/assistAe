@@ -52,7 +52,7 @@ Design de referência aprovado, em docs/design/home-aprovada.png. Fundo preto e 
 ### 02 — Criar sala
 
 - Nome da sala.
-- Interruptor “Sala pública”: ligado = pública, desligado = privada; padrão inicial pendente.
+- Interruptor “Sala pública”: ligado = pública, desligado = privada; padrão inicial ligado (sala pública).
 - Design simplificado aprovado: nome, interruptor e botão, sem bloco explicativo de permissões. Regras de controle permanecem abaixo.
 - Botão Criar sala leva imediatamente ao player como administrador.
 - Por padrão, somente o administrador controla. Ele pode autorizar pessoas específicas.
@@ -64,7 +64,7 @@ Design de referência aprovado, em docs/design/home-aprovada.png. Fundo preto e 
 - Mensagens para código inválido e sala inexistente.
 - Código válido leva diretamente ao player.
 - Convites por código com copiar e compartilhar; links diretos de convite não fazem parte da decisão inicial.
-- Acréscimo decidido pelo usuário: convites internos enviados pela lista de amigos aparecem abaixo da entrada por código. Identificação dos amigos, adição/remoção, envio e validade dos convites ainda precisam ser definidos. Não pressupor login ou mudança da identidade de convidado sem discutir.
+- Convites internos enviados pela lista de amigos aparecem abaixo da entrada por código. Amizade por código único de usuário, com solicitação e aceite, mantendo entrada sem login. Convite de sala válido até ser usado ou a sala encerrar. Ver regras de amizade abaixo; detalhes visuais do envio e gerenciamento seguem pendentes.
 
 ### 04 — Sala vertical
 
@@ -85,14 +85,16 @@ Itens com localização confirmada pelo usuário:
 | Fila | Ver os vídeos da sala. Dentro do painel, “Adicionar vídeo” abre o campo de URL e a validação da fonte; usuário autorizado escolhe “Reproduzir agora” ou “Adicionar à fila”. Reorganizar e remover itens também dependem de permissão. |
 | Compartilhar | Abrir as opções de convite: copiar/compartilhar o código da sala e convidar pela lista de amigos. O detalhamento visual do envio interno ainda está pendente. |
 
-Não haverá item “Adicionar vídeo” separado nesse menu nem botão dessa ação no chat. O acesso será três pontos → Fila → Adicionar vídeo. Reproduzir agora altera a mídia compartilhada, enquanto adicionar à fila mantém a mídia atual; ambas as ações exigem autorização. O destino da mídia anterior ao reproduzir outra imediatamente ainda precisa ser definido.
+Não haverá item “Adicionar vídeo” separado nesse menu nem botão dessa ação no chat. O acesso será três pontos → Fila → Adicionar vídeo. Reproduzir agora altera a mídia compartilhada, enquanto adicionar à fila mantém a mídia atual; ambas as ações exigem autorização. Ao reproduzir outra imediatamente, o vídeo interrompido sai da reprodução sem ser adicionado automaticamente à fila.
 
-Opções administrativas/de saída já previstas funcionalmente, com posição neste menu ainda como proposta para revisão:
+Estados sem mídia/fila: antes do primeiro vídeo, mostrar área sem vídeo com “Adicione um vídeo”. Ao acabar o último vídeo, manter o último quadro com “Fila vazia” e oferecer adicionar outro vídeo. Esta combinação registra a resposta “ambos” do usuário aos dois estados propostos; composição visual ainda pendente. Chat continua disponível em ambos.
+
+Opções administrativas/de saída com localização aprovada no menu de três pontos:
 
 - “Sair da sala”: segue as regras de saída e sucessão do administrador.
 - “Encerrar sala”: somente administrador, com confirmação, encerra para todos.
 
-Participantes, permissões individuais, expulsão e transferência de administração ficam no painel aberto pelo contador superior; não duplicar um botão Pessoas no menu ou no chat. A localização final das opções administrativas acima não deve ser tratada como aprovação visual do menu completo.
+Participantes, permissões individuais, expulsão e transferência de administração ficam no painel aberto pelo contador superior; não duplicar um botão Pessoas no menu ou no chat. A localização de Sair/Encerrar está aprovada funcionalmente; o design do menu completo ainda está pendente.
 
 ### 05 — Sala horizontal
 
@@ -101,17 +103,17 @@ Participantes, permissões individuais, expulsão e transferência de administra
 - Chat oculto inicialmente; botão abre painel flutuante com mensagens e digitação.
 - Mensagens recebidas também aparecem pequenas sobre o vídeo, percorrendo lentamente da esquerda para a direita. Usuário pediu configurar posição (em cima ou embaixo), tamanho e velocidade. O painel completo de chat continua acessível pelo botão.
 - Tamanho padrão aprovado: o texto pequeno mostrado em docs/design/player-horizontal-aprovado.png. Essa referência visual orienta a implementação; tamanho numérico em sp e adaptação entre telas ainda precisam ser validados no Android.
-- Posição e velocidade iniciais, faixas de ajuste e tratamento de mensagens simultâneas ainda precisam ser definidos; não assumir parâmetros numéricos. Movimento lento foi solicitado, mas não demonstrado pela imagem estática.
+- Posição inicial embaixo. Mensagens exibidas uma por vez, na ordem de chegada ao servidor. Velocidade inicial numérica e faixas de ajuste ainda precisam ser definidas; não assumir parâmetros numéricos. Movimento lento foi solicitado, mas não demonstrado pela imagem estática. Ordenação técnica no servidor ainda precisa ser projetada.
 - Fechar chat não interrompe reprodução.
 - Rotação não reinicia vídeo nem perde sincronização.
 
 ### 06 — Configurações
 
-Escopo atual reduzido por decisão do usuário: somente quatro botões — Mudar apelido, Configuração de mensagem, Notificações e Sobre o app. Cada um abre seu painel. Edição de avatar, preferências de reprodução e demais ajustes de chat ficam para uma etapa futura; não incluir agora.
+Escopo atualizado por decisão do usuário: cinco botões — Mudar apelido, Configuração de mensagem, Notificações, Sobre o app e novo botão Amigos para abrir a lista/gerenciamento de amizades. Cada um abre seu painel. A referência visual aprovada ainda tem quatro botões; inclusão de Amigos aprovada funcionalmente, com design atualizado pendente. Edição de avatar, preferências de reprodução e demais ajustes de chat ficam para uma etapa futura; não incluir agora.
 
-Preferências de mensagens sobre o player horizontal confirmadas pelo usuário: posição em cima/embaixo, tamanho do texto e velocidade de passagem da esquerda para a direita. Tamanho pequeno do modelo aprovado como padrão. Design dos controles e faixas de valores pendentes; imagem no topo não define posição inicial.
+Preferências de mensagens sobre o player horizontal confirmadas pelo usuário: posição em cima/embaixo, tamanho do texto e velocidade de passagem da esquerda para a direita. Tamanho pequeno do modelo aprovado como padrão e posição inicial embaixo. Design dos controles e faixas de valores pendentes; imagem no topo é exemplo e não substitui a decisão funcional.
 
-Navegação definida pelo usuário: “Configuração de mensagem” aparece como botão de lista igual aos demais na tela 06; tocar abre painel com posição, tamanho, velocidade e prévia das mensagens sobre o vídeo. Não deixar controles expandidos na tela principal. Detalhes de Notificações e Sobre o app ainda precisam ser definidos; não inventar opções específicas como aprovadas.
+Navegação definida pelo usuário: “Configuração de mensagem” aparece como botão de lista igual aos demais na tela 06; tocar abre painel com posição, tamanho, velocidade e prévia das mensagens sobre o vídeo. Não deixar controles expandidos na tela principal. Notificações controla inicialmente convites de sala e solicitações de amizade; controles e entrega ainda precisam de detalhamento. Conteúdo de Sobre o app permanece pendente.
 
 ### 07 — Todas as salas públicas
 
@@ -127,9 +129,10 @@ Funcionalidade confirmada pelo usuário em 08/11/2026, incluída no projeto alé
 
 - Lista de amigos e possibilidade de convidar amigos para salas pelo sistema.
 - Convites recebidos exibidos abaixo da entrada por código em Entrar em sala; esse modelo visual foi aprovado.
-- Design da lista/gerenciamento de amigos e do envio de convites ainda pendente, incluindo onde acessá-los.
-- Ainda definir identificação dos amigos, adição/remoção, eventual solicitação/aceite de amizade, entrega e validade dos convites e tratamento de sala encerrada/lotada.
-- A decisão não estabelece login, recuperação de conta ou mudança da identidade persistida de convidado; essas questões precisam ser conciliadas antes da implementação.
+- Acesso à lista/gerenciamento pelo novo botão Amigos em Configurações; convite dentro da sala continua por Compartilhar. Designs desses painéis e do envio ainda pendentes.
+- Identificação e adição por código único de cada usuário, com solicitação e aceite de amizade. Manter entrada como convidado sem login; código de usuário é distinto do código da sala. Formato do código e detalhes de remoção/gerenciamento ainda pendentes.
+- Convite interno de sala válido até ser usado ou a sala encerrar. Entrega, remoção de convites expirados e tratamento de sala lotada ainda precisam de detalhamento; sala encerrada não aceita entrada.
+- Sem recuperação da identidade na primeira versão: reinstalar ou trocar de aparelho implica perder a identidade e as amizades. Não adicionar login ou recuperação nesta etapa.
 
 ## Painéis dentro da sala
 
@@ -155,6 +158,7 @@ Funcionalidade confirmada pelo usuário em 08/11/2026, incluída no projeto alé
 - Apagar mensagens quando a sala encerrar.
 - Administrador pode expulsar e impedir o retorno da mesma identidade à sala.
 - Limitar envio de mensagens para combater spam; limite numérico ainda não definido.
+- Na sobreposição horizontal, apresentar uma mensagem por vez na ordem de chegada ao servidor; estratégia técnica de ordenação e limite da sequência de mensagens pendentes.
 - Bloqueio por identidade de convidado não deve ser apresentado como garantia de bloquear a pessoa após reinstalação ou troca de identidade.
 
 ## Sincronização e Android
@@ -173,20 +177,19 @@ O estado compartilhado contém identificador/URL da mídia, posição, reproduzi
 
 Ordem original das telas: Home, Criar sala, Entrar em sala, player vertical, player horizontal, Configurações, exploração pública, painéis, backend/chat/sincronização e testes/APK.
 
-Recomendação técnica registrada, ainda não uma alteração aprovada do cronograma: antecipar prova com dois celulares, uma sala e um vídeo para validar sincronização e reconexão antes de completar todas as interfaces.
+Próxima etapa confirmada pelo usuário: continuar os designs na ordem Fila → Adicionar vídeo → Participantes. A sugestão de antecipar uma prova com dois celulares não foi escolhida; a validação de sincronização e reconexão continua necessária antes da entrega funcional.
 
 Antes de declarar entrega funcional, testar permissões, limite de participantes, reconexão, transferência, encerramento, fila, chat, rotação e áudio em segundo plano em dispositivos Android.
 
 ## Pendências que não devem ser inventadas como decisões
 
-- Referência/arquivo da imagem padrão dos cards e opções de avatar.
+- Referência/arquivo da imagem padrão dos cards adiado pelo usuário; manter marcador provisório. Opções de avatar também pendentes, fora dos ajustes iniciais.
 - Versão mínima Android, assinatura e atualização do APK.
 - Projeto Supabase, orçamento e configuração operacional.
 - Formato, validade durante a sala e renovação dos códigos; limitação de tentativas.
 - Valores dos limites de mensagens, URLs, nomes e fila.
 - Semântica de mensagens após reconexão versus saída e nova entrada.
-- Recuperação da identidade após reinstalar ou trocar de aparelho.
-- Tratamento de sala lotada, mídia inválida/expirada, falha individual e fila vazia.
+- Tratamento de sala lotada, mídia inválida/expirada e falha individual; design dos estados sem vídeo/fila vazia conforme regras acima.
 - Efeitos de chamadas, perda de áudio, botão Voltar e teclado no modo horizontal.
 - Legendas, faixas de áudio e opções específicas de qualidade, caso necessárias.
 - Arte final e aprovação das telas restantes.
