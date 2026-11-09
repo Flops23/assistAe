@@ -2,6 +2,24 @@
 
 Atualizado em 08/11/2026.
 
+## Aprovação atual — quatro painéis de Configurações
+
+Usuário aprovou e autorizou enviar ao GitHub as quatro referências atuais: Mudar apelido v1, Configuração de mensagem v1, Notificações v2 e Sobre o app v1, em `docs/design/propostas/`. Notificações salva automaticamente ao alterar cada interruptor; sua v1 com Salvar preferências foi substituída e fica somente local, fora do envio. Prompts e documentação acompanham as quatro imagens aprovadas. Não houve geração ou edição de imagem nesta etapa, implementação ou testes Android.
+
+As sete telas principais e os dez painéis complementares apresentados têm referências aprovadas, com a ressalva de que a composição principal de Configurações ainda precisa incorporar Amigos. Restam estados complementares, teclado, confirmações, solicitações enviadas, parâmetros técnicos/funcionais e miniatura definitiva adiada. Não tratar esses estados como desenhados ou o aplicativo como implementado. Registros de propostas abaixo são históricos.
+
+## Ponto atual — quatro últimas propostas de Configurações
+
+**Correção mais recente:** em Notificações, usuário definiu salvamento automático ao mudar cada interruptor; remover botão Salvar preferências. Prévia revisada com imagegen, v1 preservada; caminho da revisão: `docs/design/propostas/notificacoes-proposta-v2.png`. Não estender essa decisão aos demais painéis sem solicitação. Sem implementação/teste ou envio dessa revisão ao GitHub. As quatro propostas seguem para análise; não houve aprovação geral nesta correção.
+
+Compartilhar/Convidar, Chat horizontal aberto e Amigos aprovados pelo usuário e enviados ao GitHub com documentação no commit `05a0b01`, main. As três referências foram preservadas sem edição. Seis painéis complementares agora têm design aprovado: esses três e Fila, Adicionar vídeo e Participantes.
+
+Usuário solicitou as quatro últimas prévias; geradas com imagegen integrada: `docs/design/propostas/mudar-apelido-proposta-v1.png`, `configuracao-mensagem-proposta-v1.png`, `notificacoes-proposta-v1.png` e `sobre-app-proposta-v1.png`. Prompts completos no mesmo diretório em `prompts-configuracoes-v1.md`. As quatro são propostas locais para análise; sem aprovação, envio ao GitHub, implementação ou testes Android. Documentação e quatro novas artes permanecem locais até nova autorização.
+
+Mudar apelido: campo, inicial ilustrativa e salvar/cancelar. Mensagens: posição embaixo, tamanho/velocidade qualitativos e prévia estática ilustrativa (não redefine tamanho pequeno aprovado no player). Notificações: convites de sala/solicitações de amizade com interruptores ligados apenas como exemplo, padrões pendentes. Sobre: apresentação curta proposta, sem versão/contato inventados. Inspeção visual confirma textos/ações sem cortes aparentes; não equivale a validação Android.
+
+Próximo passo: usuário analisar estas quatro. Ainda restam estados de erro/vazio/carregamento/reconexão, teclado, confirmações administrativas/remoção, aba de solicitações enviadas, detalhamento de parâmetros e ajustes da composição principal com botão Amigos. Miniatura das salas continua adiada. Nenhum aplicativo/backend/APK implementado/testado. Histórico abaixo não substitui este ponto atual.
+
 ## Último avanço — aprovação de três painéis e novas propostas
 
 **Atualização posterior:** usuário aprovou Compartilhar, Chat horizontal aberto e Amigos e autorizou seu envio ao GitHub. Solicitou as quatro últimas prévias: Mudar apelido, Configuração de mensagem, Notificações e Sobre o app. A geração destas quatro está autorizada; não há autorização de envio destas novas quatro imagens. Histórico abaixo não altera a aprovação das três anteriores.

@@ -109,11 +109,15 @@ Participantes, permissões individuais, expulsão e transferência de administra
 
 ### 06 — Configurações
 
+Referências internas aprovadas e envio ao GitHub autorizado: Mudar apelido v1, Configuração de mensagem v1, Notificações v2 e Sobre o app v1. A aprovação cobre composição e conteúdo apresentados, sem definir faixas numéricas de tamanho/velocidade, padrões dos interruptores, versão ou contatos do app. Sem implementação ou testes.
+
+Notificações: cada interruptor salva automaticamente ao ser alterado, sem botão Salvar preferências, conforme correção do usuário. Decisão restrita a Notificações; não altera silenciosamente o salvamento dos demais painéis. Comportamento ainda sem implementação/teste.
+
 Escopo atualizado por decisão do usuário: cinco botões — Mudar apelido, Configuração de mensagem, Notificações, Sobre o app e novo botão Amigos para abrir a lista/gerenciamento de amizades. Cada um abre seu painel. A referência visual aprovada ainda tem quatro botões; inclusão de Amigos aprovada funcionalmente, com design atualizado pendente. Edição de avatar, preferências de reprodução e demais ajustes de chat ficam para uma etapa futura; não incluir agora.
 
 Preferências de mensagens sobre o player horizontal confirmadas pelo usuário: posição em cima/embaixo, tamanho do texto e velocidade de passagem da esquerda para a direita. Tamanho pequeno do modelo aprovado como padrão e posição inicial embaixo. Design dos controles e faixas de valores pendentes; imagem no topo é exemplo e não substitui a decisão funcional.
 
-Navegação definida pelo usuário: “Configuração de mensagem” aparece como botão de lista igual aos demais na tela 06; tocar abre painel com posição, tamanho, velocidade e prévia das mensagens sobre o vídeo. Não deixar controles expandidos na tela principal. Notificações controla inicialmente convites de sala e solicitações de amizade; controles e entrega ainda precisam de detalhamento. Conteúdo de Sobre o app permanece pendente.
+Navegação definida pelo usuário: “Configuração de mensagem” aparece como botão de lista igual aos demais na tela 06; tocar abre painel com posição, tamanho, velocidade e prévia das mensagens sobre o vídeo. Não deixar controles expandidos na tela principal. Notificações controla inicialmente convites de sala e solicitações de amizade; design dos dois interruptores aprovado, com entrega e estados ainda pendentes. Sobre o app tem apresentação breve aprovada sobre assistir junto, salas e chat; versão, autoria e contatos não foram definidos nem incluídos.
 
 ### 07 — Todas as salas públicas
 

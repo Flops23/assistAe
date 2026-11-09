@@ -34,4 +34,6 @@ As referências foram aprovadas e seu envio ao GitHub foi autorizado pelo usuár
 
 **Também aprovados:** [Compartilhar/Convidar](docs/design/propostas/compartilhar-proposta-v1.png), [Chat horizontal aberto](docs/design/propostas/chat-horizontal-proposta-v1.png) e [Amigos](docs/design/propostas/amigos-proposta-v1.png), com envio dessas três referências ao GitHub autorizado. Sem implementação/testes.
 
-**Próxima etapa:** propostas de Mudar apelido, Configuração de mensagem, Notificações e Sobre o app, solicitadas pelo usuário. Restam também estados complementares. Novas imagens exigem autorização específica de envio ao GitHub.
+**Painéis de Configurações aprovados:** [Mudar apelido](docs/design/propostas/mudar-apelido-proposta-v1.png), [Configuração de mensagem](docs/design/propostas/configuracao-mensagem-proposta-v1.png), [Notificações](docs/design/propostas/notificacoes-proposta-v2.png) e [Sobre o app](docs/design/propostas/sobre-app-proposta-v1.png). Envio autorizado pelo usuário. Notificações usa salvamento automático ao alterar os interruptores, sem botão de salvar.
+
+**Ainda pendentes:** estados complementares, teclado, confirmações, parâmetros e composição principal de Configurações com Amigos. Miniatura definitiva adiada. Nenhum aplicativo/backend/APK implementado ou testado. Novas imagens exigem autorização específica de envio ao GitHub.

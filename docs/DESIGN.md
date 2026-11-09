@@ -2,6 +2,23 @@
 
 Atualizado em 08/11/2026. Aprovação visual não significa implementação ou teste Android.
 
+## Quatro painéis de Configurações — propostas v1 para análise
+
+**Estado atual: Mudar apelido v1, Configuração de mensagem v1, Notificações v2 (sem botão Salvar preferências) e Sobre o app v1 aprovados, com envio dessas quatro referências ao GitHub autorizado pelo usuário (“selve elas no github”).** Nomes dos arquivos preservam a origem das prévias. Notificações v1 foi substituída pela v2 e permanece somente local, fora deste envio. Sem implementação ou testes Android. Os registros de elaboração abaixo são históricos; parâmetros e estados complementares continuam pendentes.
+
+**Revisão posterior de Notificações:** usuário pediu retirar Salvar preferências: alterar cada interruptor deve salvar automaticamente. Revisão da imagem por imagegen integrada, com prompt restrito a remover o botão e recompor seu fundo, mantendo os demais elementos. Referência v1 preservada; nova proposta em [Notificações v2](design/propostas/notificacoes-proposta-v2.png). Decisão funcional confirmada, sem aprovação do conjunto das quatro propostas, implementação/teste ou autorização de envio da nova imagem ao GitHub. Padrões ligado/desligado e tratamento de falha de salvamento ainda pendentes. Esta revisão substitui a ação Salvar preferências da descrição histórica abaixo.
+
+Inspeção visual da v2: botão removido, dois interruptores e textos mantidos, sem cortes aparentes. Prompt de edição: remover somente o botão Salvar preferências e preencher a área com o fundo preto/roxo existente, preservar dimensões, cabeçalho, textos, ícones, estados/posições dos interruptores e espaçamento; não adicionar avisos ou novas ações. Ferramenta integrada imagegen, sem CLI.
+
+Compartilhar, Chat horizontal aberto e Amigos aprovados e enviados sem edição ao GitHub no commit `05a0b01`. Usuário pediu gerar os quatro últimos painéis: Mudar apelido, Configuração de mensagem, Notificações e Sobre o app. Criados com imagegen integrada a partir do estilo de Configurações aprovado, sem alterar referências anteriores. Estas quatro novas imagens são propostas locais, sem aprovação ou autorização de envio ao GitHub, sem implementação ou teste Android.
+
+- [Mudar apelido](design/propostas/mudar-apelido-proposta-v1.png): campo com exemplo Lucas, prévia da inicial, Salvar apelido e Cancelar. Inicial é ilustrativa, não edição de avatar. Limites, validação, teclado, feedback e propagação da alteração ainda pendentes.
+- [Configuração de mensagem](design/propostas/configuracao-mensagem-proposta-v1.png): prévia ilustrativa, posição cima/baixo (embaixo selecionado), tamanho Menor/Padrão/Maior, velocidade Lenta/Rápida e Salvar ajustes. Sem valores numéricos definidos. Texto ampliado na miniatura não substitui o tamanho pequeno aprovado no player horizontal; não comprova movimento. Faixas, valores, persistência e animação pendentes.
+- [Notificações — versão atual v2](design/propostas/notificacoes-proposta-v2.png): dois interruptores — Convites de sala e Solicitações de amizade — com salvamento automático ao alterar, sem botão de salvar. Ligados são exemplos visuais, não definição de padrão. Permissão Android, entrega dos avisos, implementação da persistência e estados pendentes. A v1 com botão foi substituída.
+- [Sobre o app](design/propostas/sobre-app-proposta-v1.png): proposta de texto breve sobre assistir junto, salas e chat; sem inventar versão, autoria, contatos ou links. Conteúdo e composição aguardam aprovação.
+
+Inspeção visual das quatro: títulos, campos e ações legíveis, sem cortes aparentes; identidade preta/roxa mantida. São propostas de painéis internos apresentados como subpáginas com voltar; forma final de abertura ainda pode ser revisada pelo usuário. Nenhuma nova funcionalidade foi implementada ou testada. [Prompts completos](design/propostas/prompts-configuracoes-v1.md). Após análise destas quatro, ainda faltam estados complementares, teclado, confirmações, atualização da composição principal com Amigos e miniatura definitiva adiada.
+
 ## Novas propostas — Compartilhar, Chat horizontal e Amigos
 
 **Estado atual: Compartilhar, Chat horizontal aberto e Amigos aprovados pelo usuário, com envio dessas três imagens ao GitHub autorizado (“pode mandar pro git essas que vc fez”).** Referências v1 preservadas sem edição; detalhes de estados complementares continuam pendentes. Sem implementação/testes. Histórico da elaboração abaixo.
@@ -60,6 +77,10 @@ Esta revisão prevalece sobre pendências e propostas dos registros históricos 
 | Painel Fila | Aprovado (v1) | Não iniciado | Estados complementares pendentes |
 | Painel Participantes | Aprovado (v1) | Não iniciado | Confirmações e demais estados pendentes |
 | Painel Chat horizontal | Aprovado (v1) | Não iniciado | Teclado e estados pendentes |
+| Painel Mudar apelido | Aprovado (v1) | Não iniciado | Detalhar validação/teclado/feedback |
+| Painel Configuração de mensagem | Aprovado (v1) | Não iniciado | Definir faixas/valores/persistência |
+| Painel Notificações | Aprovado (v2, salvamento automático) | Não iniciado | Definir padrões/permissão/entrega e estados |
+| Painel Sobre o app | Aprovado (v1) | Não iniciado | Implementação futura; sem versão ou contatos definidos |
 
 ## Home aprovada
 
