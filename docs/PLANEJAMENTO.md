@@ -136,6 +136,8 @@ Funcionalidade confirmada pelo usuário em 08/11/2026, incluída no projeto alé
 
 ## Painéis dentro da sala
 
+Designs de Fila, Adicionar vídeo e Participantes aprovados pelo usuário após análise das prévias v1; envio dessas três referências ao GitHub autorizado. Sem implementação ou testes. Próximas propostas solicitadas: Compartilhar/Convidar, Chat horizontal aberto e Amigos. Ajustes simples de botões nas telas aprovadas permitidos conforme necessidade, preservando conceito/identidade.
+
 - Adicionar vídeo: acessado dentro de Fila; URL, identificação da fonte, validação, Reproduzir agora ou Adicionar à fila conforme permissões.
 - Fila: acessada pelos três pontos; vídeos adicionados, acesso a Adicionar vídeo, reorganização e remoção conforme permissões.
 - Participantes: conectados, administrador, convite e gerenciamento de permissões.

@@ -30,4 +30,6 @@ A imagem original foi fornecida pelo usuário e seu envio foi autorizado. É uma
 
 As referências foram aprovadas e seu envio ao GitHub foi autorizado pelo usuário. São modelos estáticos de design, não capturas de aplicativo implementado.
 
-**Próxima etapa prevista:** painéis da sala, começando por Fila e seu acesso a Adicionar vídeo. Restam também participantes, convite, chat horizontal aberto, painéis das configurações, estados complementares e designs de amizade. Não gerar novas imagens sem autorização explícita.
+**Painéis aprovados:** [Fila](docs/design/propostas/fila-proposta-v1.png), [Adicionar vídeo](docs/design/propostas/adicionar-video-proposta-v1.png) e [Participantes](docs/design/propostas/participantes-proposta-v1.png), com envio das três referências ao GitHub autorizado. Sem implementação/testes.
+
+**Próxima etapa:** propostas de Compartilhar/Convidar, Chat horizontal aberto e Amigos, cuja geração foi solicitada pelo usuário. Restam painéis das configurações e estados complementares. Novas imagens exigem autorização específica de envio ao GitHub.

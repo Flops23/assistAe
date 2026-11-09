@@ -2,6 +2,22 @@
 
 Atualizado em 08/11/2026. Aprovação visual não significa implementação ou teste Android.
 
+## Propostas de painéis — Fila, Adicionar vídeo e Participantes
+
+**Estado atual: três painéis aprovados visualmente pelo usuário (“ok pode por no git”), com envio dessas três referências ao GitHub autorizado.** Arquivos v1 preservados sem edição nos caminhos abaixo; nomes com “proposta” indicam a origem, não pendência de aprovação. Sem implementação ou testes Android. Registros de elaboração abaixo são históricos.
+
+Usuário pediu os três primeiros painéis para analisar, autorizando gerar estas prévias. Usada habilidade imagegen com ferramenta integrada; referência de estilo/contexto: player vertical aprovado. Novas imagens não têm autorização de envio ao GitHub. Arquivos em `design/propostas/`, sem substituir referências aprovadas.
+
+- [Fila — proposta v1](design/propostas/fila-proposta-v1.png): painel inferior com vídeo atual separado dos próximos, reorganização/remoção e botão Adicionar vídeo. Visão de administrador/usuário autorizado.
+- [Adicionar vídeo — proposta v1](design/propostas/adicionar-video-proposta-v1.png): URL ilustrativa MP4, indicação de validação, MP4/HLS, Reproduzir agora e Adicionar à fila. Link e validação são exemplos gráficos, sem teste real da fonte. Aberto dentro de Fila.
+- [Participantes — proposta v1](design/propostas/participantes-proposta-v1.png): visão administrativa, três pessoas, administrador identificado, estado de permissão, gerenciamento individual e convite. Acesso pelo contador superior. Detalhes de apresentação das ações são propostas.
+
+Painéis sobrepostos à sala, identidade preta/roxa preservada. São prévias estáticas em análise, sem aprovação visual, implementação ou testes Android. Estados vazios/erro, teclado, falta de permissão, confirmações administrativas e adaptação a tamanhos de tela seguem pendentes. Ajustes simples de quantidade de botões nas telas existentes foram autorizados conforme necessidade, preservando o conceito; não equivalem a autorização para publicar novas imagens.
+
+Inspeção visual dos três resultados: títulos e ações principais legíveis, sem cortes aparentes; Fila distingue atual/próximos, Adicionar vídeo apresenta as duas ações e Participantes identifica o administrador e exibe gerenciamento de Lucas expandido. Isso não valida comportamento ou acessibilidade no Android. O player de fundo é contexto ilustrativo, sem alteração da referência aprovada.
+
+Resumo dos prompts usados: três imagens separadas `ui-mockup`, tela Android vertical plana, estilo do player aprovado, preto/roxo, textos em português, painel inferior arredondado com fechar e sala visível atrás. Fila: atual MP4, dois próximos MP4/HLS, arrastar/excluir e Adicionar vídeo. Adicionar vídeo: URL de exemplo, MP4/HLS, estado validado ilustrativo, Reproduzir agora/Adicionar à fila e aviso de substituição. Participantes: 3 de 10, Você administrador, Lucas autorizado expandido com permissão/transferência/expulsão, Marina sem controle e Convidar amigos. Ferramenta integrada imagegen, sem CLI. Nenhuma arte publicada.
+
 ## Decisões funcionais confirmadas em 08/11/2026 — revisão de pendências
 
 Esta revisão prevalece sobre pendências e propostas dos registros históricos abaixo. Não houve geração/alteração de imagens, implementação ou testes nesta etapa.
@@ -28,9 +44,9 @@ Esta revisão prevalece sobre pendências e propostas dos registros históricos 
 | 07 — Todas as salas públicas | Aprovado | Não iniciada | Escolher imagem padrão e detalhar estados |
 | Sistema de amizade — lista e gerenciamento | Pendente | Não iniciado | Acesso por Configurações, código único e aceite definidos; desenhar fluxo |
 | Convite de amigos para sala | Pendente | Não iniciado | Definir envio; recebimento já representado em Entrar em sala |
-| Painel Adicionar vídeo | Pendente | Não iniciado | Dentro de Fila: URL, validação e ações |
-| Painel Fila | Pendente | Não iniciado | Pelos três pontos; adicionar, organizar e remover |
-| Painel Participantes | Pendente | Não iniciado | Convite, permissões, expulsão e transferência |
+| Painel Adicionar vídeo | Aprovado (v1) | Não iniciado | Estados complementares pendentes |
+| Painel Fila | Aprovado (v1) | Não iniciado | Estados complementares pendentes |
+| Painel Participantes | Aprovado (v1) | Não iniciado | Confirmações e demais estados pendentes |
 | Painel Chat horizontal | Pendente | Não iniciado | Sobreposição e teclado |
 
 ## Home aprovada

@@ -2,6 +2,14 @@
 
 Atualizado em 08/11/2026.
 
+## Avanço atual — três painéis propostos para análise
+
+**Atualização mais recente:** usuário aprovou Fila, Adicionar vídeo e Participantes e autorizou enviar as três imagens v1 ao GitHub. Permanecem sem implementação/testes. Pediu gerar mais três telas; sequência adotada conforme lista apresentada: Compartilhar/Convidar, Chat horizontal aberto e Amigos. A geração dessas três está autorizada; seu envio ao GitHub depende de nova autorização. Histórico de elaboração abaixo.
+
+Usuário pediu modelos de Fila, Adicionar vídeo e Participantes. Prévias criadas com ferramenta integrada imagegen, seguindo o player vertical aprovado, preservado sem edição. Arquivos locais em `docs/design/propostas/`: `fila-proposta-v1.png`, `adicionar-video-proposta-v1.png` e `participantes-proposta-v1.png`. Fila separa vídeo atual/próximos; Adicionar vídeo mostra URL validada ilustrativa e duas ações; Participantes mostra visão administrativa com permissões, transferência, expulsão e convite.
+
+Estado: propostas aguardando análise/aprovação do usuário; sem implementação, teste Android ou envio dessas imagens ao GitHub. URLs, nomes e validação exibidos são ilustrativos. Estados complementares e confirmações ainda pendentes. Próximo passo: receber avaliação dos três painéis, sem tratar as propostas como aprovadas. Usuário também autorizou ajustes simples de botões nas telas existentes conforme necessidade, preservando identidade/conceito.
+
 ## Última decisão — respostas à revisão de pendências
 
 Usuário confirmou as decisões abaixo e autorizou registrá-las no planejamento e enviar ao GitHub. Esta seção e PLANEJAMENTO.md prevalecem sobre pendências antigas nos registros históricos.
