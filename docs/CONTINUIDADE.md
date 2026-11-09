@@ -2,6 +2,20 @@
 
 Atualizado em 08/11/2026.
 
+## Aprovação mais recente — nove estados de erros e vazios
+
+Usuário autorizou enviar as nove referências de erros/reconexão e vazios ao GitHub e perguntou se todos os designs estão completos. Aprovação registrada para os nove arquivos listados abaixo; usar Sala lotada corrigida. Sem novas imagens, implementação ou testes nesta etapa. Notificações v1 obsoleta continua somente local e fora do envio.
+
+Resposta de continuidade: design principal e maioria dos estados aprovados, cobertura ainda não integral. Pendências: Configurações com Amigos; solicitações de amizade enviadas com itens; saída do administrador com escolha de sucessor; variantes sem permissão; carregamentos, feedbacks e validações restantes. Miniatura definitiva adiada, parâmetros e validação Android pendentes. Prévia de teclado foi dispensada pelo usuário e não deve ser recolocada como tarefa de geração. Nenhum aplicativo/backend/APK implementado/testado. Registros anteriores de propostas abaixo são históricos.
+
+## Ponto atual — nove propostas de erros e vazios
+
+Usuário dispensou item 1 (prévia com teclado horizontal) e pediu itens 2 e 3: erros/reconexão e estados vazios. Criadas nove propostas com imagegen integrada em `docs/design/propostas/`: `erro-codigo-proposta-v1.png`, `sala-lotada-proposta-v1.png`, `sala-encerrada-proposta-v1.png`, `video-invalido-proposta-v1.png`, `reconectando-proposta-v1.png`, `sem-salas-proposta-v1.png`, `sem-resultados-proposta-v1.png`, `sem-amigos-proposta-v1.png` e `sem-convites-proposta-v1.png`. Prompts em `prompts-erros-vazios-v1.md`. Referências aprovadas preservadas.
+
+Estado: propostas locais aguardando avaliação, sem aprovação/autorização de envio ao GitHub, implementação ou testes. Sala lotada teve card duplicado de fundo corrigido; só resultado final selecionado. Reconexão é aviso local, não pausa compartilhada. Sem salas é variante da listagem pública, não redesenho da Home. Amigos vazios também mostra solicitações zeradas, sem definir aba Enviadas preenchida. Ver DESIGN.md para limites e conteúdo por imagem.
+
+Não produzir prévia com teclado nesta etapa. Restam avaliar estas nove propostas, solicitações enviadas com itens, saída do administrador com sucessor, estados sem permissão, carregamentos/erros técnicos restantes e composição de Configurações com Amigos. Sem Android/backend/APK implementado/testado; validação de teclado/rede continua futura. Miniatura definitiva adiada. As seis referências do lote anterior foram aprovadas e enviadas no commit `8c06381`. Histórico abaixo não substitui este ponto atual.
+
 ## Aprovação mais recente — estados da sala, menu e confirmações
 
 Usuário aprovou o design e autorizou enviar ao GitHub as seis referências atuais: sala sem vídeo, fim da fila, menu de três pontos, confirmar encerramento, confirmar expulsão e confirmar transferência. Caminhos listados na seção abaixo e em DESIGN.md. A transferência foi mostrada duas vezes durante a geração por correção do fundo; somente o resultado final corrigido será publicado. Seis arquivos finais distintos conferidos. Sem nova arte, implementação ou testes nesta etapa.

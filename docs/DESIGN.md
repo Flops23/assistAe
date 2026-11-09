@@ -2,6 +2,30 @@
 
 Atualizado em 08/11/2026. Aprovação visual não significa implementação ou teste Android.
 
+## Erros/reconexão e estados vazios — nove propostas em análise
+
+**Estado atual: nove referências aprovadas pelo usuário (“pode mandar”), com envio ao GitHub autorizado.** Código inválido, sala lotada (resultado corrigido), sala encerrada, vídeo inválido, reconectando, sem salas, busca sem resultados, sem amigos e sem convites. Arquivos preservados sem nova edição. Sem implementação/teste. Registros de elaboração abaixo são históricos.
+
+**Cobertura de design ainda incompleta:** referências principais, dez painéis complementares, seis estados/menu/confirmações e estes nove estados têm aprovação. Restam composição principal de Configurações com Amigos, solicitações enviadas com itens, saída do administrador com escolha de sucessor, variantes sem permissão e detalhamento de carregamentos/feedbacks/validações restantes (ex.: nome inválido, solicitação/convite enviado e falha de salvamento). Miniatura definitiva segue adiada; parâmetros numéricos e adaptação Android permanecem pendentes. Usuário dispensou desenho do teclado horizontal, não a validação funcional. Não declarar todo o design concluído.
+
+Usuário dispensou a prévia de chat horizontal com teclado e solicitou somente os lotes 2 e 3 sugeridos. Nove imagens criadas com imagegen integrada, sem editar referências aprovadas, sem implementação/testes e sem autorização de envio destas novas imagens ao GitHub. Conteúdo e comportamento abaixo são propostas para avaliação.
+
+| Prévia local | Estado apresentado |
+|---|---|
+| [Código inválido](design/propostas/erro-codigo-proposta-v1.png) | Erro junto ao campo Código da sala, editável. Código de exemplo não define formato final. |
+| [Sala lotada](design/propostas/sala-lotada-proposta-v1.png) | Aviso de limite de 10 participantes e Entendi; sem espera ou reserva de vaga. |
+| [Sala encerrada](design/propostas/sala-encerrada-proposta-v1.png) | Aviso de encerramento e Entendi; não entra na sala. Limpeza/atualização dos convites ao dispensar ainda precisa ser implementada. |
+| [Vídeo inválido](design/propostas/video-invalido-proposta-v1.png) | Adicionar vídeo com falha de abertura da URL, ações de reproduzir/adicionar desativadas e orientação para corrigir. Não testa a fonte nem substitui mídia atual. |
+| [Reconectando](design/propostas/reconectando-proposta-v1.png) | Aviso local com tentativa automática e Tentar novamente; comandos e envio desativados. Contagem/frame/mensagens são último estado ilustrativo. Não indica pausa dos demais nem demonstra reconexão real. |
+| [Sem salas públicas](design/propostas/sem-salas-proposta-v1.png) | Listagem vazia com busca disponível e Nenhuma sala pública no momento. Home vazia segue regra existente, sem redesenho da Home. |
+| [Busca sem resultados](design/propostas/sem-resultados-proposta-v1.png) | Termo de exemplo, Nenhuma sala encontrada e Limpar busca. Diferente de não existir nenhuma sala. |
+| [Sem amigos](design/propostas/sem-amigos-proposta-v1.png) | Código pessoal e adição disponíveis, solicitações zeradas e lista de amigos vazia. Não representa desenho da aba Enviadas com itens. |
+| [Sem convites](design/propostas/sem-convites-proposta-v1.png) | Entrada por código preservada e Convites de amigos vazios. |
+
+Inspeção visual: títulos/ações principais legíveis e presentes, sem cortes aparentes. Em Sala lotada, correção pontual removeu card Marina duplicado no fundo; somente resultado corrigido selecionado. Na reconexão, proporção da mídia deve ser preservada pelo Android; arte ilustrativa não valida proporção/reprodução. Não houve testes de interação, rede, fontes ou teclado. Referências: Entrar em sala, Salas públicas, Adicionar vídeo, player vertical e Amigos aprovados. [Prompts completos](design/propostas/prompts-erros-vazios-v1.md).
+
+Não gerar a prévia com teclado nesta etapa. A dispensa do desenho não comprova suporte a teclado nem dispensa validação do aplicativo. Ainda restam demais estados técnicos, solicitações enviadas com itens, saída com sucessor, estados de permissão e composição de Configurações com Amigos.
+
 ## Estados da sala, menu e confirmações — propostas para análise
 
 **Estado atual: seis referências aprovadas visualmente pelo usuário (“gostei do desing pode por la”), com envio ao GitHub autorizado.** Sala sem vídeo, fim da fila, menu, confirmar encerramento, confirmar expulsão e confirmar transferência. Somente a versão final corrigida da transferência integra o envio; a primeira tentativa exibida no chat foi substituída. Seis arquivos distintos conferidos, sem novas alterações de imagem nesta etapa. Sem implementação ou testes Android. Registros de elaboração abaixo são históricos.

@@ -183,6 +183,10 @@ O estado compartilhado contém identificador/URL da mídia, posição, reproduzi
 
 ## Ordem de trabalho e validação
 
+Design atualizado: aprovados e com envio ao GitHub autorizado os nove estados de código inválido, sala lotada, sala encerrada, vídeo inválido, reconectando, sem salas públicas, busca sem resultados, sem amigos e sem convites. São referências estáticas; nenhuma implementação/teste. Design ainda não está integralmente concluído: restam composição de Configurações com Amigos, solicitações enviadas com itens, saída com escolha de sucessor, variantes sem permissão e carregamentos/feedbacks/validações restantes. Não acrescentar regras técnicas a partir das imagens sem definição.
+
+Revisão de prioridade: usuário dispensou a geração da prévia de chat horizontal com teclado (“1 n precisa”) e solicitou os lotes 2 e 3: erros/reconexão e estados vazios. Não gerar essa prévia de teclado nesta etapa. A dispensa de imagem não comprova comportamento de teclado implementado/testado nem elimina a validação Android necessária.
+
 Ordem original das telas: Home, Criar sala, Entrar em sala, player vertical, player horizontal, Configurações, exploração pública, painéis, backend/chat/sincronização e testes/APK.
 
 Próxima etapa confirmada pelo usuário: continuar os designs na ordem Fila → Adicionar vídeo → Participantes. A sugestão de antecipar uma prova com dois celulares não foi escolhida; a validação de sincronização e reconexão continua necessária antes da entrega funcional.
