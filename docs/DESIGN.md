@@ -1,5 +1,14 @@
 # Controle de design
 
+## Avanço de implementação e aparelho — 09/11/2026
+
+Backend possui 16 migrações, 23 tabelas privadas e 30 RPCs: identidade/preferências, salas/catálogo, leases/reconexão, chat/administração, amizade/convites e status de comandos. Dezessete suítes SQL passaram. Aceite explícito nas cruzadas, remoção bilateral preservando convites emitidos, outbox sem envio push. Papéis de API limitados, sem login/BYPASSRLS/DDL permanente. Locks de perfis UUID antes de par/sala/FKs; disputa entre duas sessões ainda não demonstrada. [Estado, decisões técnicas e evidências](IMPLEMENTACAO.md). Pendentes mídia/fila, dispatcher push, Realtime e app Android/APK; Auth/REST e aparelho não validados. P01–P15/design preservados, B00/blocos completos não concluídos. Galaxy A54 com Play Store confirmado, APK direto, somente Android; versões exatas do SO não informadas. Sem imagem nova, publicação de APK ou notificações reais enviadas. Notas abaixo são históricas.
+
+## Implementação do banco iniciada — 09/11/2026
+
+Autorização mais recente permite implementar começando pelo Supabase. Foram implementados schema privado e identidade/preferências no backend; cinco suítes SQL executadas, sem validação visual/Android. Referências e cards aprovados preservados, sem imagem gerada, alterada ou enviada. Design não é captura de app pronto. Evidências e próximos blocos em [IMPLEMENTACAO.md](IMPLEMENTACAO.md).
+
+
 ## Revisão de consistência técnica — 09/11/2026
 
 Banco, contratos e estados revisados em [CONSISTENCIA.md](CONSISTENCIA.md). Distinguir fim de fila (ended com mídia para replay) de sala encerrada (closed sem referência de mídia); status mínimo/reconexão não liberam chat ou controles. Validação assíncrona usa carregamentos/feedbacks existentes; nenhum fluxo visual novo aprovado. P01–P15 preservados, sem imagem gerada/alterada, implementação ou teste funcional. B00 permanece aberto.

@@ -1,5 +1,9 @@
 # Planejamento consolidado — assistAe
 
+## Avanço de implementação e aparelho — 09/11/2026
+
+Backend possui 16 migrações, 23 tabelas privadas e 30 RPCs: identidade/preferências, salas/catálogo, leases/reconexão, chat/administração, amizade/convites e status de comandos. Dezessete suítes SQL passaram. Aceite explícito nas cruzadas, remoção bilateral preservando convites emitidos, outbox sem envio push. Papéis de API limitados, sem login/BYPASSRLS/DDL permanente. Locks de perfis UUID antes de par/sala/FKs; disputa entre duas sessões ainda não demonstrada. [Estado, decisões técnicas e evidências](IMPLEMENTACAO.md). Pendentes mídia/fila, dispatcher push, Realtime e app Android/APK; Auth/REST e aparelho não validados. P01–P15/design preservados, B00/blocos completos não concluídos. Galaxy A54 com Play Store confirmado, APK direto, somente Android; versões exatas do SO não informadas. Sem imagem nova, publicação de APK ou notificações reais enviadas. Notas abaixo são históricas.
+
 ## P13–P15 confirmados — 09/11/2026
 
 P13: Voltar fecha primeiro teclado/painel; horizontal retorna ao vertical; vertical confirma saída. Parar externo interrompe só o aparelho, sem pausar demais/encerrar sala ou saída voluntária automática, com possível reconexão. Avançar/retroceder usa saltos de 10 s por autorizado. P14: aceitar HTTP e HTTPS para fontes diretas MP4/HLS gravadas, inclusive URLs assinadas; sem login/cookies de terceiros. Usuário escolheu ambos, diferente da recomendação de somente HTTPS. P15: apelido 2–24 caracteres, sala 2–60, mensagem até 500, fila até 50 próximos e até 5 animações pendentes, pulando espera maior que 20 s. Não apagar chat nem descartar a animação corrente repetida na rotação. Contagem Unicode e demais limites técnicos ainda a especificar.

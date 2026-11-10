@@ -1,0 +1,45 @@
+begin;
+do $test$
+declare a uuid:=gen_random_uuid(); b uuid:=gen_random_uuid(); ac uuid; bc uuid; bcode text; r jsonb; f uuid; invite_ uuid; room_ uuid; member_ uuid; req uuid:=gen_random_uuid();
+begin
+ insert into auth.users(id) values(a),(b); insert into private.beta_testers(user_id) values(a),(b);
+ perform set_config('request.jwt.claim.sub',a::text,true); set local role authenticated;
+ perform public.ensure_profile('Ana'); ac:=(public.get_command_context()->'data'->>'command_context_id')::uuid;
+ perform set_config('request.jwt.claim.sub',b::text,true);
+ r:=public.ensure_profile('Bia'); bcode:=r->'data'->>'public_code'; bc:=(public.get_command_context()->'data'->>'command_context_id')::uuid;
+ perform public.set_notification_preference('friendships',false,0,bc,gen_random_uuid());
+ perform set_config('request.jwt.claim.sub',a::text,true);
+ r:=public.request_friendship(bcode,ac,req); f:=(r->'data'->>'friend_request_id')::uuid;
+ r:=public.request_friendship(bcode,ac,req);
+ assert r->>'outcome'='already_applied' and not(r->'data' ? 'nickname'),'social retry not minimal';
+ r:=public.request_friendship(bcode,ac,gen_random_uuid());
+ assert r->>'outcome'='unchanged' and r->'data'->>'friend_request_id'=f::text,'pending request duplicated';
+ reset role;
+ assert (select count(*)=1 from private.notification_outbox where kind='friendship' and resource_id=f),'duplicate request notification';
+ assert (select status='suppressed' from private.notification_outbox where kind='friendship' and resource_id=f),'disabled preference queued active notification';
+ perform set_config('request.jwt.claim.sub',b::text,true); set local role authenticated;
+ r:=public.list_friend_requests('incoming',null,1);
+ assert jsonb_array_length(r->'data'->'requests')=1,'notification off removed in-app request';
+ perform public.set_notification_preference('friendships',true,1,bc,gen_random_uuid());
+ r:=public.answer_friend_request(f,'accept',bc,gen_random_uuid());
+ assert r->>'code' is null,'explicit acceptance failed with notifications off';
+ perform public.set_notification_preference('invites',false,2,bc,gen_random_uuid());
+ perform set_config('request.jwt.claim.sub',a::text,true);
+ r:=public.create_room('Avisos',false,ac,gen_random_uuid()); room_:=(r->'data'->>'room_id')::uuid; member_:=(r->'data'->>'membership_id')::uuid;
+ r:=public.invite_friend(b,room_,member_,1,ac,gen_random_uuid()); invite_:=(r->'data'->>'invite_id')::uuid;
+ r:=public.invite_friend(b,room_,member_,1,ac,gen_random_uuid());
+ assert r->>'outcome'='unchanged' and r->'data'->>'invite_id'=invite_::text,'pending invite duplicated';
+ reset role;
+ assert (select count(*)=1 from private.notification_outbox where kind='invite' and resource_id=invite_),'duplicate invite notification';
+ assert (select status='suppressed' from private.notification_outbox where kind='invite' and resource_id=invite_),'disabled invite preference queued active notification';
+ assert not has_function_privilege('authenticated','private.social_command(text,uuid,text,uuid,text,uuid,uuid,bigint,uuid,uuid)','EXECUTE'),'client can invoke social helper';
+ assert not has_function_privilege('anon','private.social_command(text,uuid,text,uuid,text,uuid,uuid,bigint,uuid,uuid)','EXECUTE'),'anon can invoke social helper';
+ assert not has_schema_privilege('assistae_social_api','public','CREATE') and not has_schema_privilege('assistae_social_api','private','CREATE'),'social API retained DDL';
+ set local role assistae_social_api;
+ begin update private.preferences set notify_invites=true where user_id=b; raise exception 'social role altered preferences';
+ exception when insufficient_privilege then null; end;
+ reset role;
+end
+$test$;
+rollback;
+select 'social_notifications_permissions: passed; fixtures rolled back; push delivery not implemented' as result;

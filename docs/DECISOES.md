@@ -1,8 +1,8 @@
 # Registro de fechamento do planejamento
 
-09/11/2026. Índice único de decisões abertas, com rastreabilidade aos documentos técnicos. Não aprova propostas por omissão. Não autoriza implementação. PLANEJAMENTO.md continua fonte das regras de produto; registros históricos de pendência não reabrem decisões confirmadas.
+## Avanço de implementação e aparelho — 09/11/2026
 
-<a id="decisoes-confirmadas"></a>
+Backend possui 16 migrações, 23 tabelas privadas e 30 RPCs: identidade/preferências, salas/catálogo, leases/reconexão, chat/administração, amizade/convites e status de comandos. Dezessete suítes SQL passaram. Aceite explícito nas cruzadas, remoção bilateral preservando convites emitidos, outbox sem envio push. Papéis de API limitados, sem login/BYPASSRLS/DDL permanente. Locks de perfis UUID antes de par/sala/FKs; disputa entre duas sessões ainda não demonstrada. [Estado, decisões técnicas e evidências](IMPLEMENTACAO.md). Pendentes mídia/fila, dispatcher push, Realtime e app Android/APK; Auth/REST e aparelho não validados. P01–P15/design preservados, B00/blocos completos não concluídos. Galaxy A54 com Play Store confirmado, APK direto, somente Android; versões exatas do SO não informadas. Sem imagem nova, publicação de APK ou notificações reais enviadas. Notas abaixo são históricas.
 
 ## Confirmado — não perguntar novamente
 

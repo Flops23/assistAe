@@ -1,5 +1,14 @@
 # Desenvolvimento em blocos — assistAe
 
+## Avanço de implementação e aparelho — 09/11/2026
+
+Backend possui 16 migrações, 23 tabelas privadas e 30 RPCs: identidade/preferências, salas/catálogo, leases/reconexão, chat/administração, amizade/convites e status de comandos. Dezessete suítes SQL passaram. Aceite explícito nas cruzadas, remoção bilateral preservando convites emitidos, outbox sem envio push. Papéis de API limitados, sem login/BYPASSRLS/DDL permanente. Locks de perfis UUID antes de par/sala/FKs; disputa entre duas sessões ainda não demonstrada. [Estado, decisões técnicas e evidências](IMPLEMENTACAO.md). Pendentes mídia/fila, dispatcher push, Realtime e app Android/APK; Auth/REST e aparelho não validados. P01–P15/design preservados, B00/blocos completos não concluídos. Galaxy A54 com Play Store confirmado, APK direto, somente Android; versões exatas do SO não informadas. Sem imagem nova, publicação de APK ou notificações reais enviadas. Notas abaixo são históricas.
+
+## Início de execução autorizado — 09/11/2026
+
+Usuário solicitou começar a implementação pelo Supabase. B01 iniciou somente backend de identidade/preferências; B02 recebeu modelo físico e base de comandos, sem operações de sala. B00 não concluído; demais blocos não implementados. Estado/evidências em [IMPLEMENTACAO.md](IMPLEMENTACAO.md). As seções históricas abaixo continuam como roteiro e não como afirmação de que código atual é apenas proposta.
+
+
 09/11/2026. Proposta de organização após revisão do repositório local. **Etapa atual: B00, somente planejamento.** Nenhuma implementação iniciada ou teste funcional executado. Concluir e revisar o planejamento com o usuário antes de programação, que depende de solicitação posterior explícita.
 
 ## Diagnóstico e escopo
