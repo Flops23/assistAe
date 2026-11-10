@@ -1,5 +1,10 @@
 # assistAe
 
+## Implementação iniciada — 09/11/2026
+
+A pedido do usuário, começou a implementação pelo Supabase. O projeto existente **assistae** recebeu 23 tabelas privadas e seis RPCs de identidade/preferências. Cinco suítes SQL foram executadas com rollback; operações de sala/player/chat/social e Android/APK ainda não implementadas. Veja [estado e evidências](docs/IMPLEMENTACAO.md) e [guia do banco](supabase/README.md). As restrições de somente planejamento abaixo descrevem a etapa anterior; não declarar o app ou backend completos.
+
+
 **Planejamento em 09/11/2026:** escolhas de comportamento P01–P15 confirmadas em [DECISOES.md](docs/DECISOES.md). Próxima etapa: fechar revisão técnica e operação de B00 em [BLOCOS.md](docs/BLOCOS.md). Não há app/backend/APK implementado ou testado; respostas não autorizam programação.
 
 **Correção de escopo — 08/11/2026:** usuário pediu planejar integralmente banco, métodos, algoritmos, segurança, contratos, operação e testes antes do desenvolvimento. Não iniciar código, projeto Android, migrações executáveis ou provisionamento por consequência deste planejamento. O design existente continua como base e ajustes reutilizam os mesmos cards. A proposta técnica inicial está em [docs/ARQUITETURA.md](docs/ARQUITETURA.md). Ainda há decisões abertas; não declarar planejamento concluído ou aprovado. Implementação somente após solicitação posterior do usuário. Esta correção prevalece sobre referências anteriores a construir a base/navegação como próximo passo. Nesta revisão: somente documentação, sem imagens, publicação, implementação ou testes funcionais.

@@ -1,5 +1,10 @@
 # Controle de design
 
+## Implementação do banco iniciada — 09/11/2026
+
+Autorização mais recente permite implementar começando pelo Supabase. Foram implementados schema privado e identidade/preferências no backend; cinco suítes SQL executadas, sem validação visual/Android. Referências e cards aprovados preservados, sem imagem gerada, alterada ou enviada. Design não é captura de app pronto. Evidências e próximos blocos em [IMPLEMENTACAO.md](IMPLEMENTACAO.md).
+
+
 ## Revisão de consistência técnica — 09/11/2026
 
 Banco, contratos e estados revisados em [CONSISTENCIA.md](CONSISTENCIA.md). Distinguir fim de fila (ended com mídia para replay) de sala encerrada (closed sem referência de mídia); status mínimo/reconexão não liberam chat ou controles. Validação assíncrona usa carregamentos/feedbacks existentes; nenhum fluxo visual novo aprovado. P01–P15 preservados, sem imagem gerada/alterada, implementação ou teste funcional. B00 permanece aberto.

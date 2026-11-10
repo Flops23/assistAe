@@ -1,0 +1,11 @@
+# Credenciais, caches locais e artefatos de build
+.env
+.env.*
+!.env.example
+local.properties
+*.jks
+*.keystore
+supabase/.temp/
+supabase/.branches/
+.gradle/
+**/build/

@@ -1,5 +1,10 @@
 # Desenvolvimento em blocos — assistAe
 
+## Início de execução autorizado — 09/11/2026
+
+Usuário solicitou começar a implementação pelo Supabase. B01 iniciou somente backend de identidade/preferências; B02 recebeu modelo físico e base de comandos, sem operações de sala. B00 não concluído; demais blocos não implementados. Estado/evidências em [IMPLEMENTACAO.md](IMPLEMENTACAO.md). As seções históricas abaixo continuam como roteiro e não como afirmação de que código atual é apenas proposta.
+
+
 09/11/2026. Proposta de organização após revisão do repositório local. **Etapa atual: B00, somente planejamento.** Nenhuma implementação iniciada ou teste funcional executado. Concluir e revisar o planejamento com o usuário antes de programação, que depende de solicitação posterior explícita.
 
 ## Diagnóstico e escopo

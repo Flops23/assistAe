@@ -1,5 +1,10 @@
 # Ponto de continuidade
 
+## Implementação autorizada e banco inicial — 09/11/2026
+
+Pedido mais recente: iniciar o app pelo banco Supabase, analisando planejamento/design/decisões do repositório. Projeto assistae já existente e vazio foi aproveitado; quatro migrações aplicadas, 23 tabelas privadas e seis RPCs de identidade/preferências. Cinco suítes SQL passaram com rollback; fixtures removidas. Ver [IMPLEMENTACAO.md](IMPLEMENTACAO.md) e [guia do banco](../supabase/README.md) para escolhas, avisos de segurança e limites. App Android/APK e operações de sala/player/chat/social ainda não existem. Não declarar B00/B01/B02 concluídos nem planejamento integral aprovado. Próximo: sala/reconexão/gates/janelas com testes; reduzir privilégios do owner da API antes de ampliar superfície. P01–P15/design preservados; sem imagens novas/publicação de APK. As notas de somente planejamento abaixo são históricas.
+
+
 ## Ponto atual — revisão cruzada banco/contratos/estados (09/11/2026)
 
 Usuário solicitou conferir consistência. Superpowers systematic-debugging/verification-before-completion usados na revisão documental. [CONSISTENCIA.md](CONSISTENCIA.md) registra causa, dez divergências centrais, conciliação e pendências. BANCO/CONTRATOS/ALGORITMOS agora alinham detecção/generation, gates LIVE/CONTROL/ADMIN, administração nula, avaliação assíncrona obrigatória, modo de término derivado, contextos/recibos, claims de outbox e fechamento sem FK de mídia órfã. Associados: snapshot de apelido com perfil antes da sala, chave room_id/seq, revisões por domínio e geração histórica de janelas fechadas.
