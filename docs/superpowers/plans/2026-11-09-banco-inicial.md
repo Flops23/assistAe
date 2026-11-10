@@ -44,3 +44,5 @@ Testes desta entrega não comprovam concorrência de vagas, revogação Realtime
 ## Progresso posterior — 09/11/2026
 - [x] Papéis limitados, salas/catálogo, heartbeat/reconexão, sucessão/encerramento, cron, chat e administração; 13 suítes passaram.
 - [ ] Mídia/fila, social/push/Realtime, getOperationStatus e Android/APK; evidências/limites em docs/IMPLEMENTACAO.md.
+
+- [x] Amizade/convites internos, outbox mínima e getOperationStatus; 17 suítes passaram, sem envio push. Ver estado atual em docs/IMPLEMENTACAO.md.

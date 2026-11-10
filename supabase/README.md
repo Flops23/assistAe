@@ -1,12 +1,12 @@
 # Banco assistAe
 
 Projeto remoto [assistae](https://supabase.com/dashboard/project/siizxjtyaphwjfdjsgom), PostgreSQL 17, us-east-1.
-13 migrações, 23 tabelas privadas, 21 RPCs autenticadas. Estado e evidências em
+16 migrações, 23 tabelas privadas, 30 RPCs autenticadas. Estado e evidências em
 [IMPLEMENTACAO](../docs/IMPLEMENTACAO.md). Backend parcial; ainda não há Android/APK.
 
 ## Fronteira de acesso
 Schemas expostos: public. private não tem USAGE/CRUD para anon/authenticated/service_role.
-Papéis sem login/bypass/DDL: assistae_identity_api (RLS do próprio usuário) e assistae_room_api
+Papéis sem login/bypass/DDL: assistae_identity_api (RLS do próprio usuário), assistae_social_api (domínio social) e assistae_room_api
 (tabelas internas do domínio, autorizadas por gates explícitos em cada operação).
 Usuários não têm membership nesses papéis. postgres pode SET ROLE para migração/teste, sem herança automática.
 Ponte private.session_actor owned por postgres apenas lê auth.uid; execução externa negada.
@@ -21,12 +21,13 @@ Retry confirmado retorna mínimo, nunca corpo, URL ou código histórico.
 
 | Grupo | RPCs |
 |---|---|
-| Identidade | ensure_profile, get_my_profile, get_command_context, change_nickname |
+| Identidade | ensure_profile, get_my_profile, get_command_context, change_nickname, get_operation_status |
 | Preferências | set_notification_preference, save_message_preferences |
 | Descoberta/admissão | list_public_rooms, create_room, join_room |
 | Sala/presença | get_room_code, get_room_snapshot, heartbeat, reconnect_room, get_my_participation |
 | Saída/admin | leave_room, close_room, set_control_permission, transfer_admin, kick_member |
 | Chat | send_message, list_messages |
+| Social | request_friendship, answer_friend_request, cancel_friend_request, remove_friend, list_friends, list_friend_requests, invite_friend, list_invites |
 
 Mutações recebem command_context_id/request_id; heartbeat deduplica por geração/seq e bootstrap converge.
 Usar geração/janela atuais. Contexto é emitido por get_command_context; ele não concede permissão de sala.
@@ -39,7 +40,7 @@ leave_room aceita successor_membership_id e expected_room_revision nulos se não
 Administração requer expected_room_revision e ADMIN LIVE. can_control anterior não é alterado pela transferência.
 
 Snapshot retorna participantes/projeções de mídia/fila e janela; não retorna histórico.
-Ainda não há métodos de reprodução, validação de mídia, fila, amizade ou push.
+Ainda não há métodos de reprodução, validação de mídia, fila ou envio push. Amizade/convites possuem backend.
 Não alimentar esses dados via CRUD direto como substituto dos contratos faltantes.
 Ainda não há emissão Realtime; snapshot/chat são APIs autorizadas, sem canal transportado.
 
@@ -88,12 +89,26 @@ Get-ChildItem supabase/tests/*.sql | Sort-Object Name | ForEach-Object {
 }
 ```
 Definir o serviço fora do repositório. Administrador prepara fixtures; chamadas do app usam papéis reais.
-13 suítes passaram no banco remoto. Testes de lotação são sequenciais; não substituem disputa real entre sessões.
+17 suítes passaram no banco remoto. Testes de lotação são sequenciais; não substituem disputa real entre sessões.
 A integração cron usou fixture privada confirmada/removida; as suítes restantes usam rollback.
 
 ## Avisos ainda documentados
-- [SECURITY DEFINER acessível a autenticados](https://supabase.com/docs/guides/database/database-linter?lint=0029_authenticated_security_definer_function_executable): 21 APIs intencionais, com papéis limitados/gates.
-- [RLS sem policy](https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy): 3 tabelas sociais futuras privadas/negadas.
-- [Índice sem uso](https://supabase.com/docs/guides/database/database-linter?lint=0005_unused_index): 9 registros informativos, sem tráfego real.
-- [Proteção contra senha vazada](https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection): alerta da configuração Auth; não alterada, sem senha no fluxo planejado.
+- [SECURITY DEFINER acessível a autenticados](https://supabase.com/docs/guides/database/database-linter?lint=0029_authenticated_security_definer_function_executable): 30 APIs intencionais, com papéis limitados/gates.
+- [RLS sem policy](https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy): nenhuma ocorrência na última consulta; as tabelas sociais agora têm políticas restritas aos papéis internos.
+- [Índice sem uso](https://supabase.com/docs/guides/database/database-linter?lint=0005_unused_index): 7 registros informativos, sem tráfego real.
+- [Proteção contra senha vazada](https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection): alerta anterior não reapareceu na última consulta; nenhuma configuração Auth alterada por este trabalho.
 Não confundir ausência de erro nos testes com auditoria integral aprovada.
+
+## Social e status
+Solicitações cruzadas exigem aceite; remetente cancela pending; envolvidos removem amizade bilateral.
+Convites já emitidos sobrevivem à remoção da amizade. Destinatário lista/usa; convite não reserva vaga.
+Listas limitadas a 50: amigos usam cursor UUID; solicitações/convites usam cursor created_at/id.
+ListFriendRequests aceita direction incoming/outgoing, incluindo estados resolvidos do próprio envolvido.
+Request_friendship recebe user_code; answer/cancel usam friend_request_id; invite_friend usa friend_user_id e admissão LIVE.
+Quotas: requestFriendship 10/min; mutadores sociais 30/min; leituras/getOperationStatus 60/min.
+
+Outbox contém somente tipo/recurso/destinatário/event_key. Não existe dispatcher/token/envio nesta entrega.
+Preferência off suprime evento sem esconder recurso no app. Evento de convite já usado ainda pode estar pending:
+futuro worker deverá revalidar status/ban/preferência e suprimir antes de enviar.
+Get_operation_status(request_id,command_context_id) retorna applied/unknown/expired próprio e mínimo histórico;
+unknown não permite nova intenção automática. Nenhum corpo, nickname, código ou URL é retornado.
