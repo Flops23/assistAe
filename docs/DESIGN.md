@@ -1,5 +1,10 @@
 # Controle de design
 
+## Avanço de implementação e aparelho — 09/11/2026
+
+Backend agora possui 13 migrações, 23 tabelas privadas e 21 RPCs: identidade/preferências, salas/catálogo, leases/reconexão, chat e administração. Treze suítes SQL passaram; cron observado encerrando fixture privada, apagando mensagem e invalidando código. Papéis de API limitados, sem login/BYPASSRLS/DDL permanente. [Estado, escolhas técnicas e evidências](IMPLEMENTACAO.md). Ainda faltam mídia/fila, social/push/Realtime, getOperationStatus e app Android/APK. REST/Auth real, contenção entre sessões e aparelhos ainda não validados. P01–P15 e design preservados; blocos completos/B00 não declarados concluídos. Usuário confirmou Galaxy A54 com Play Store, APK direto, somente Android; versões exatas do SO não informadas. Isso não escolhe push/SDK/assinatura/orçamento. Sem imagem nova ou publicação de APK. Notas de somente planejamento abaixo são históricas.
+
+
 ## Implementação do banco iniciada — 09/11/2026
 
 Autorização mais recente permite implementar começando pelo Supabase. Foram implementados schema privado e identidade/preferências no backend; cinco suítes SQL executadas, sem validação visual/Android. Referências e cards aprovados preservados, sem imagem gerada, alterada ou enviada. Design não é captura de app pronto. Evidências e próximos blocos em [IMPLEMENTACAO.md](IMPLEMENTACAO.md).

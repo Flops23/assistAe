@@ -40,3 +40,7 @@ docs/IMPLEMENTACAO.md: progresso e evidências, distinguindo schema, operação 
 Negar leitura/mutação direta e execução sem sessão; impedir perfil alheio, repetição com payload diferente,
 recibo/contexto de outro ator, revisão antiga, beta revogado e expansão de campos por RPC.
 Testes desta entrega não comprovam concorrência de vagas, revogação Realtime, mídia, push nem Android.
+
+## Progresso posterior — 09/11/2026
+- [x] Papéis limitados, salas/catálogo, heartbeat/reconexão, sucessão/encerramento, cron, chat e administração; 13 suítes passaram.
+- [ ] Mídia/fila, social/push/Realtime, getOperationStatus e Android/APK; evidências/limites em docs/IMPLEMENTACAO.md.

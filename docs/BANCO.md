@@ -1,5 +1,10 @@
 # Banco de dados — especificação proposta v1
 
+## Avanço de implementação e aparelho — 09/11/2026
+
+Backend agora possui 13 migrações, 23 tabelas privadas e 21 RPCs: identidade/preferências, salas/catálogo, leases/reconexão, chat e administração. Treze suítes SQL passaram; cron observado encerrando fixture privada, apagando mensagem e invalidando código. Papéis de API limitados, sem login/BYPASSRLS/DDL permanente. [Estado, escolhas técnicas e evidências](IMPLEMENTACAO.md). Ainda faltam mídia/fila, social/push/Realtime, getOperationStatus e app Android/APK. REST/Auth real, contenção entre sessões e aparelhos ainda não validados. P01–P15 e design preservados; blocos completos/B00 não declarados concluídos. Usuário confirmou Galaxy A54 com Play Store, APK direto, somente Android; versões exatas do SO não informadas. Isso não escolhe push/SDK/assinatura/orçamento. Sem imagem nova ou publicação de APK. Notas de somente planejamento abaixo são históricas.
+
+
 Revisão cruzada de 09/11/2026 em [CONSISTENCIA.md](CONSISTENCIA.md): campos e invariantes abaixo foram conciliados com CONTRATOS/ALGORITMOS. Refinamentos continuam proposta técnica, sem aprovação integral, migração ou teste funcional; P01–P15 permanecem confirmados. Esta revisão prevalece sobre notas históricas de incompatibilidade já resolvida.
 
 Decisão P03 confirmada em 09/11/2026: permitir fonte reproduzível de duração inconclusiva, com avanço manual autorizado ao terminar. Refinamento técnico proposto: validation_status/duration_confidence em media_items e termination_mode derivado na reprodução, distinguindo timeline confiável de ação manual; não permitir cliente comum escolher modo/forjar confiança. P02 confirma promoção transacional do primeiro item ao Play inicial. Ver CONTRATOS.md, seção 7. Sem implementação.

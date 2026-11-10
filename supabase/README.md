@@ -1,85 +1,99 @@
 # Banco assistAe
 
-Projeto remoto existente: [assistae](https://supabase.com/dashboard/project/siizxjtyaphwjfdjsgom).
-PostgreSQL 17, região us-east-1. Nenhum projeto pago adicional foi criado.
+Projeto remoto [assistae](https://supabase.com/dashboard/project/siizxjtyaphwjfdjsgom), PostgreSQL 17, us-east-1.
+13 migrações, 23 tabelas privadas, 21 RPCs autenticadas. Estado e evidências em
+[IMPLEMENTACAO](../docs/IMPLEMENTACAO.md). Backend parcial; ainda não há Android/APK.
 
-## Estado
-23 tabelas em private, RLS habilitado, sem USAGE/CRUD para anon/authenticated/service_role.
-6 RPCs no schema public: ensure_profile, get_my_profile, get_command_context,
-change_nickname, set_notification_preference e save_message_preferences.
-As tabelas dos outros domínios reservam o modelo; ainda não há operações de sala/player/chat/social.
-Token de dispositivo fica adiado até definir push/prova de associação.
+## Fronteira de acesso
+Schemas expostos: public. private não tem USAGE/CRUD para anon/authenticated/service_role.
+Papéis sem login/bypass/DDL: assistae_identity_api (RLS do próprio usuário) e assistae_room_api
+(tabelas internas do domínio, autorizadas por gates explícitos em cada operação).
+Usuários não têm membership nesses papéis. postgres pode SET ROLE para migração/teste, sem herança automática.
+Ponte private.session_actor owned por postgres apenas lê auth.uid; execução externa negada.
+As funções definer são intencionais: não trocar owner/grants ou expor helpers/tabelas para contornar erros.
 
-As funções públicas usam SECURITY DEFINER, owner postgres, search_path vazio, auth.uid(),
-allowlist beta e validação própria. Isso é acesso privilegiado intencional, não RLS por usuário:
-o owner ultrapassa RLS. Não conceder grants genéricos ao aplicativo.
-Reduzir o owner a um papel limitado e testar suas políticas antes de ampliar a superfície de API.
+## API
+RPCs em /rest/v1/rpc/<nome>, JWT autenticado e parâmetros nomeados conforme assinatura SQL.
+Bigints de resposta são strings decimais; UUIDs são strings. Erro de negócio retorna code/retryable/correlation_id;
+inspecionar JSON mesmo quando HTTP 200. Erros de permissão/tipo/transporte também podem usar HTTP de erro.
+Sucesso: operation/server_time/outcome/data/revisions e request_id quando aplicável.
+Retry confirmado retorna mínimo, nunca corpo, URL ou código histórico.
 
-## Autenticação e beta
-O config.toml configura o ambiente LOCAL. O Auth anônimo remoto ainda precisa ser habilitado/verificado
-na configuração de autenticação do projeto antes da integração Android.
-A sessão anônima fornece o JWT/UUID; depois um operador autorizado inclui esse UUID em
-private.beta_testers. A função não aceita user_id do APK. A inclusão deve ocorrer por canal administrativo;
-não embutir senha, service role ou chave de banco no aplicativo.
+| Grupo | RPCs |
+|---|---|
+| Identidade | ensure_profile, get_my_profile, get_command_context, change_nickname |
+| Preferências | set_notification_preference, save_message_preferences |
+| Descoberta/admissão | list_public_rooms, create_room, join_room |
+| Sala/presença | get_room_code, get_room_snapshot, heartbeat, reconnect_room, get_my_participation |
+| Saída/admin | leave_room, close_room, set_control_permission, transfer_admin, kick_member |
+| Chat | send_message, list_messages |
 
-Nenhum testador real foi cadastrado nesta entrega. A allowlist é uma escolha técnica inicial para
-fechar o backend enquanto o bootstrap dos amigos é integrado; não representa fluxo Android pronto.
+Mutações recebem command_context_id/request_id; heartbeat deduplica por geração/seq e bootstrap converge.
+Usar geração/janela atuais. Contexto é emitido por get_command_context; ele não concede permissão de sala.
+save_message_preferences recebe p_position/size_key/speed_key.
+send_message recebe p_body e client_message_id, além de sala/participação/geração/janela e envelope.
+list_messages aceita after_seq OU before_seq, nunca ambos. A janela é aplicada antes do limite.
+join_room recebe target com exatamente code OU public_room_id OU invite_id.
+list_public_rooms usa query/cursor/limit_; limite máximo 50, Home solicita 3.
+leave_room aceita successor_membership_id e expected_room_revision nulos se não houver escolha explícita.
+Administração requer expected_room_revision e ADMIN LIVE. can_control anterior não é alterado pela transferência.
 
-## RPCs
-Chamadas autenticadas por /rest/v1/rpc/<nome>, com parâmetros nomeados conforme assinatura SQL.
-ensure_profile recebe nickname; get_my_profile e get_command_context não recebem argumentos.
-Mutadores recebem command_context_id, request_id e a revisão esperada correspondente.
-save_message_preferences usa p_position, size_key, speed_key.
-Resultados de sucesso têm operation, server_time, outcome, data e revisions.
-Bigints na resposta JSON são strings decimais; UUIDs são strings.
-O cliente precisa inspecionar code no JSON mesmo quando HTTP é 200:
-rejeições de negócio usam code/retryable/correlation_id e retry_after_ms quando pertinente.
-Falhas de permissão/tipo/transporte do PostgreSQL/PostgREST continuam podendo usar HTTP de erro.
-Não repetir intenção antiga com novo request_id automaticamente.
+Snapshot retorna participantes/projeções de mídia/fila e janela; não retorna histórico.
+Ainda não há métodos de reprodução, validação de mídia, fila, amizade ou push.
+Não alimentar esses dados via CRUD direto como substituto dos contratos faltantes.
+Ainda não há emissão Realtime; snapshot/chat são APIs autorizadas, sem canal transportado.
 
-Um retry confirmado retorna somente result_code/resource_id/revisão; não repete apelido, código ou
-estado atual. Para ler dados, chamar get_my_profile e revalidar acesso.
-Pedidos rejeitados não têm recibo nesta etapa; a tentativa consome quota, mas não modifica o domínio.
-O mesmo UUID confirmado com outro payload é IDEMPOTENCY_MISMATCH.
+## Auth e teste fechado
+config.toml configura ambiente LOCAL, não a configuração Auth remota.
+Auth anônimo real deve ser habilitado/verificado antes da integração Android.
+Sessão anônima fornece UUID/JWT; operador autorizado inclui UUID em private.beta_testers.
+App nunca recebe service role, senha administrativa ou chave de assinatura.
+Nenhum testador real cadastrado nesta entrega. Bootstrap e proteção global do Auth ainda precisam de integração.
+Usuário confirmou Galaxy A54 com Play Store; APK será distribuído diretamente, sem publicação na loja.
 
-## Configurações técnicas
-Contagem por char_length (code points), trim de espaços ASCII nas bordas.
-Código pessoal/sala: 12 caracteres hexadecimais aleatórios (não senha).
-Contexto válido por 15 min; recibo retido até fim do contexto + 24 h, sem GC automático instalado.
-Bucket por identidade/operação em janela de refill de 60 s:
-ensureProfile/getCommandContext 10; getMyProfile 120; mutadores 30.
-Essas quotas não substituem limites globais de rede/Anti-abuso do Auth.
-Sobreposição usa small/medium/large e slow/normal/fast; valores em sp/velocidade ainda não definidos.
-Setters atualmente incrementam revisão mesmo para valor idêntico: refinamento menor registrado em IMPLEMENTACAO.
+## Prazos/rotinas
+Detector por silêncio D=25 s, reserva de 60 s a partir da detecção.
+Heartbeat saudável renova para agora+25/+85; duplicata não renova.
+Reconexão formal aceita antes do timeout após interrupção observada, sempre com geração/janela novas.
+Sem sinal de transporte confiável implementado: não prometer detecção de toda queda física imperceptível.
+
+pg_cron chama private.expire_rooms(100) a cada 5 s, como postgres; função definer executa como papel de sala limitado.
+Job assistae_expire_rooms observado succeeded; teste de sala privada vencida verificou fechamento real pelo agendador.
+Job assistae_cron_history mantém 7 dias de histórico SOMENTE dos jobs assistAe, diariamente às 03:19 UTC.
+Sua execução diária ainda não foi observada. Não apagar histórico/jobs de outros aplicativos.
+Medir fila/atraso/custo do cron no teste fechado; atraso nunca reinicia os 60 s.
+
+## Parâmetros desta implementação
+Contexto 15 min; recibo até fim do contexto +24 h, sem GC automático desses dados.
+Código de 12 hexadecimais aleatórios; contagem Unicode via char_length/code points.
+Quotas de identidade: bootstrap/contexto 10/min, leitura 120/min, mutadores 30/min.
+Sala: criar 6/min, entrar 20/min, leituras/heartbeat 120/min, reconectar/admin/sair 30/min, catálogo 60/min.
+Chat: burst 10, refill em 10 s; leitura 120/min. Não substitui defesa global de rede/Auth.
+Chaves small/medium/large e slow/normal/fast não definem ainda sp/velocidade Android.
 
 ## Migrações e testes
-Os timestamps dos arquivos coincidem com o histórico aplicado pelo plugin Supabase, em UTC
-(10/11 UTC ainda corresponde à noite de 09/11 em America/Sao_Paulo).
-Não reaplicar SQL manualmente no projeto já migrado.
-Em ambiente local isolado com Supabase CLI e Docker: supabase start.
-Não executar reset no projeto remoto para rodar testes.
+Nomes de arquivo coincidem com versões aplicadas pelo plugin, em UTC.
+10/11 UTC ainda corresponde à noite de 09/11 em America/Sao_Paulo.
+CLI local não estava instalada; DDL remoto foi aplicado com o plugin e os timestamps resultantes foram preservados.
+Antes de instalar/usar CLI, conferir --version e --help; [CLI v3 mudou os destinos padrão](https://supabase.com/changelog).
+Não reaplicar SQL manualmente no projeto migrado nem executar reset remoto para rodar testes.
+Instalação limpa CLI/Docker ainda não testada.
 
-Os arquivos tests/*.sql são scripts PostgreSQL com ASSERT, não pgTAP.
-Executar em banco de desenvolvimento, com psql e credenciais externas, por exemplo:
+tests/*.sql são scripts PostgreSQL com ASSERT, não pgTAP. Todos terminam com rollback.
+Executar em ambiente de desenvolvimento com psql e credenciais externas:
 ```powershell
 Get-ChildItem supabase/tests/*.sql | Sort-Object Name | ForEach-Object {
   psql "service=assistae-dev" -X -v ON_ERROR_STOP=1 -f $_.FullName
   if ($LASTEXITCODE -ne 0) { throw "Falha em $($_.Name)" }
 }
 ```
-Definir o serviço assistae-dev fora do repositório. Os testes exigem papel administrativo
-para fixtures, mas as chamadas de app usam SET LOCAL ROLE authenticated/anon.
-Todos os scripts terminam com rollback. Erro aborta a transação, também sem persistir fixture.
+Definir o serviço fora do repositório. Administrador prepara fixtures; chamadas do app usam papéis reais.
+13 suítes passaram no banco remoto. Testes de lotação são sequenciais; não substituem disputa real entre sessões.
+A integração cron usou fixture privada confirmada/removida; as suítes restantes usam rollback.
 
-Cinco suítes foram executadas via plugin no banco remoto vazio, com rollback; resultados em
-[IMPLEMENTACAO](../docs/IMPLEMENTACAO.md). O teste de expiração após lock verifica tempo no mesmo processo,
-sem demonstrar contenção de duas sessões. Recriação limpa pela CLI/Docker ainda não foi executada neste computador.
-
-## Avisos do Supabase
-[RLS sem políticas](https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy):
-intencional em tabelas privadas negadas por padrão.
-[Funções definer executáveis por autenticados](https://supabase.com/docs/guides/database/database-linter?lint=0029_authenticated_security_definer_function_executable):
-seis entradas de API intencionais, com verificação de ator/beta/contexto e grants restritos.
-[Índices ainda sem uso](https://supabase.com/docs/guides/database/database-linter?lint=0005_unused_index):
-esperado no banco sem tráfego; medir antes de remover índices de integridade/consulta.
-Esses avisos não foram classificados como resolvidos nem como prova de segurança integral.
+## Avisos ainda documentados
+- [SECURITY DEFINER acessível a autenticados](https://supabase.com/docs/guides/database/database-linter?lint=0029_authenticated_security_definer_function_executable): 21 APIs intencionais, com papéis limitados/gates.
+- [RLS sem policy](https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy): 3 tabelas sociais futuras privadas/negadas.
+- [Índice sem uso](https://supabase.com/docs/guides/database/database-linter?lint=0005_unused_index): 9 registros informativos, sem tráfego real.
+- [Proteção contra senha vazada](https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection): alerta da configuração Auth; não alterada, sem senha no fluxo planejado.
+Não confundir ausência de erro nos testes com auditoria integral aprovada.
