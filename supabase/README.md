@@ -1,7 +1,7 @@
 # Banco assistAe
 
 Projeto remoto [assistae](https://supabase.com/dashboard/project/siizxjtyaphwjfdjsgom), PostgreSQL 17, us-east-1.
-16 migrações, 23 tabelas privadas, 30 RPCs autenticadas. Estado e evidências em
+18 migrações, 23 tabelas privadas, 40 RPCs autenticadas e duas RPCs exclusivas de serviço. Estado e evidências em
 [IMPLEMENTACAO](../docs/IMPLEMENTACAO.md). Backend parcial; ainda não há Android/APK.
 
 ## Fronteira de acesso
@@ -28,6 +28,9 @@ Retry confirmado retorna mínimo, nunca corpo, URL ou código histórico.
 | Saída/admin | leave_room, close_room, set_control_permission, transfer_admin, kick_member |
 | Chat | send_message, list_messages |
 | Social | request_friendship, answer_friend_request, cancel_friend_request, remove_friend, list_friends, list_friend_requests, invite_friend, list_invites |
+| Mídia | validate_media, get_media_validation |
+| Fila | add_to_queue, reorder_queue, remove_queue_item |
+| Reprodução | play_now, start_queue, set_playback, advance_after_unverified_end, report_media_ended |
 
 Mutações recebem command_context_id/request_id; heartbeat deduplica por geração/seq e bootstrap converge.
 Usar geração/janela atuais. Contexto é emitido por get_command_context; ele não concede permissão de sala.
@@ -40,9 +43,18 @@ leave_room aceita successor_membership_id e expected_room_revision nulos se não
 Administração requer expected_room_revision e ADMIN LIVE. can_control anterior não é alterado pela transferência.
 
 Snapshot retorna participantes/projeções de mídia/fila e janela; não retorna histórico.
-Ainda não há métodos de reprodução, validação de mídia, fila ou envio push. Amizade/convites possuem backend.
-Não alimentar esses dados via CRUD direto como substituto dos contratos faltantes.
-Ainda não há emissão Realtime; snapshot/chat são APIs autorizadas, sem canal transportado.
+Snapshot e chat usam APIs autorizadas. Emissão Realtime e envio push são etapas pendentes.
+
+## Fluxo de mídia
+
+1. Com a participação e geração atuais, chame `validate_media` com a URL e o envelope do comando.
+2. Envie `validation_id` e `execution_token` por POST JSON para `/functions/v1/media-validator`. A capacidade é descartável e autoriza somente a avaliação criada. A função retorna 202 ao iniciar e mantém as credenciais de serviço no Supabase.
+3. Consulte `get_media_validation`. Resultados `valid` e `inconclusive` fornecem `validation_reference`. Use a mesma URL e participação para `add_to_queue` ou `play_now` antes do vencimento de 5 min. Quando a conclusão ainda estiver pendente, a consulta indica `processing` e pode devolver a capacidade para retomar uma tentativa após o fim da concessão de 30 s. O trabalho pendente vence em 10 min e tem até três tentativas.
+4. Use as revisões do snapshot. `start_queue` exige as revisões de fila e reprodução. `set_playback` aceita `play`, `pause` ou `seek`, com posição em milissegundos somente para `seek`. `advance_after_unverified_end` exige as duas revisões e a epoch atual. `report_media_ended` confirma a participação e a epoch sem mudar a reprodução.
+
+A função verifica metadados e referências. Limites iniciais de 4 MiB, 15 s, 32 requisições e três redirecionamentos por requisição. O DNS é resolvido pelo Deno com fallback fixo da Cloudflare quando o DNS nativo fica sem resposta. O fallback recebe somente o hostname. A conexão fica presa ao IP público selecionado e mantém o hostname original para TLS. URLs assinadas, HTTP e HTTPS são aceitos. A avaliação é conservadora para MP4 fragmentado e recursos de HLS como DRM, substituição de variáveis e content steering. Reprodução e disponibilidade dos segmentos no aparelho exigem teste Media3.
+
+O agendador `assistae_advance_playback` roda a cada 5 s, em lotes de até 100 salas, e relê a duração e o estado antes de avançar. O mesmo item permanece disponível para replay quando é o último.
 
 ## Auth e teste fechado
 config.toml configura ambiente LOCAL, não a configuração Auth remota.
@@ -89,7 +101,9 @@ Get-ChildItem supabase/tests/*.sql | Sort-Object Name | ForEach-Object {
 }
 ```
 Definir o serviço fora do repositório. Administrador prepara fixtures; chamadas do app usam papéis reais.
-17 suítes passaram no banco remoto. Testes de lotação são sequenciais; não substituem disputa real entre sessões.
+19 suítes passaram no banco remoto. A disputa entre sessões e a carga do agendador seguem pendentes de teste.
+
+Para testar o validador com Deno, execute `deno test --allow-read --allow-net=127.0.0.1 supabase/functions/media-validator/tests/`. São 18 testes, incluindo transporte real em loopback.
 A integração cron usou fixture privada confirmada/removida; as suítes restantes usam rollback.
 
 ## Avisos ainda documentados

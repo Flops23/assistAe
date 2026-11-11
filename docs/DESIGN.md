@@ -1,5 +1,9 @@
 # Controle de design
 
+## Fila e reprodução no backend — 11/11/2026
+
+O Supabase aceita validação assíncrona de fonte, fila com até 50 próximos e controles de reprodução. Os modelos aprovados de Fila, Adicionar vídeo e Player continuam como referência para a integração Android. A interface deverá mostrar a avaliação pendente e oferecer avanço explícito a quem tem controle quando a duração for inconclusiva. O backend foi testado com SQL e fontes públicas MP4 e HLS. A validação visual e o teste no Galaxy A54 ficam para a integração do app. [Evidências e limites](IMPLEMENTACAO.md)
+
 ## Avanço de implementação e aparelho — 09/11/2026
 
 Backend possui 16 migrações, 23 tabelas privadas e 30 RPCs: identidade/preferências, salas/catálogo, leases/reconexão, chat/administração, amizade/convites e status de comandos. Dezessete suítes SQL passaram. Aceite explícito nas cruzadas, remoção bilateral preservando convites emitidos, outbox sem envio push. Papéis de API limitados, sem login/BYPASSRLS/DDL permanente. Locks de perfis UUID antes de par/sala/FKs; disputa entre duas sessões ainda não demonstrada. [Estado, decisões técnicas e evidências](IMPLEMENTACAO.md). Pendentes mídia/fila, dispatcher push, Realtime e app Android/APK; Auth/REST e aparelho não validados. P01–P15/design preservados, B00/blocos completos não concluídos. Galaxy A54 com Play Store confirmado, APK direto, somente Android; versões exatas do SO não informadas. Sem imagem nova, publicação de APK ou notificações reais enviadas. Notas abaixo são históricas.

@@ -1,0 +1,33 @@
+begin;
+do $test$
+declare a uuid:=gen_random_uuid(); b uuid:=gen_random_uuid(); ctx uuid; r jsonb; room_ uuid; member_ uuid; id_ uuid; nonce_ uuid; claim_ jsonb; denied boolean:=false;
+begin
+ assert to_regprocedure('public.validate_media(uuid,uuid,bigint,text,uuid,uuid)') is not null,'media validation API missing';
+ insert into auth.users(id) values(a),(b);insert into private.beta_testers(user_id) values(a),(b);
+ perform set_config('request.jwt.claim.sub',a::text,true);set local role authenticated;
+ perform public.ensure_profile('Ana');ctx:=(public.get_command_context()->'data'->>'command_context_id')::uuid;
+ r:=public.create_room('Mídia',true,ctx,gen_random_uuid());room_:=(r->'data'->>'room_id')::uuid;member_:=(r->'data'->>'membership_id')::uuid;
+ r:=public.validate_media(room_,member_,1,'https://example.com/video.mp4',ctx,gen_random_uuid());
+ id_:=(r->'data'->>'validation_id')::uuid;nonce_:=(r->'data'->>'execution_token')::uuid;
+ assert id_ is not null and nonce_ is not null,'pending validation not created';
+ r:=public.get_media_validation(room_,member_,1,id_);assert r->'data'->>'status'='pending','pending result wrong';
+ begin perform public.worker_claim_media_validation(id_,nonce_);exception when insufficient_privilege then denied:=true;end;
+ assert denied,'app can claim trusted validation';
+ reset role;set local role service_role;
+ claim_:=public.worker_claim_media_validation(id_,gen_random_uuid());assert claim_ is null,'wrong execution capability accepted';
+ claim_:=public.worker_claim_media_validation(id_,nonce_);assert claim_->>'source_url'='https://example.com/video.mp4','worker claim failed';
+ assert public.worker_claim_media_validation(id_,nonce_) is null,'an active lease was claimed twice';
+ assert public.worker_finish_media_validation(id_,gen_random_uuid(),'valid','mp4',1000,repeat('a',64),null)=false,'wrong attempt completed';
+ assert public.worker_finish_media_validation(id_,(claim_->>'attempt_token')::uuid,'valid','mp4',1000,repeat('a',64),null),'worker completion failed';
+ assert not public.worker_finish_media_validation(id_,(claim_->>'attempt_token')::uuid,'valid','mp4',2000,repeat('b',64),null),'stale completion overwrote result';
+ reset role;set local role authenticated;
+ r:=public.get_media_validation(room_,member_,1,id_);
+ assert r->'data'->>'status'='valid' and r->'data'->>'duration_ms'='1000','verified metadata not returned';
+ assert not(r->'data' ? 'source_url') and r->'data'->>'execution_token' is null,'validation leaked URL or reusable terminal token';
+ perform set_config('request.jwt.claim.sub',b::text,true);
+ perform public.ensure_profile('Bia');r:=public.get_media_validation(room_,member_,1,id_);
+ assert r->>'code'='NOT_FOUND_OR_UNAVAILABLE','another actor read validation';
+ reset role;
+end $test$;
+rollback;
+select 'media_validation_worker: passed; fixtures rolled back; metadata completion is a controlled fixture' as result;

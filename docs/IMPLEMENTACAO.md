@@ -1,10 +1,10 @@
 # Implementação — assistAe
 
-## Estado atual — 09/11/2026
+## Estado atual — 11/11/2026
 Implementação autorizada pelo usuário, começando pelo Supabase. Projeto existente assistae
 (siizxjtyaphwjfdjsgom, us-east-1), PostgreSQL 17. Sem projeto adicional contratado.
-16 migrações aplicadas, 23 tabelas privadas e 30 RPCs. Código na branch codex/supabase-base.
-Isso é backend parcial: aplicativo Android, player/mídia, envio push e Realtime ainda pendentes; amizade/convites já têm backend.
+18 migrações aplicadas, 23 tabelas privadas, 40 RPCs autenticadas e duas RPCs de serviço para validação de mídia.
+Código na branch codex/supabase-base. Aplicativo Android, envio push e Realtime seguem pendentes.
 
 Usuário confirmou Galaxy A54 como primeiro aparelho, com Play Store. Distribuição por APK direto,
 sem publicação na Play Store. Demais aparelhos são Android; versões exatas ainda não informadas.
@@ -27,12 +27,15 @@ Design aprovado e P01–P15 preservados. Nenhuma imagem criada, alterada ou envi
   cursor por tupla e limite máximo 50 (Home pede 3); sem código, URL ou lista de pessoas.
 - Prazo: detecção por silêncio D=25 s; reserva 60 s após detecção. Nova geração não reutiliza janela antiga.
 - Worker privado em lotes de 100, executado pelo pg_cron a cada 5 s; limpeza diária de histórico dos próprios jobs após 7 dias.
-  Não há gravação de corpo, URL de mídia ou credencial em jobs/recibos.
+  Recibos e histórico do agendador guardam identificadores e resultado mínimo. A URL da fonte fica na avaliação privada e na mídia admitida.
+- Mídia e fila: avaliação assíncrona de MP4 progressivo e HLS VOD, referência de uso vinculada à mesma fonte e geração, fila de até 50 próximos, reordenação e remoção.
+- Reprodução: iniciar pela fila, reproduzir agora, pausar, retomar, buscar posição, reiniciar a última mídia e avançar manualmente quando a duração é inconclusiva.
+  Com duração confirmada, o agendador avança pela linha do tempo do servidor.
 
 ## Evidências das suítes
-17 scripts de tests/*.sql executados integralmente contra o PostgreSQL remoto, com fixtures e rollback.
+19 scripts de tests/*.sql executados integralmente contra o PostgreSQL remoto, com fixtures e rollback.
 As chamadas de app usam authenticated/anon; administrador somente prepara/verifica fixtures.
-Nenhum mock. Última execução completa: todas as 17 suítes passaram.
+As 19 suítes passaram. Os testes de transição usam metadados controlados e o teste hospedado usa fontes públicas.
 
 | Suite | Evidência |
 |---|---|
@@ -53,6 +56,8 @@ Nenhum mock. Última execução completa: todas as 17 suítes passaram.
 | 015_social | Aceite explícito/cruzadas, cancelamento, remoção bilateral, convites preservados e consumidos por destinatário |
 | 016_operation_status | applied/unknown/expired próprios, recibo mínimo após expiração e nenhum efeito no domínio |
 | 017_social_notifications_permissions | Deduplicação, preferência desligada não apaga recurso do app, outbox suprimida e helper/DDL negados |
+| 018_media_validation | Capacidade de execução, claim exclusivo, conclusão vinculada à tentativa, negação ao app e leitura própria |
+| 019_media_queue_playback | Referência pendente/vencida/URL trocada, idempotência, limite 50, ordem, controles, promoção, duração inconclusiva, replay e fechamento |
 
 Correções de revisão: quota não é revertida por rejeição de negócio; contexto conferido após locks;
 revisão de sala finaliza uma vez por comando; getMyParticipation serializa pelo perfil e filtra sala;
@@ -103,6 +108,12 @@ Auth anônimo real remoto/configuração/API HTTP e bootstrap dos testadores ain
 A allowlist é administrativa por UUID; nenhum testador real cadastrado.
 Sessões e credenciais do APK ainda não existem; não há chave privilegiada nem assinatura no repositório.
 
+## Validação hospedada e avanço agendado
+
+O validador ativo no Supabase recebeu dois pedidos descartáveis com HTTP 202. A amostra MP4 da MDN foi avaliada em 5.055 ms e o HLS VOD Bip Bop em 1.800.001 ms. As duas referências foram aceitas na fila e o Play iniciou a mídia correspondente. Para o MP4, o agendador promoveu o segundo item ao atingir o fim previsto, com epoch 2 e fila vazia. O teste usou a execução automática do cron. Foram removidas as salas e identidades sintéticas.
+
+A avaliação lê metadados e verifica destinos. A conexão do worker fixa o IP público e, no HTTPS, valida o certificado para o domínio original. As fontes podem mudar ou expirar após a avaliação. MP4 fragmentado e recursos de HLS fora do perfil inicial podem ser rejeitados. Testes de codecs, disponibilidade de segmentos e reprodução ficam para Media3. Os limites de rede, o fluxo de referência e as rotinas estão no [guia do banco](../supabase/README.md).
+
 ## Revisões menores adiadas
 - Setters de identidade ainda incrementam revisão quando o valor é idêntico: conflitos extras possíveis, sem sobrescrita silenciosa.
 - Papel de identidade tem UPDATE de tabela em profiles/preferences; estreitar às colunas mutáveis melhora defesa, sem caminho atual de acesso arbitrário do app.
@@ -110,24 +121,20 @@ Sessões e credenciais do APK ainda não existem; não há chave privilegiada ne
 Esses pontos não foram descritos como corrigidos.
 
 ## Advisors
-Última consulta: 30 WARN para RPCs SECURITY DEFINER executáveis por authenticated, intencionais,
-sob papéis limitados e gates. Sem aviso de RLS sem policy nessa consulta; 7 índices sem uso observado.
-O aviso anterior de senha vazada não apareceu nessa consulta; nenhuma configuração Auth foi alterada por este trabalho.
-Isso não comprova segurança integral ou elimina a necessidade de REST/concorrência real.
-Links/procedimentos em supabase/README.md.
+A consulta de 11/11 mostrou os avisos agrupados de funções SECURITY DEFINER acessíveis por authenticated e índices sem uso observado. As funções da API operam com papéis limitados e gates explícitos. Auth/REST, disputa entre sessões e carga ainda precisam de teste. [Funções SECURITY DEFINER](https://supabase.com/docs/guides/database/database-linter?lint=0029_authenticated_security_definer_function_executable) · [Índices sem uso observado](https://supabase.com/docs/guides/database/database-linter?lint=0005_unused_index)
 
 ## Situação e próximo trabalho
 B00 permanece com operação/contratos finais a fechar. B01 tem backend de identidade; Android não criado.
 B02 tem operações de sala/leases e worker verificadas funcionalmente, sem prova concorrente entre conexões reais.
 B03 tem catálogo backend; B05 tem chat API, sem UI/Realtime/overlay.
-B04 (validação/reprodução/fila), B08/push e B09/APK ainda sem entrega funcional completa. B06/social agora tem amizade/convite backend, sem UI/push.
+B04 tem backend de validação, reprodução e fila. A interface Android, B08/push e B09/APK continuam pendentes. B06/social tem amizade/convite backend, com UI e push pendentes.
 Administração backend implementada; painéis Android ainda não.
 
-Próximo: mídia/fila/validador, dispatcher de notificações, transporte Realtime e integração Android/Media3.
+Próximo: dispatcher de notificações, transporte Realtime e integração Android/Media3.
 Preservar Home/cards aprovados. Não publicar APK ou imagem por consequência de autorização de implementação.
 Não fechar planejamento por omissão nem declarar banco/app inteiros concluídos.
 
 ## Ainda não validado
 Instalação limpa CLI/Docker; Auth/REST real; corridas entre duas sessões;
-carga/latência/consumo do cron; Realtime/revogação de canais; mídia/SSRF e fonte mutável;
+carga/latência/consumo do cron; Realtime/revogação de canais; fontes mutáveis durante a reprodução;
 push/tokens; retenção/backups/restauração; Android/rotação/background; build/assinatura/APK.

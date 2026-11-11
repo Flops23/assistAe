@@ -18,3 +18,7 @@ site_url = "http://127.0.0.1:3000"
 enable_signup = true
 enable_anonymous_sign_ins = true
 # Configuração LOCAL. Não implica que Auth anônimo esteja habilitado no projeto remoto.
+
+[functions.media-validator]
+# A capacidade descartável é verificada pelo banco antes de abrir a URL.
+verify_jwt = false

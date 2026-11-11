@@ -1,5 +1,9 @@
 # Ponto de continuidade
 
+## Mídia, fila e reprodução no Supabase — 11/11/2026
+
+O backend tem 18 migrações, 40 RPCs autenticadas e duas RPCs de serviço para o validador. A fila e o player usam revisões e autorização da sala. Adicionar mantém o player no estado atual. O Play inicial promove o primeiro item e o fim com duração confirmada é tratado pelo agendador. Duração inconclusiva usa avanço explícito por participante autorizado. Passaram 19 suítes SQL e 18 testes do validador. O worker hospedado confirmou MP4 e HLS VOD públicos. O próximo bloco é dispatcher de notificações, Realtime e integração Android/Media3, com validação de Auth/REST, reprodução no Galaxy A54 e APK direto. [Evidências](IMPLEMENTACAO.md)
+
 ## Avanço de implementação e aparelho — 09/11/2026
 
 Backend possui 16 migrações, 23 tabelas privadas e 30 RPCs: identidade/preferências, salas/catálogo, leases/reconexão, chat/administração, amizade/convites e status de comandos. Dezessete suítes SQL passaram. Aceite explícito nas cruzadas, remoção bilateral preservando convites emitidos, outbox sem envio push. Papéis de API limitados, sem login/BYPASSRLS/DDL permanente. Locks de perfis UUID antes de par/sala/FKs; disputa entre duas sessões ainda não demonstrada. [Estado, decisões técnicas e evidências](IMPLEMENTACAO.md). Pendentes mídia/fila, dispatcher push, Realtime e app Android/APK; Auth/REST e aparelho não validados. P01–P15/design preservados, B00/blocos completos não concluídos. Galaxy A54 com Play Store confirmado, APK direto, somente Android; versões exatas do SO não informadas. Sem imagem nova, publicação de APK ou notificações reais enviadas. Notas abaixo são históricas.
