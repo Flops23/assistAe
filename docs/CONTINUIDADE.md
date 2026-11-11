@@ -1,5 +1,9 @@
 # Ponto de continuidade
 
+## Android, Realtime e notificações — 11/11/2026
+
+O primeiro app Android liga Home, perfil, salas, chat, fila, player Media3 e amigos ao Supabase. A entrada anônima foi ativada no painel e a lista de teste continua obrigatória. Uma verificação com duas sessões reais confirmou autenticação, renovação, chat por REST, canal privado próprio e perda de acesso depois da expulsão. O APK usa assinatura de teste. A instalação, reprodução, rotação e notificações no Galaxy A54 continuam pendentes. O Firebase assistAe foi criado no plano Spark e o app Android foi registrado. O envio do dispatcher continua desativado até configurar a conta de serviço e verificar a entrega. [Estado e evidências](IMPLEMENTACAO.md)
+
 ## Mídia, fila e reprodução no Supabase — 11/11/2026
 
 O backend tem 18 migrações, 40 RPCs autenticadas e duas RPCs de serviço para o validador. A fila e o player usam revisões e autorização da sala. Adicionar mantém o player no estado atual. O Play inicial promove o primeiro item e o fim com duração confirmada é tratado pelo agendador. Duração inconclusiva usa avanço explícito por participante autorizado. Passaram 19 suítes SQL e 18 testes do validador. O worker hospedado confirmou MP4 e HLS VOD públicos. O próximo bloco é dispatcher de notificações, Realtime e integração Android/Media3, com validação de Auth/REST, reprodução no Galaxy A54 e APK direto. [Evidências](IMPLEMENTACAO.md)

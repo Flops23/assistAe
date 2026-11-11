@@ -1,0 +1,18 @@
+# Notificações sociais
+
+A Edge Function `push-dispatcher` envia avisos de convite e solicitação de amizade pelo Firebase Cloud Messaging HTTP v1. O destinatário é um Firebase Installation ID (FID) registrado pelo aplicativo. O payload usa `AndroidConfig` no campo `android` e restringe a entrega ao pacote `com.flops23.assistae`. O texto de tela bloqueada é “Você recebeu um convite” ou “Nova solicitação de amizade”. O único dado de navegação é `kind` (`room_invite` ou `friend_request`). O toque abre a área correspondente e o app consulta os itens vigentes com sua sessão. [Referência do payload FCM](https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages).
+
+## Android
+
+Use `com.google.firebase:firebase-messaging:26.0.1` e crie o canal `assistae_social`. Habilite o registro por FID no manifest e sincronize `FirebaseMessagingService.onRegistered(fid)` após permissão do sistema, disponibilidade da sessão e criação do perfil. Chame `register_push_installation(p_fid)` para registrar/atualizar e `unregister_push_installation(p_fid)` ao desassociar. Ambas respondem `{"ok":true}` ou `{"ok":false,"code":"..."}`. Uma identidade pode ter um destino ativo. Um FID já associado a outra identidade não é transferido. A remoção por FID antigo é idempotente. O FID deve ficar fora de logs e backups de app. A API controla o vínculo com a sessão e a exclusividade no banco. A primeira associação depende de o cliente manter seu FID privado, pois o registro atual não inclui desafio do dispositivo. [Registro por FID no Android](https://firebase.google.com/docs/cloud-messaging/android/get-started).
+
+## Operação
+
+1. No projeto Firebase correspondente ao APK, habilite a API FCM HTTP v1 e conceda à conta de serviço a permissão `cloudmessaging.messages.create` no projeto Firebase.
+2. Guarde o JSON da conta de serviço somente como segredo `PUSH_FCM_SERVICE_ACCOUNT` nas Edge Functions. A função também lê `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY` do ambiente. O APK não usa essas chaves privadas.
+3. A função só consulta a fila quando `PUSH_ENABLED=true`, a configuração está presente e a requisição POST apresenta a credencial `service_role` em `Authorization: Bearer …`. Mantenha a verificação JWT da plataforma habilitada. A função não aceita parâmetros de cliente.
+4. Valide o fluxo em ambiente controlado com uma instalação e identidades de teste antes de agendar invocações. Valide permissão negada, tela bloqueada, primeiro plano, app em segundo plano, toque e rotação do FID. Caso agende o worker depois do teste, mantenha as credenciais de invocação no Vault. A migração não cria cron. [HTTP v1](https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages/send) · [Agendamento no Supabase](https://supabase.com/docs/guides/functions/schedule-functions).
+
+Cada chamada processa até seis itens, com uma tentativa por vez e lease de 45 segundos. O banco confere a preferência, o beta, o destino e o recurso vigente após o claim. Uma instalação sem atualização há 30 dias e um aviso com 24 horas ou mais são inelegíveis. O worker faz até quatro tentativas com atraso exponencial e respeita o prazo de retentativa do FCM dentro da janela do aviso. O FCM mantém mensagens offline por até cinco minutos. Avisos do mesmo tipo substituem o cartão anterior no Android. Uma falha de rede após aceitação pelo FCM ainda pode causar reenvio. O status `delivered` significa aceito pelo FCM. A exibição depende do aparelho e das permissões Android.
+
+Execute `node --test supabase/functions/push-dispatcher/tests/*.test.mjs` para testar com transporte simulado. A suíte `supabase/tests/021_push_dispatcher.sql` valida as RPCs em transação com rollback.

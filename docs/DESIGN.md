@@ -1,5 +1,9 @@
 # Controle de design
 
+## Primeira versão Android — 11/11/2026
+
+A interface Compose implementa a Home, entrada e criação de sala, player vertical e horizontal, chat, fila, participantes, amigos e configurações com as referências aprovadas. A ilustração da Home é extraída em execução da imagem já aprovada. O comportamento visual, teclado, rotação e segundo plano precisam ser conferidos no Galaxy A54.
+
 ## Fila e reprodução no backend — 11/11/2026
 
 O Supabase aceita validação assíncrona de fonte, fila com até 50 próximos e controles de reprodução. Os modelos aprovados de Fila, Adicionar vídeo e Player continuam como referência para a integração Android. A interface deverá mostrar a avaliação pendente e oferecer avanço explícito a quem tem controle quando a duração for inconclusiva. O backend foi testado com SQL e fontes públicas MP4 e HLS. A validação visual e o teste no Galaxy A54 ficam para a integração do app. [Evidências e limites](IMPLEMENTACAO.md)

@@ -1,5 +1,13 @@
 # Implementação — assistAe
 
+## Android, Realtime e notificações — 11/11/2026
+
+O Supabase tem 20 migrações, 24 tabelas privadas e 42 RPCs autenticadas. A entrada anônima foi ativada com autorização do usuário. O teste com duas identidades descartáveis confirmou o bloqueio antes da liberação no beta, o acesso às RPCs após a liberação, a renovação com a mesma identidade e a entrega de aviso privado com payload vazio. Uma conta teve acesso negado ao canal da outra, e a expulsão removeu o acesso à sala. As duas contas e a sala de teste foram removidas.
+
+O APK Android de teste usa Compose, Media3 e assinatura debug local. O app registra a identidade por instalação e protege a sessão com Android Keystore. O APK exige Android 8 ou superior. Não foi observado aparelho conectado via ADB. A validação de reprodução e interface no Galaxy A54 continua pendente.
+
+O dispatcher de push v2 está implantado com envio desativado. O projeto Firebase assistAe `assistae-519ae` foi criado no plano Spark, com Analytics e Gemini desligados, e registrou o pacote `com.flops23.assistae`. A configuração do cliente Firebase e o segredo da conta de serviço ainda precisam ser instalados. O worker tem oito testes com Firebase simulado. [Build Android](../android/README.md) · [Operação de push](../supabase/functions/push-dispatcher/README.md)
+
 ## Estado atual — 11/11/2026
 Implementação autorizada pelo usuário, começando pelo Supabase. Projeto existente assistae
 (siizxjtyaphwjfdjsgom, us-east-1), PostgreSQL 17. Sem projeto adicional contratado.

@@ -1,5 +1,9 @@
 # assistAe
 
+## Primeiro APK de teste — 11/11/2026
+
+Aplicativo Android nativo com Home, salas, chat, fila, player e amigos ligados ao Supabase. O APK usa assinatura de teste e instalação direta. A primeira abertura mostra o identificador da instalação para liberação no beta. As notificações estão implementadas e aguardam configuração de envio e teste no aparelho. [Build e instalação](android/README.md) · [Estado e evidências](docs/IMPLEMENTACAO.md)
+
 ## Avanço de implementação e aparelho — 09/11/2026
 
 Backend possui 16 migrações, 23 tabelas privadas e 30 RPCs: identidade/preferências, salas/catálogo, leases/reconexão, chat/administração, amizade/convites e status de comandos. Dezessete suítes SQL passaram. Aceite explícito nas cruzadas, remoção bilateral preservando convites emitidos, outbox sem envio push. Papéis de API limitados, sem login/BYPASSRLS/DDL permanente. Locks de perfis UUID antes de par/sala/FKs; disputa entre duas sessões ainda não demonstrada. [Estado, decisões técnicas e evidências](docs/IMPLEMENTACAO.md). Pendentes mídia/fila, dispatcher push, Realtime e app Android/APK; Auth/REST e aparelho não validados. P01–P15/design preservados, B00/blocos completos não concluídos. Galaxy A54 com Play Store confirmado, APK direto, somente Android; versões exatas do SO não informadas. Sem imagem nova, publicação de APK ou notificações reais enviadas. Notas abaixo são históricas.
